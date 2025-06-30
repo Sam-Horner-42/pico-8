@@ -1,0 +1,218 @@
+[000000] codo_init
+[000000]   platform: Windows
+[000010]   Found config.txt
+[000010]   
+[000010]     01 window_size 0 0 // window width, height
+[000010]     02 screen_size 0 0 // screen width, height (stretched to window) 
+[000010]     03 show_fps 0 // Draw frames per second in the corner
+[000010]     04 windowed 1 // 1 to start up in windowed mode
+[000010]     05 window_position -1 -1 // x and y position of window (-1, -1 to let the window manager decide)
+[000010]     new window position: -1, -1
+[000010]     06 frameless 0 // 1 to use a window with no frame
+[000010]     07 fullscreen_method 1 // 0 maximized window (linux)  1 borderless desktop-sized window  2 hardware fullscreen (warning: erratic behaviour under some drivers)
+[000010]     08 blit_method 0  // 0 auto  1 software (slower but sometimes more reliable)  2 hardware (can do filtered scaling) 
+[000011]     09 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
+[000011]     10 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
+[000011]     11 sessions 22 // number of times program has been run
+[000011]     12 rmb_key 0 // 0 for none  226 for LALT
+[000011]     13 desktop_path 
+[000011]     14 read_controllers_in_background 0
+[000011]     15 sound_volume 256 // 0..256
+[000011]     16 music_volume 256 // 0..256
+[000011]     17 mix_buffer_size 1024
+[000011]     18 map_scancodes 
+[000011]     19 use_wget 0 // (Linux) 1 to use wget for downloads instead of libcurl (must be installed)
+[000011]     20 version 0.2.6b
+[000011]     21 volume 256
+[000011]     22 root_path C:/Users/Sam/AppData/Roaming/pico-8/carts/
+[000011]     23 cdata_path C:/Users/Sam/AppData/Roaming/pico-8/cdata/
+[000011]     24 joystick_index 0
+[000011]     25 merge_joysticks 0
+[000011]     26 button_keys 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+[000011]     27 live_notes 0
+[000011]     28 cursor_snap 0
+[000011]     29 gui_theme 0
+[000011]     30 screenshot_scale 3
+[000011]     31 gif_scale 3
+[000011]     32 gif_len 16
+[000011]     33 gif_reset_mode 0
+[000011]     34 host_framerate_control 1
+[000011]     35 splore_filter 0
+[000011]     36 tab_width 1
+[000011]     37 draw_tabs 0
+[000011]     38 record_activity_log 1
+[000011]     39 allow_function_keys 1
+[000011]     40 check_for_cart_updates 1
+[000011]     41 auto_hide_mouse_cursor 5
+[000011]     42 aggressive_backups 0
+[000011]     43 periodic_backups 20
+[000011]     44 transform_screen 0
+[000011]     45 gfx_grid_lines 0
+[000011]     46 capture_timestamps 0
+[000011]   
+[000011]   codo_system_init
+[000373]   Compiled against SDL version: 2.0.2
+[000373]   Linked against SDL version:   2.0.9
+[000373]   Current video driver: windows
+[000373]   codo_reset_timer
+[000373]   codo_gui_init
+[000373]   codo_keys_init
+[000373]   codo_text_init
+[000373]   codo_video_init
+[000373]   codo_mouse_init
+[000373]   codo_joystick_init
+[000382]   Reading controller mappings: C:/Users/Sam/AppData/Roaming/pico-8/sdl_controllers.txt
+[000382]   searching for joysticks
+[000382]     found 0 joysticks
+[000382]   ok
+[000382] ok
+[000396] codo_load_pod: D:/Program Files/PICO-8/pico8.dat ok 
+[000399] codo_set_screen 128 128 8 100
+[000399]  window size: 640 540
+[000739]   setting filter to nearest (screen_mode 0  back page width: 128)
+  renderer direct3d:
+   flags: 0x0000000E ( |  | )
+   texture formats (3): ARGB8888, YV12, IYUV
+   max texture size: 16384x16384
+[000741]  desktop size: 2560 1440
+[000741] ok
+[000755] codo_sound_init mix_buffer_size: 1024
+[000755] codo_sound_init
+[000755] SDL_INIT_AUDIO ok
+[000805] SDL_OpenAudio ok
+[000805]  freq:22050
+ channels:1
+[000805] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
+[000805] Current audio driver: wasapi
+[002818] splore_init
+[002818] could not load favourites file: C:/Users/Sam/AppData/Roaming/pico-8/favourites.txt
+[008751] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[020790] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[021913] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[024764] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[025643] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[029328] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[099979] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[129164] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[371333] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[411411] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[487428] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[501394] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[551746] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[559085] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[565014] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[630725] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[648090] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[777595] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[829806] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[840781] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1064775] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1159327] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1328111] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1349518] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1495946] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1507637] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1601629] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1657574] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1678767] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1733430] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1771998] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1813888] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1822618] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1867622] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1882556] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1914699] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1924962] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1942426] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1959423] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1970248] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[1998963] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2191685] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2219191] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2422523] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2441346] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2464341] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2466689] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2626138] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2644933] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2671199] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2690547] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2801402] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[2817027] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3008243] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3072017] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3083911] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3176271] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3242328] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3268335] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3287398] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3325762] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3351979] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3363099] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3363834] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3388418] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3589551] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3686460] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3758534] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3770519] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3850623] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3951251] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[3992387] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4107789] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4109069] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4128314] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4145541] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4170996] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4471179] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4489793] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4753742] setting fullscreen window size to 2560 1440
+[4754008]   setting filter to nearest (screen_mode 1  back page width: 128)
+  renderer direct3d:
+   flags: 0x0000000E ( |  | )
+   texture formats (3): ARGB8888, YV12, IYUV
+   max texture size: 16384x16384
+[4758489] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4878254] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4908913] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4910829] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4974232] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[4994415] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5050235] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5098046] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5175713] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5196111] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5252754] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5269516] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5281079] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5309772] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5327460] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5353260] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5366793] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5379414] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5394653] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5402708] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5412126] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5427746] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5458630] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5509561] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5527135] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5727930] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5794034] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5850115] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5906478] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5925193] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5932357] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5977572] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[6105347] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[6518700] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[6615120] window closed (14)
+[6615121] codo_exit
+[6615121]   cmusic_stop
+[6615121]   codo_main_exit
+[6615122]   codo_config_save
+[6615122]   codo_sound_exit
+[6615122]   codo_video_exit
+[6615142]   codo_joystick_exit
+[6615142]   codo_system_exit
+[6615142]   codo_items_created: 3517
+[6615142] ok

@@ -1,0 +1,387 @@
+
+2025-06-20 19:22:24 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled.p8
+ i..iiii.........iiicggmmmmmmmmmmmmmmssssscii.i
+2025-06-22 00:31:48 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled.p8
+ iicccccccccccccccccccccccccc.....c.c.cccc.ccccccccc..c.........c..c.c.cc.c.....c
+ c......cc....c.........cccccccccccccccccccgsssssssssssssssssssssssssssssssssssss
+ sssssssssssssssss...ss.sssssssssssssssssssssssssssssssssssss..s.sss...ssss..sssc
+ ccccccccccccc.........c..ccc.cmcccc.........ccggggggggggggggg........g.ggg......
+ ...ccc.ccccc.........ccccirrc.cc..cccccccc..c.........ccc.........c.........gc..
+ cc.ccc..cccc.ccc.cc.........c......cc...c....ccccccccccccciiic.ccrcccc...ccccccc
+ ccccc..ccccc.cc.c.cccccrccccccccccccccccccccccccccccccccccccccccccccccccccrcc...
+ c..ccccccccccccccccccicccccrriccccccrrrcccccc.c.........cccc.........ciiiiiii...
+ ......i.........ii
+2025-06-22 01:28:49 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame.p8
+ ii......iiii....ii.........iiiirrrrrr_________rcccc...cciii..iiiii.ii.
+2025-06-22 01:35:50 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/hello.p8
+ iricccii.....icii
+2025-06-22 01:36:41 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/api.p8
+ rrrrrrrrrrricc.........ci
+2025-06-22 01:40:14 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/cast.p8
+ rrrrrrrrrrrriii
+2025-06-22 01:40:59 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/drippy.p8
+ rrrrrrrrrrrrrrri
+2025-06-22 01:41:47 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/wander.p8
+ irrrii
+2025-06-22 01:42:05 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/collide.p8
+ rrrrcciii.i
+2025-06-22 01:42:38 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame.p8
+ iicc.........ciiii..ii..i
+2025-06-22 01:44:02 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/dots3d.p8
+ ir_iiii
+2025-06-22 01:44:23 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/automata.p8
+ r__rii
+2025-06-22 01:44:41 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/sort.p8
+ rrrrrrrrrrrrrrrcc.........crrrri.........iii.........i
+2025-06-22 21:37:20 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii....iiicssssssssssssssssttsscccsmmgggggggggggggggggcccccccccciiiiii
+2025-06-22 21:40:47 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/api.p8
+ iricccci..ccccii.i
+2025-06-22 21:41:41 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/drippy.p8
+ irrii
+2025-06-22 21:41:56 C:/Users/Sam/AppData/Roaming/pico-8/carts/demos/jelpi.p8
+ irrrriccccggmmsttiii
+2025-06-22 22:34:16 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ i.........iii
+2025-06-22 22:35:10 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ cc........cicic.ccccccccciiii..rii.........i.........i.........
+2025-06-23 01:48:26 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ icttttttt
+2025-06-23 03:19:42 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iicii.ii..ii
+2025-06-23 03:20:18 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ ic........gggggggggggggggggrrrrgg.ggg.....ggggggggggggggggc.........ggggggggggg.
+ ..gggggggggggggggggcrc...cccir___rcrri..rrcg.ggggggggggggggggggggggggggggggggggg
+ 
+2025-06-23 13:30:24 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii..i..iii
+2025-06-23 13:30:54 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ icc.ggggggggggggggggggggggggggggggggggggggg.........ggg.........
+2025-06-23 13:40:52 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iiiii.i.iii....
+2025-06-23 13:44:11 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iiiiiiii.........iii..ii....i.iiiiii..iiiiii
+2025-06-23 13:47:48 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ cc.........c.........iii.........ii.........ii.....cc.........iirrric.cccsssmmmm
+ ggg..ggggggggggggggggggggggggggggg......ggggg.........irrrr___rriggggggggggggggg
+ ggggggggggggggggr_ggggggggg.gggggg....ggggggg.........gggggggggggggggggggggg.ggg
+ ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg.........irrrgg
+ irrr_rgggggggg.rrrr_gggi..igggggg.ggggggggggg.ggg.rr_ggggggggirrgggggggggggggrrr
+ gg.gii....irrrrrrgg..gg...rg.irrggggg.........gggggggggggggggggggg.ggr__r_gggggg
+ gggggrggggr_g..rggggirigggggr_ggggggrgirrr_gggggggrrrggg.gggggggrr_r_rrggggggggg
+ ggggrgggggirr_ggggggg.ggggggggggggggggggggggiggggrggriggrrrggirrr_rrgggggggggggg
+ gr_ggirrig......g.........gccccccc.ccccc........cc.........ccciicc.........criir
+ _cgggggggggr_ggggggiigirrrgggggrggirr_ggggirrr_gggggggggggriggrr__ggggggrrgggggg
+ rrrigggggggrriggggrrigggggggirrgggggrr_riggrrgrrrgggirrigg.ggg.gi.igggggggrigggg
+ gggirgggggirigggrigggrrrggggrigrgggr_ggrrriggrr_rrggggrrrr_gggrrr_gggggggggrgggg
+ rrrigggirrrgr_rrigggggggr__rrr_ggggggrrrrigggggirggggirrrrggirrgg.........gcccc.
+ ci.ci.........ii....ii...ii.i.........iii.........i.i.........iccrric.........ii
+ ....ii.i.........ii.........iii...iii.iii.........rri.........irrrrrrrrrr_______
+ __irrr_________ri...rrri.........rr_________rrrrrrrrr_cc.rrcirrrrrrriiriirrrii..
+ ......rrrri.........ri.........rrri.rrrri.........irri.........rrii.........riir
+ rrrr_________rrrrrr_________rrr_________rr_________rri.irri.........rrrr____rrrr
+ rrrrrrrrcc.........ic.........ggg....ggggggggggggggggggggggiiii.........ii......
+ ...ccccccrri.....ir_________rr_r_________rii.i...rrrcrc.........rrrrrc...rrriirr
+ rrii........rrrii.rrri..ii.........ccccc.........rri.........icccccc.....cccc...
+ ......cccccccc.........ccc.........cggmgggggggggggggggg.........ccc.........cg..
+ .......grrrrrrr______rrr_rr__rrrri.........rr_________rrrrrr________rr_______rrr
+ rr______rrr_____rr_________rr_____rr_rr_rr_rrrr__rrrrrr__rrrrrrrr_________rii...
+ ....rrr_rr________rr_________r_________rrr______rr_______rrrrr___rrrr_rr_rr_rrrr
+ rrrrrrrrri.........iii.........rrr___r______rrr_________rrr________rrr_rrrrrrrrr
+ rrr_________rrrrrri.........irrrrriggg..rrrrrri....rrr__rrr____rrrri..rrrrrrr___
+ ______rrrri.........irri...rrrrii.........ri.rrrrrri..irirrrr__rr_rrrrri........
+ .rrrri.........iggggggggggggggggggggggggggg.gggii.........rrii...ig.rrrriggggggg
+ ggggggggggggggggggrrri..rri.........i..g.........grri..ri.........rrii.........r
+ rrri......rr_i....rri..igggggggggg.........rrrrrit....tssssssssssssssssssssssss.
+ ......cc.........crrgsssssssssssssssssrrrrisssssssirrrisssssssssssssssssssssssss
+ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssii........
+ .riii..rrri.....rrrrricsmmstsgstcc.........ci.........i...ccriii.........iiiriri
+ .........riiri....irri..irii.........ri.ri....ic.........ri.ii......rrrrrri.iiic
+ ...cr___rri.....ri...ii.iii...iri.ii.ci.........rrri..rrrri.........rrrri.......
+ ..rri.........ii.........rri.........rri.....ri.........rri.........iri.........
+ rrri.......icic.........rrrri....csssssssssssssssssssssssssssssssssssssis....rrr
+ i.iri..rri.....smgi.........ri..i.........rri.....ri...r_i.ri.iiri.........i...i
+ i.....ii....iri.i.rii.iri.ccci.iiri.iic.........ri.irc.........ci....i.rirrrii..
+ .......cc...crrrrrciii.........iii.........icsi.i.........i.i
+2025-06-23 21:33:05 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iii
+2025-06-23 21:33:14 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ i.........ii.i...irrrrrrrrrrrrrrrrrrrrrrrrrrrrr_________r_icggggssssssssss......
+ ...sss.siirrrrri.si.........irri..irrrri...ri.........irri.........rrri.........
+ rrrrrri.........rrrirrrrri.........irrri.rrrri.rrri.........rrrri.........ii..rr
+ ii.rii....r_ri.....rrrri.........rrrrrrrri..rrrrrrrrrrrrri..irrrrrrrrrri........
+ .cc......rri.........rrri.........irrrri.........rrri.rr_i.....ii
+2025-06-24 00:52:36 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ i.........iii
+2025-06-24 00:53:39 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ i...iiii..iiirrrr_iiiirrrrrrrrrrriicmssssssssssii
+2025-06-24 22:13:20 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ i.ii
+2025-06-24 22:13:32 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ icc....cmggggggg.g.gggirrii.i......iii.....ggggg........ggggggggggggggggggc.....
+ .rrrrii.........cccccc.........cc.........ciii.........ii.........ii.........ic.
+ ........iii.........ii.i.........ii.ic.........i.i....ricc.ccccciic.........cc..
+ .......ii....rri.........ri.........ccrc.....ri.........rri.........ri......ri..
+ .......ri.........ri.........i.........rr_______ri..ri......ri.........ri..ir___
+ ______iii.........ii....irr______ri.........i.ii.........rrri.........rri....rrr
+ i.........rri....rri.........rrri.........rrri.........rrri.........rrii........
+ .rrrr_________rrrrriccii...ii.......cci
+2025-06-25 01:37:00 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii.........iii
+2025-06-25 01:37:51 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ irii.i.rr_______r_rrrr_rrr____rrrrr_rr___rr__r___rr_________rr___rrc.........cr_
+ __r__r__rr_r_r_r_rr__rr____rrr_rrr________rr_________rrri.........rrr_r___rrr___
+ ____rrrr_r_________ririi.........r_r_________rr_r__r_r__ii....rr___i.........rri
+ i.......irrriiii..c......rr__rr______r_r_i.........irr___rrrrrr____r_r_r____rr_r
+ rr_rr___r_rrrrr___r_________rr_________rr_r_________rrrr__r______r__ri.ri....rr_
+ r_rrrrrrr_rr__r__ri.........ri.........irri.........ri...rrrri...rri.rrrrri.....
+ ....riii........rri...rri.........rri.....rrr_i.........rri.........rr_____rrrrr
+ rrrrrrrir_ii.........iiiiiiiiiiir_____rrrrrri...cc
+2025-06-25 18:46:42 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iiiii.........iii
+2025-06-25 18:48:31 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ iri.........rii.........rrrrir___rr_________rr_________i.....rr_________ri....rr
+ _________rri.........i..riii....iii.....ri.........rrririi.........rri.r__iri...
+ ...iri.........rrrrii....r__rii.........r_ir_iir_i.........rii.........rri....rc
+ i....r____riii.ririii.........ii.....ii.......r_iii.........cc....iii....i......
+ ..i.........i....iic....rii.........iiii.....i.........i........r__ri.........rr
+ _rrr___rrr___rrrri.........r_i....ri.ii..ri.....iri..ir_i...iri.rrrri..ii..iri..
+ ir_i...ri.........rr_i....rrrri.ri..r_i...r_i.........r_rri.......rrri..r_rrri..
+ .......ri.ri.........r_i.........r_ri.........r_i..ii..rii...r_r___i.........ii.
+ ri..ri....rrrri..iri..ri..rri.rii...r________rrrrrrri....riri.....r_i.rir__i....
+ .....r__i.........rri..rrri...r_i........rri.........ii.......iiri....r_i.......
+ ..ri.ri.........rri........r_r_i.ri.........rrri...r__ri......ic.........riiri..
+ r_irri..r_ri..i.........r_i...irri.........rri.r___i.rrir_i.rri.r_ri.......ri...
+ r___iic
+2025-06-25 23:27:56 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iiiiii.iiii
+2025-06-25 23:28:44 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iiiiii
+2025-06-25 23:29:02 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ cii.........icr_r_________ri...i......rrc.rrrr________rr_ri..ri...rri.rii.iirrr_
+ ________rrrr_rrirriri.rr_________ic..rrr_____rr_________rric..rrrrrrrccc.mgggggg
+ gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggc..g..gg.......
+ ..rrri.itsssssssssssssssssssssssssssssssssssssssscc.........cii.....rrrrri......
+ ...cgg....gg.....rig.........ii...i.i.ii.........ii...ii..ii.........i.........r
+ iii.........rigg.......grrrrrrrrri......rrrri.........rrrrri...ri.....ii.rri.rri
+ i..rrrrrriirrrrri...rri.........rrrri..ri.irrrrri.........rrrri..r_rrrrrrrrrrrrr
+ i...i..i....gg..rrrrrri.........rrrri.....mggi.........rrrrrrigg..girrrrrrrrrri.
+ ........rii....iri.......ri.........gg.........rrri....rr_rrr_r_____rrri........
+ .rrrrrrrrri...iri.........ri.ri.........ri.........rri..rrri.rri.........rrrrrrr
+ rrrrrrrrrrrri....rrrrrrrrrrrrrrri.........ir__rrrrrrrrrrrrrrrrrrrrrrrrrri.......
+ ..irrrrrrrrrrrrrrrrrri.........igggggggggggggggggggggggggggggggggggggggggggggggg
+ ggggggggggggggggggggggggggggggggggrrrrrrrrrrrrrrrrrr_________rrrrri....rrirrrr__
+ _____r__r__rrrrrrrr______rrrrr_rrrrrr_rrrr___rrrr___r__rrrrr_r_______rr_i.....ig
+ ggg.........ir___rrrrrrrrrri....ri.ri......ri.rrrrrrrrri..iggrrrrrrrrrr_________
+ rrrrrrri.........rrrrrrrrri..rrrirrrrrrrrrrri.........irrrrr__rrrri.rri....rrrrr
+ ri.rrii.rrri..rrri...rrri.........rrrri........rrri.rrri........rrr_rrrirrrirrrr
+ rri.........rrrrii.........iirrrri.........rrri.........rrrri......rri.........i
+ rrii..i..rrrrriirrrri.......rrrrri.........ig..rrri.....ii..ri....ri..ri..i.....
+ i.rri.........rrrrrrrrri.........rrrrri.rri......ii.ggggg
+2025-06-26 11:51:46 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iii
+2025-06-26 11:51:55 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ rrrrrrri..ii.........i.........rrrrrrrrrrrri....i.....irrrrirrrrriggggggg.gggggg
+ ggggrrriirr____r_________rrrriiiggggrii.ggggrriiggggggrrriiiggggrrrrriii..gggggr
+ rigggrriiggggggggggggggrrrggrrirrri...ii.........gg.........gg.........g........
+ .gi........i.........iccccii.....ccri.i.........rrii.........iri.........rrri...
+ ......rrrri.rri.rri....rrrr_____rrrrirrrrrri.....ri.........ri.......rri.rri....
+ .....iri......riri.rii.iri.........ri....rrii....ri..rrr_rrr_________rrri.......
+ ..rrri.........rii....ri....rrrri.........rri.........rri......rrrii....rri.....
+ ....rrrigggggrri.........rrii..ii.....rri.........rri..rig..rri...iri.irirrirrrr
+ riiiggrriiggrrrri..rri.rri.gtssssssssssssssssssssssssssssi.........sssriri......
+ ...sssssss.........rrissssssssssssssssssssssssssssssssssrrriss..sssssssrrrrrisss
+ ssssssssssssssssss.........rissssssssssssssssssssssssssssssssssssssssssssriisiri
+ .........rrissssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ ssssssssssssssssssssssssssssssssssrrssssrrissrrrri.........issss.........ss.....
+ sssssssss.s.........sssss......sssss..s.........ri.........ri.........ri..ri....
+ ri...riri....rirrirrrr_rr_r_rii.........rri.........iri......ri......riri.......
+ ..ri.....i......ri.........ri......ri.........ri.........ri..r_is.........ri.ri.
+ .ri.rii.........rri..ri.r_r_rr_iiiiririi.rr_i.rrirr___i......r_ir_i.........rr_i
+ .....ri.ri......ii...ri.....ri..rri....i...ii.......ri...riii...rii.riii.ii...ri
+ ii.........rr_i...rri.rrri....ssssssssssssssssssssssssssssssssssssssssssssssssss
+ ssssssssssssssssssssssssssssssssssssssss..srrrissr_rriiisssssssrrrii.........i..
+ ..rrrri.........ii.....rri...ri.........i.........rii....r_is....ii..ri....ri.ii
+ iri.ri..ri.....iiii.ri.ii.ri.riiriri...ririii..rirriii.i...rii.........iiri.....
+ .ri..iii..ririi.........rrrrrrri...ri.........rii.........ri.....rrii.........ri
+ .....ri...ri..ri.........rri.......rrrrrrrii........rrri.........ii.s.........rr
+ ri.........rrri.........rrri........rrri.........rrri.........rrrr_i.........rrr
+ rrrr_rr_____rri.........ri.........ri.....ri.........ri......ir______rirrrr_ri..
+ .rrrri..ii.s.........rrii.......ii.....ri.i.........iii.rii.........ri......ri..
+ ..r_rrri.......rrri.........rri.........rrr_________rrri..rrr_i.........i.s.....
+ ....srri.........s.........rrisssssssssssssssssssssssssssssssssssssssssssss.....
+ ....i...ss.........ri.........r_i.ri.........rr_i.........r_isssrissrisrsrsrisr_
+ sri.........rirrisrii.ssssr_isr_iirsrisssssrisss.........rrsssir_ri.........rri.
+ ........r_rri..r_i...r_rrrrri..rrrrrrrrrrrri.......rrrrrrrri.........rrri.......
+ ..rri.......rrrrri......rrii.........rrriirrri.ssssssssss...ssssssssssssssssssss
+ sssssss.....ssssssssssssssssssssssssssssssss.sssssssssssssssssssssssssssss.ss.ss
+ ssssssssssssssssssss.ss.s..sssssssssssssssssssssssssssssssssssssssssssssssssssss
+ sssssssssssssssssssssssssssss.sssss.........ssssssssssssssssssssssssssssssssssss
+ sssssssssssssssssssssssssssssssssss.sssssssssssssssssssssssssssssssss.......ss..
+ ......sttttttttttttttssssssssssssssssssssssssstttttttttttttttt..tss..s..ssssss.s
+ s.s......ssssssssssttsss.ss.....ssssssssss..ssss.ss.ssssssssssssttssssssssssssss
+ sssssssssssssssssssssssss.ssssssssssss.sssssssssssssstsssssssssssssss.sssssssstt
+ ttssssstssssssssssssssssssssssssssssssstttsssssssssssssssssssssssssssttttsssssss
+ ttssssstttsssssssstt.sttssssssssssssssssssst.tsssssssssst.tst.sst.sssttsssst.sss
+ ssst.stttsst.sttsttssssstttssssss.sssssssssttttstssssssss..ssss.sssssssstissssts
+ ssssst.ssst.ttttt.tsssssssssssssstt.sssssssst.tss..sssssss..ssssssssssssssssss.s
+ ssssss.sssss.sssssstttsssstttsss.sstsssssssssssttssss.sss.ss.sss.sssssssssst.ttt
+ tttttttt.tttttttttttttttttttttttttttttttttttssttsstssstttttttttttttttttttstttttt
+ ttt.tttttttttt.stttttttsst.ttttttt.tttttsssssssssssssstsssssssssssstttsssssttttt
+ ssssssstsssssssssssstttssssssssssssssssssssssst.ssssssst.sstsssssstttttttttttttt
+ tttttttttttttttttttttttttttttttttttttt.ttttttttttttttttttttttttttttttttttttttttt
+ ttttttttttttttttttttttttttttttttttttttssssssssss.sssssssssssssssssssssssssssssss
+ ssssttsssssssssstssssssssssssssssssssssss...ssssss.s...sssssssssss..ssssssssssss
+ ssssss.t.........t.tt...tt.ttttttttttttttttttttttttt.........tt.tttt.ttttttttttt
+ t.........tt...ttttt......ttttttttt.........tttttttii.iii.tccc.ctt.ttttttttttttt
+ sssssttttttssss.........s.........ss.......ssss.........s.........ssssssss.ss.ss
+ ssssssssssss...ss.........ssssssss.........s.........sssssssssssssssssssssssss..
+ .ss..stttttt
+2025-06-26 18:18:41 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii
+2025-06-26 18:18:47 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ cttttt.ttsssssssssssttt.ttttssssssssss....ssstssssssssssssssttt...tts.........ss
+ sttttttttttttttttttttt.t..ttttttsssss.........sss.........ssssssssssssssssssttt.
+ .ttttttttttssssssssssssttttt.tss.ssss.ssss.ssssssssssssssssssssss.sssssssttt...t
+ ttttttttttttttttttttttsssssssssssttt.ttt..ttttttttttttttttttttt.........t.ssssss
+ sssssssssssssssst.tt.........tttttttttt.ttttss.s.........s....ssssss.s.ssst.tttt
+ ttttttsssssstssssssstt.tssssssssssssssssssssssttssssssssssssttstssttssssssttttss
+ sssttttttttt.......tss.sssssssssssssssssssssssssss.sssssssssssssssssssssssssssss
+ sssttt.ttttttttttttttttttttttttttsssssssssssssssssssssssssssssss....s.......s...
+ ......sssstttttttttttttttttttttttttttttttttstt.tttt.........tttttttttttttttttttt
+ ttttttt....tttttt.tttt.tttttt.tttttt..tt.........tttttttt........tsss.........s.
+ stsssssssssss....s.sttt.........ttss.......stt......tsssss.........sss...s......
+ ssttttssssssss.s.........ss.........sss.ssssssssssssssssssssssssssssssssssssssss
+ s........ss.........sssssssssssss..ssssssssssssssssstttitsssssttttsssttttttttt.t
+ tttttttttttttttttttttttttttt.ttttttttttttt..t.tttttt.tttttttttttttttssssssssss..
+ .......ss....ssssssstttsssssssssttttttttttt.tttt.tttttttttttttttttt.tttttttttttt
+ ttttttttttttttttttttt.tttttttttttttttttt.tttttttttttttt..tttssssssssssssssssssss
+ s.........sssstt......t....sss...s.sssssssssssssssssssssssssssssssssssssssssssst
+ tttt......ttt.tttttttttttttt.ttttttttttttttttttttttttttttttttttt.ttttttttttttt.t
+ tt.........ttttttttttttttttttttttttttttttttttttttttt.t...tt.t...tt...tttttttttt.
+ .ttttttttt.ttttttttttttttttttt.ttt....tt...tt...ttttttt...tt.........tt..ttttttt
+ ttttttttt.....tttttttttttt..ttttttttt.........ttttttttttttttt...tit
+2025-06-26 20:18:28 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii
+2025-06-26 20:18:34 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ itt..tt...tt..t.........ttt......tt....tttttttttt........ttt........tt.ttttttttt
+ ttttttttttttttttttttt.ttttttttt.......tt....tt.....t..tt.........tt........tt..t
+ t.t...ttt.ttttttttttttttttttttttttt.tttttt.tttttt..tt..tttttttttt.tt...tttt.tt.t
+ t..tttt..tttt.tttt.tttttttt.........t.t.........tt.t..tttttttttt..tt..ttttt..t..
+ tt..tttttttttttttttttttttttttttttttttttttttttttt..ttttttttttttt.ttttt.tttttttttt
+ tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+ ttttttttt.ttttt.ttttttttttttttt.tttttttttttstttttttttttttttttttttttt.t.ttttttttt
+ ttttttttttttttt...tttttttttt.tttttttttttttttttt........t...ttttttttttttttttttttt
+ tttttttttttttttttttttttttttt.tttttttttttttttttttttttttttttt..tttttttttttttt.t...
+ .tttttttttttttt.tt.ttttttt........ttttttttttttttttttt.ttttttttttttttttttttt.tttt
+ tttttttttttttttttt.....ttttttttttttttttttttttttttttttttttttt.tt.........ttt....t
+ ...tttttt.......tttttttttttt....tttttttttttttt.tttttttttttttttsssssssssssssst...
+ .....ttttttssst....tttttttsstttt...tttt..tttt.......ttttt.........t.....tt.ttttt
+ ttttttttttttttttttttttttttttttttttt.tttttt.ttttttttttttttttttttttt.ttttttttttttt
+ ttttttttttttttttttttttttttttttttttt.ttt.tttttttttttttttttttttttttttttttttttttttt
+ ttttttttttttttttttttttttttttttttttttttttttttt.tttttt........t.........tttttttttt
+ tsssssttttstttttttttttttttt.ttttttt..ttt.tttttttttttttttt.........ttttttttt.....
+ ..ttttttttttttttttttttttt.ttttttttttt.ttttttt.........tttttttttttttttttttttttttt
+ tttttttttttsssssssssssssssstttttttttttttttttttttttttttt.tttttttttstttttttttttttt
+ ttttttttttttttt.........tttt.ttttttttttttttttttttttttttttt.........ttttttttttttt
+ ttttt.tttttttttttttttttttttttttttttt.ttttttttttttttttttttttttttttttttttttttttttt
+ ttttttttttttttttttttttttttttttttttttt.........ttttttttttttt..ttttttttttttttttttt
+ tttttttttttttttttt.tttttttttttttttttttttttttttttttttttttttttttttttttttt....ttttt
+ ttttttttttttt..ttttttttttttssssssstt........tt........tt.t.........t..t.........
+ ttt.........ttrri.........rrri.........rrri.........rrrrri........rrrriiri......
+ ..rri.ri.........rri.........rrrrrrri...ttt........ri.........rri....ri.........
+ r_rri.........r_rrrritt...tt..t..ttt.tttttttt..ttrrii.........r_rrrrrri.........
+ ri.........ii.....rr___rttt........riirrririrrrrrrttttttt.........t......t......
+ ...tt.........ttttsttt.........trrii.....rrrrrrrrrrrrrrrrrrttttttttttttt.ttttttt
+ ttttt.........tt....t.ttt......tt.ttt.tt......tttrrrrrrritttt.tt.......ttttttt..
+ .t..tttttt.tt.....rrrrri.........ssssss.........rri...ri.........rrrri.........r
+ ri.........ri.r_i..rr_i......rrii.........sttt.........t....r_i.rrrii......rri..
+ ...ri.........ii..r_ii.........r_ri.........rrii....r__rrrrrrrrrrrrrrrri........
+ .ii
+2025-06-27 11:11:23 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ i.ri
+2025-06-27 11:11:35 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ cttttt...ttttttttttttttt........tttttttttttttttttt...tttt..ttttttttt....ttttttt.
+ ........ttttttttttttttttt....tt.ttt.ttttttttttttttttttttt..tttttttttttttttttttt.
+ ttttttttttttt.ttttttttttttttttt.tttttt.ttttttttttttttttttttt.ttttttttsssssssssss
+ ssssssssssss.sssssssssssssssssssstt......tttttssssssssssttttsssssssss.ssstttttt.
+ ttssssssst...tttttttttttttssstssstttttttttttttttttttttsstttttttttttttttttttttttt
+ ttsssstsstttttttttttttttttt.t.tttttttttttttttttt.ttttttttt...ttttt...tttttttt...
+ ..tttssst.tttttttttttttttttt.ttttttttttttttttttttt..ttttttttttttt.t
+2025-06-27 16:21:08 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iii...iiiii
+2025-06-27 16:21:41 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ irrrrrrrrr_ist...t...tttttttccccii.ii........ttttttttttttttttgc...cscmgggggggg..
+ .gggcc......gggmc.c.cc....stttttcsssssssssssssssssssssssssssssssssssssssssssssss
+ ssssssssssssssstttsss.......ssssttttttttttst.tttttttttttttt.ttttttss...sssssssss
+ ssssssssss....sssggttc.c.........ii...iii....icttttttt.........ttt
+2025-06-28 12:37:56 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iiii
+2025-06-28 12:38:08 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ i.........i
+2025-06-28 14:24:10 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii
+2025-06-28 14:24:16 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ iiic..iii.........ccciiii.........iccc.ccccii.........icc......ii.ri....ii......
+ ...i.........ii....ii.........ii.........iii...i..i.i........ii...iii.........ii
+ i.........ii.........iiiiiiii.........iii.ii.........ii.ii..ii.........ii.i.....
+ ..i.i.....ii.........rii.....iii.........ii.........iccriiccii.........ii.......
+ ii....ic.........ii.........ri.........riiic.........ciii.........iiic....riiiii
+ ...ii.iii........rri.........ri.........iri.........ri.......ri.....ii.........r
+ rc.........ri.ic.........i..iic.....i.ii........rri.........ic.....iiic.........
+ rri.........iri.........rrri.........rri.........irii.........rrrri.........rcii
+ ........ri.........ri......ss..i.isii...riiii....rri........i.........i.........
+ ri.......rrri.........ri.........iiiiiri....rri...ii.........ri.........i.....ri
+ ....rrrrrri.........iirrrissssssssssssssssssssssssssssssssssssssssssssssssssssss
+ sssssssssssssssssssss.ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ sssssssssri.........riri....ri.........ri.........ri...ri.........ri.........rri
+ .......ri..ri.........iiii.........i.........ri.........ri.......ri.........rii.
+ ........rri.........irri......i.........rri.sssrri.........irsssrisssssssirrssss
+ sssssssssssssssrri.........ii.........is.........ii.........rissssssssrrissssrrr
+ rrrii.........ri.........sgg........rrrrrri.........rrrri.........ii.........rrr
+ iiiigrrr____rstttttttttttttttt.ttttttttttttttt..ttttttttttttttttttt.ttt.tttttttt
+ ttttttttttttt.ttttttt.tt.t...ttttttttttttt.ttttttttttttttttttttttttttt.tttittttt
+ ttttttttttttttttttttttttttt...tttt.sssssssssssssssssstttt.ttttttsssssstttttttttt
+ tt..tttttsssstt.ttttttssssssssssssssssss.sssssssstttssssssssssssssssssssssssssss
+ stt..ttssssssss.sssstttttttttsssstssss.tsstttttttttttt.tttt.tttttttttttttttsssst
+ ttttttssssssssssssssssssttttt.tttttt.ttttttttttttttttttttttttttttss...sss.......
+ ..rr__ri.........is.....rrr_i....irrrissssssssssssssssssssssssssssssssssssssssss
+ sssssssssssssssssssssssssstttstt.tsssssssssttttsssssssstttt.tt..ttttttttttt....t
+ tttttttttttttttttttttttttttttt...ttttttttttttttttttttttttttttttttttttttt....tttt
+ ttttttttttttttttttttttttttttttttt.tttttttttttttttttttttttttsssstttttstttttttttt.
+ ttttttttttttttttttttttttttt...tt..tttt..tt..tttttttttt.ttttssssssssssssssssss.ss
+ ssssssssssssssssssssssss.ssssttt.tttttsssssssssssssssssssssssssttt....tttttttttt
+ tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+ tttttttttttttttttttttttttttttttttttttttttttttttttsssssssssssssssssssssssssssssss
+ sssssssssssssstt.....tttttttttttttttttttttttttttttttttt.t.t.........t.........rr
+ irr_ri.........rrr__i.........r___ittttttttttt.t.tttttttttttt..t.ttttt.t.t...ttt
+ ttttttttttttttttttttttttttttt..t.ttttttttttttttttttttttttttttttttttttttttttttttt
+ tttttttttttttttttttttt.t..tttttttttttt...ttt....tttttttttttttttttttttttttttttttt
+ tttttttt.ttt.tttssssttttstt....ssstt.t.tt.tttttttttttttttttttttttttttttt.ttttttt
+ ttt..ttttttttttt..tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+ ttttttttttttt.tssssssstttsssssssssstt......tt.........r___rrrrrritttttttt.......
+ ..rrrrrr_i.......rr_i.........rrri.........irri....iirrrri.........rrri.........
+ rri....rrri...rrrirrri..iii.........ii
+2025-06-30 01:25:43 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii
+2025-06-30 01:25:49 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ ii..iiiriii.........i........iriii.........rrii.........rrrri.........ri..ri....
+ .....riiiirrct.........rrrri.rrritss.........ri.........i..rri.........ii.......
+ ..rsss.........si......i.........sstttt.tttttttttttttt.........ri..rri.........r
+ rii........rriii..rrrrri.........iri.........ri.........rrirri.........rri..rri.
+ .......rriri....ri....i..ri........rrrrrrittttitttttttttttct.........ri.......ri
+ i........i.....ri.i....ii.........i.....r_rri....r_i...r_rrii.........rrtttrrrrr
+ ii.........rrrrri.........i.t.r_rrrrtssssssssssssssssssssssssrrrrii.........rrrr
+ i...rrrrri.rrrri........rrrri.isr___rrrri...rrrrrrissssst.........iii.........ri
+ .........i...ri.i.........tssrrrrrss........sssssssssssssssssstrrrrrrrii....irrr
+ ri.........iii....rrrriirrrri...rrrrrrrrrrrrrrrrri.....tgggggggggggggggggg.ggggg
+ ggggggggggggggggggggggggggggggggggggggggggggggggggg.rrrrrrrrrrrrrrrgssssssssssss
+ sssssssssssssssssssssssssssssssssssssssssssssssssssssssttttttttt.ttcictii.......
+ ..irrtsssssstr_rrrrrrrii.........irrrri.rrrrrrrri.........rrrri.........rrrrrrrr
+ rrrrii.........rrii..rrri.........rri...rri.ri.......ri....rrri.....ri..ri..rii.
+ .rrirrirrri.irrrrri....rrrrii.........rrrri.rrrrrrrrrri......tssssssssssssssssss
+ ssssssssssssssssssssssssssssssirrisisssssssssssssssssr_i.........rrri.........rr
+ i...ri.rrrrrrrrtttttttrrrrrrrrrrrr__rrrrrrrrrri.........irrrrrrrrrrrrrrrrrrttt.t
+ tttttttttttttttttttttttttt.tttt.tt....ttttttt.t...t.ttttttttttt..tt..ttttt.tttt.
+ .tttttttt..ttttt.ttt..ttt.tttttt...rrrrrr_it.........tt.......iitt
