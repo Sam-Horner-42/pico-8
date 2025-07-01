@@ -1,3 +1,4 @@
+
 enemy={
     x=64, --xpos
     y=-1, --ypos
@@ -17,7 +18,8 @@ enemy={
         setmetatable(tbl, {__index=self})
         return tbl
     end,
-
+    
+    
     update=function(self)
         if self.state == "alive" then
 			self.y += self.spd
@@ -36,7 +38,13 @@ enemy={
 		elseif self.state == "exploded" then
 			self.explosion_timer -= 1
 			if self.explosion_timer <= 0 then
+                 -- drop a pickup
+                local current_x = self.x --reference to x location to prevent deletion
+                local current_y = self.y --reference to y location to prevent deletion
 				del(gameplay.enemies, self)
+                drop_pickup(current_x, current_y) -- drop a pickup  
+            
+                
 			end
 		end
     end,
@@ -52,6 +60,14 @@ enemy={
 		end
     end,
 }
+function drop_pickup(x_location, y_location)
+        add(gameplay.pickups, pickup:new({
+                    x = x_location,
+                    y = y_location,
+                    sprite_id = flr(rnd(4)) + 9,
+                    }))
+    end
+
 -- TODO make a seperate file for enemies and obstacles to add enemy AI logic
 smallspaceship = enemy:new({
     x=64, --xpos

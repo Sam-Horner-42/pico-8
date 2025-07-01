@@ -4,6 +4,7 @@ gameplay = {
     stars={},
     thruster_particles={},
     enemies={},
+    pickups={},
     init = function()
         warningcolourtimer = 20
         gameplay.game_start_timer = 0
@@ -43,7 +44,7 @@ gameplay = {
         projectiles={}
         gameplay.enemies = {}
         gameplay.thruster_particles = {}
-        projectiles = {}
+        gameplay.pickups = {}
     end,
 
     update = function ()
@@ -51,7 +52,7 @@ gameplay = {
         local enemies =  gameplay.enemies
         local thruster_particles =  gameplay.thruster_particles
         local check_collision =  gameplay.check_collision
-        local check_player_collision =  gameplay.check_player_collision
+        local pickups = gameplay.pickups
 
         enemy_spawn_timer += 1 --increment spawn timer
         
@@ -82,7 +83,7 @@ gameplay = {
             add(enemies, enemy:new({
 				x = rnd(120),
 				y = -8,
-                sprite_id= 4
+                sprite_id = 4
 			}))
 		end
 		-- TODO add second wave
@@ -91,6 +92,9 @@ gameplay = {
         if player.alive then
             player:update()
         end
+
+        
+        
         for i=#projectiles,1,-1 do
             local proj = projectiles[i]
             proj:update()
@@ -106,6 +110,8 @@ gameplay = {
             end
         end
         
+
+        
         for projectile in all(projectiles) do
             for enemy in all(enemies) do
                 if check_collision(projectile, enemy) and enemy.state == "alive" and enemy.y > 0 then
@@ -119,18 +125,25 @@ gameplay = {
                         enemy.explosion_timer = 5
                         del(projectiles, projectile)
                         player.score+=100
+                        
                         break -- break enemy loop after hit
                     end
                 end
             end
         end
-            --player collisions
+        --player collisions
         for enemy in all(enemies) do
-            if player.alive and enemy.state == "alive" and check_player_collision(enemy) then
+            if player.alive and enemy.state == "alive" and check_collision(player, enemy) then
                 sfx(2, 3)
                 player.health -= 10
                 player.health_bar_timer = 5
                 enemy.state = "hit"
+            end
+        end
+        for pickup in all(pickups) do
+            if player.alive and pickup.state == "alive" and check_collision(player, pickup) then
+                sfx(14, 3)
+                pickup.state = "hit"
             end
         end
         --spawn enemies
@@ -140,34 +153,15 @@ gameplay = {
                 del(enemies, enemy) --delete enemies
             end
         end
-       
-        for i=#thruster_particles,1,-1 do
-            local p = thruster_particles[i]
+        for i=#gameplay.pickups,1,-1 do
+            local p = gameplay.pickups[i]
             p:update()
-            if p.life <= 0 then
-                deli(thruster_particles, i)
+            if p.y > 128 then
+                deli(gameplay.pickups, i)
             end
         end
-    end,
-
-    check_player_collision = function(enemy)
-        local p = gameplay.player
-        local collides = gameplay.check_collision
-        -- define each bounding box of the player
-        local parts = {
-            {x =  p.x,     y =  p.y,     w = 3, h = 8}, -- top
-            {x =  p.x,     y =  p.y+8,   w = 3, h = 4}, -- bottom
-            {x =  p.x-8,   y =  p.y+5,   w = 8, h = 3}, -- left wing
-            {x =  p.x+8,   y =  p.y+5,   w = 8, h = 3}, -- right wing
-        }
-
-        for part in all(parts) do
-            if  collides(part, enemy) then
-                return true
-            end
-        end
-
-        return false
+        
+       
     end,
 
 
@@ -192,14 +186,15 @@ gameplay = {
     end,
 
     draw = function()
-        
-        
         for projectile in all(projectiles) do 
             projectile:draw()
         end
 
         for enemy in all(gameplay.enemies) do 
             enemy:draw() --spawn enemies
+        end
+        for pickup in all(gameplay.pickups) do
+            pickup:draw()
         end
         
         gameplay.player:draw() --display the player
