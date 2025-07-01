@@ -136,3 +136,14 @@
 [5220362] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
 [5266437] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
 [5287434] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[5384015] window closed (14)
+[5384015] codo_exit
+[5384015]   cmusic_stop
+[5384015]   codo_main_exit
+[5384016]   codo_config_save
+[5384016]   codo_sound_exit
+[5384016]   codo_video_exit
+[5384047]   codo_joystick_exit
+[5384047]   codo_system_exit
+[5384047]   codo_items_created: 3991
+[5384047] ok
