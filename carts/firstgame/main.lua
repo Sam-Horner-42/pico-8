@@ -152,7 +152,6 @@ function _update() --every frame
 			end
 		end
 	elseif game_state == "game_over" then
-		sfx(-1)
 		music(-1)
 	end
 end

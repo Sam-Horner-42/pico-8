@@ -25,7 +25,7 @@ player = {
         if self.menu == true then
             add(thruster_particles, thruster_particle:new({
                     x = self.x + 4,
-                    y = self.y + 14,
+                    y = self.y + 7,
                     dx = rnd(0.2) - 0.1,
                     dy = rnd(0.2) + 0.1,
                     clr = flr(rnd(10 - 8 + 1)) + 8,
@@ -46,72 +46,47 @@ player = {
             if btn(2) then self.y -= self.spd end -- up
             add(thruster_particles, thruster_particle:new({
                     x = self.x + 4,
-                    y = self.y + 14,
+                    y = self.y + 6,
                     dx = rnd(1) - 0.5,
                     dy = rnd() + 1,
                     clr = flr(rnd(10 - 8 + 1)) + 8,
                     size = 0.5,
-                    life = 5
+                    life = 4
                 }))
             -- forward thrust (up)
             if btn(2) then
                 add(thruster_particles, thruster_particle:new({
                     x = self.x + 4,
-                    y = self.y + 15,
+                    y = self.y + 6,
                     dx = rnd(1) - 0.5,
-                    dy = rnd(),
+                    dy = rnd(1),
                     clr = flr(rnd(10 - 8 + 1)) + 8,
-                    size = flr(rnd(2 - 1 + 1)) + 1,
-                    life = 6
+                    size = flr(rnd(2 - 1 + 1)),
+                    life = 4
                 }))
             end
             
 
-            -- reverse thrust (down)
-            if btn(3) then
+            -- damaged ship
+            if self.health <= 40 then
                 add(thruster_particles, thruster_particle:new({
-                    x = self.x - 2,
-                    y = self.y + 5,
-                    dx = rnd(1) - 0.5,
-                    dy = -rnd(),
-                    clr = flr(rnd(7 - 5 + 1)) + 5,
-                    life = 5
+                    x = self.x + 8,
+                    y = self.y + 3,
+                    dx = rnd(2),
+                    dy = rnd() + 0.5,
+                    clr = flr(rnd(6 - 5 + 1)) + 5,
+                    size = flr(rnd((2))) + 10/self.health,
+                    life = 4
                 }))
                 add(thruster_particles, thruster_particle:new({
-                    x = self.x + 9,
-                    y = self.y + 5,
-                    dx = rnd(1) - 0.5,
-                    dy = -rnd(),
-                    clr = flr(rnd(7 - 5 + 1)) + 5,
-                    life = 5
-                }))
-        
-            end
-
-            -- side thrust right (left key pressed)
-            if btn(0) then
-                add(thruster_particles, thruster_particle:new({
-                    x = self.x + 17,
-                    y = self.y + 12,
-                    dx = rnd(),
-                    dy = rnd() - 0.5,
-                    clr = flr(rnd(7 - 5 + 1)) + 5,
-                    life = 5
-                }))
-    
-            end
-
-            -- side thrust left (right key pressed)
-            if btn(1) then
-                add(thruster_particles, thruster_particle:new({
-                    x = self.x - 8,
-                    y = self.y + 12,
-                    dx = -rnd(),
-                    dy = rnd() - 0.5,
-                    clr = flr(rnd(7 - 5 + 1)) + 5,
-                    life =5
-                }))
-                
+                    x = self.x,
+                    y = self.y + 3,
+                    dx = -rnd(2),
+                    dy = rnd() + 0.5,
+                    clr = flr(rnd(6 - 5 + 1)) + 5,
+                    size = flr(rnd((2))) + 10/self.health,
+                    life = 4
+                }))    
             end
 
             --shooting logic 
@@ -140,14 +115,14 @@ player = {
         sfx(0, 3)
         -- left gun
         add(projectiles, projectile:new({
-            x = self.x - 5,
-            y = self.y + 7
+            x = self.x + 1,
+            y = self.y + 1
         }))
 
         -- right gun
         add(projectiles, projectile:new({
-            x = self.x + 12,
-            y = self.y + 7
+            x = self.x + 6,
+            y = self.y + 1
         }))
     end,
 
@@ -155,9 +130,6 @@ player = {
         --display player, split into 4 parts to display damage later
         
 		spr(0, self.x, self.y)
-		spr(1, self.x, self.y + 8)
-		spr(2, self.x + 8, self.y + 5)
-		spr(3, self.x - 8, self.y + 5)
         
         if self.menu == false then  
             for p in all(thruster_particles) do
