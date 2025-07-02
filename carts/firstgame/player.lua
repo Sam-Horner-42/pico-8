@@ -12,8 +12,10 @@ player = {
     health_bar_colour = 8,
     health_bar_timer = 0,
     is_thrusting = false,
-
-    current_sfx = nil,
+    shield = false,
+    invuln_timer = 0,
+    weapon = "blaster",
+    weapon_timer = 0,
 
 	new = function(self, tbl)
 		tbl = tbl or {}
@@ -96,9 +98,18 @@ player = {
             -- actions
             if self.fire_cooldown == 0 then
                 if btn(5) then 
-                    self.fire_cooldown = 6
-                    self:shoot() -- shoot guns
+                    if self.weapon == "blaster" or self.weapon_timer == 0 then
+                        self.fire_cooldown = 6
+                        self:shoot() -- shoot guns
+                    elseif self.weapon == "lazer" and self.weapon_timer > 0 then
+                        self.fire_cooldown = 2
+                        self:shoot()
+                    end
                 end 
+            end
+            -- cancel laser if button is released
+            if btn(5) == false and player.weapon == "lazer" then
+                gameplay.laser_beams = {}
             end
             if self.health == 0 then
                 self.alive = false
@@ -109,28 +120,44 @@ player = {
             end 
         end
 	end,
-
+    
     -- draw bullets
     shoot = function(self)
-        sfx(0, 3)
-        -- left gun
-        add(projectiles, projectile:new({
-            x = self.x + 1,
-            y = self.y + 1
-        }))
+        if self.weapon == "blaster" then
+            sfx(0, 3)
+            -- left gun
+            add(projectiles, projectile:new({
+                x = self.x + 1,
+                y = self.y + 1
+            }))
 
-        -- right gun
-        add(projectiles, projectile:new({
-            x = self.x + 6,
-            y = self.y + 1
-        }))
+            -- right gun
+            add(projectiles, projectile:new({
+                x = self.x + 6,
+                y = self.y + 1
+            }))
+        elseif self.weapon == "lazer" then
+            sfx(16,3)
+            -- only add lasers if they don't already exist
+            if #gameplay.laser_beams == 0 then
+                sfx(16, 3) -- laser hum or zap
+                add(gameplay.laser_beams, laser_beam:new({ offset_x = 1 }))
+                add(gameplay.laser_beams, laser_beam:new({ offset_x = 6 }))
+            end
+        end
+        
     end,
+
 
 	draw = function(self)
         --display player, split into 4 parts to display damage later
         
 		spr(0, self.x, self.y)
-        
+        if self.shield == true then
+            self.health_bar_colour = 13
+        else 
+            self.health_bar_colour = 8
+        end
         if self.menu == false then  
             for p in all(thruster_particles) do
                 p:draw()

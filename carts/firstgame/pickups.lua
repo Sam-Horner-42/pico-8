@@ -1,7 +1,7 @@
 pickup={
     x=64, --xpos
     y=-1, --ypos
-    spd= 2 + flr(rnd(1)), --speed
+    spd = 1 + flr(rnd(1)), --speed
     state = "alive",
     w = 8,
     h = 8,
@@ -10,8 +10,8 @@ pickup={
 
     new=function(self,tbl)
         tbl=tbl or {}
-        tbl.drift = tbl.drift or flr(rnd(2)) -- 0 or 1
-        tbl.drift_amount = tbl.drift_amount or flr(rnd(2)) -- you can tweak this range
+        tbl.drift = tbl.drift or flr(rnd(1)) -- 0 or 1
+        tbl.drift_amount = tbl.drift_amount or flr(rnd(1)) -- you can tweak this range
         tbl.sprite_id = tbl.sprite_id or self.sprite_id
         setmetatable(tbl, {__index=self})
         return tbl

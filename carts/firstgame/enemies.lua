@@ -38,11 +38,13 @@ enemy={
 		elseif self.state == "exploded" then
 			self.explosion_timer -= 1
 			if self.explosion_timer <= 0 then
-                 -- drop a pickup
+                -- drop a pickup
                 local current_x = self.x --reference to x location to prevent deletion
                 local current_y = self.y --reference to y location to prevent deletion
 				del(gameplay.enemies, self)
+                -- TODO make pickups random
                 drop_pickup(current_x, current_y) -- drop a pickup  
+               
             
                 
 			end

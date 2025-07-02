@@ -23,6 +23,7 @@ gameplay = {
             score = 0,
             menu = false,
             health_bar_timer = 0,
+            shield=false,
         })
         
         stars = {}
@@ -42,6 +43,7 @@ gameplay = {
         end
 
         projectiles={}
+        gameplay.laser_beams = {}
         gameplay.enemies = {}
         gameplay.thruster_particles = {}
         gameplay.pickups = {}
@@ -71,11 +73,20 @@ gameplay = {
             end
             warningcolourtimer = 20
         end
-
-        if gameplay.game_start_timer >= 20 and not has_music_started then -- TODO change to check below a certain threshold
+        if player.invuln_timer > 0 then
+            player.invuln_timer -= 1
+        end
+        if player.weapon_timer > 0 then
+            player.weapon_timer -= 1
+        end
+        if player.weapon_timer == 0 then
+            player.weapon = "blaster"
+        end
+        --wait 1 second before startinng the music
+        if gameplay.game_start_timer >= 20 and not has_music_started then 
                 sfx(-1, 2)
                 music(-1)
-                music(0,7)
+                music(0,1200,7)
                 has_music_started = true
         end
         if gameplay.game_start_timer >= 240 and enemy_spawn_timer >= enemy_spawn_interval then -- it has been long enough between enemy spawns
@@ -93,8 +104,6 @@ gameplay = {
             player:update()
         end
 
-        
-        
         for i=#projectiles,1,-1 do
             local proj = projectiles[i]
             proj:update()
@@ -109,9 +118,10 @@ gameplay = {
                 deli(thruster_particles, i)
             end
         end
-        
-
-        
+        for laser in all(gameplay.laser_beams) do
+            laser:update(player)
+        end
+        -- weapon collisions
         for projectile in all(projectiles) do
             for enemy in all(enemies) do
                 if check_collision(projectile, enemy) and enemy.state == "alive" and enemy.y > 0 then
@@ -125,24 +135,41 @@ gameplay = {
                         enemy.explosion_timer = 5
                         del(projectiles, projectile)
                         player.score+=100
-                        
                         break -- break enemy loop after hit
                     end
                 end
             end
         end
+        for laser in all(gameplay.laser_beams) do
+            for enemy in all(gameplay.enemies) do
+                if gameplay.check_collision(laser, enemy) and enemy.state == "alive" then
+                    enemy.health -= 1
+                    if enemy.health <= 0 then
+                        enemy.state = "hit"
+                    end
+                end
+            end
+        end
+
         --player collisions
         for enemy in all(enemies) do
-            if player.alive and enemy.state == "alive" and check_collision(player, enemy) then
-                sfx(2, 3)
-                player.health -= 10
-                player.health_bar_timer = 5
+            if player.alive and enemy.state == "alive" and check_collision(player, enemy) and player.invuln_timer == 0 then
                 enemy.state = "hit"
+                if player.shield == false then
+                    sfx(2, 3)
+                    player.health -= 10
+                    player.health_bar_timer = 5
+                elseif player.shield == true then
+                    player.invuln_timer = 30 -- half a second of invulnerability
+                    sfx(15, 3)
+                    player.shield = false
+                end
             end
         end
         for pickup in all(pickups) do
             if player.alive and pickup.state == "alive" and check_collision(player, pickup) then
                 sfx(14, 3)
+                gameplay.pikcup_function(pickup.sprite_id, player)
                 pickup.state = "hit"
             end
         end
@@ -172,6 +199,26 @@ gameplay = {
             a.y < b.y + b.h and
             a.y + a.h > b.y
     end,
+    
+    pikcup_function = function(spr, player)
+        if spr == 9 then
+            --logic for shield here
+            if player.shield == false then
+                player.shield = true
+            end
+        elseif spr == 10 then
+            --logic for missiles
+        elseif spr == 11 then
+            --logic for lazer
+            player.weapon = "lazer"
+            player.weapon_timer = 120 -- 3 seconds of lazers
+        elseif spr == 12 then
+            --logic for health pickup
+            if player.health < 50 then
+                player.health += 10  
+            end  
+        end
+    end,
 
     print_centered = function(str, y, text_col, zoffset)
         local text_width = #str * 4
@@ -189,6 +236,10 @@ gameplay = {
         for projectile in all(projectiles) do 
             projectile:draw()
         end
+        for laser in all(gameplay.laser_beams) do
+            laser:draw()
+        end
+
 
         for enemy in all(gameplay.enemies) do 
             enemy:draw() --spawn enemies
