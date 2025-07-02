@@ -42,11 +42,7 @@ enemy={
                 local current_x = self.x --reference to x location to prevent deletion
                 local current_y = self.y --reference to y location to prevent deletion
 				del(gameplay.enemies, self)
-                -- TODO make pickups random
-                drop_pickup(current_x, current_y) -- drop a pickup  
-               
-            
-                
+                -- TODO make pickups random    
 			end
 		end
     end,
@@ -62,13 +58,8 @@ enemy={
 		end
     end,
 }
-function drop_pickup(x_location, y_location)
-        add(gameplay.pickups, pickup:new({
-                    x = x_location,
-                    y = y_location,
-                    sprite_id = flr(rnd(4)) + 9,
-                    }))
-    end
+
+        
 
 -- TODO make a seperate file for enemies and obstacles to add enemy AI logic
 smallspaceship = enemy:new({

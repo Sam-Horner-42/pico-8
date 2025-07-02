@@ -10,6 +10,8 @@ gameplay = {
         gameplay.game_start_timer = 0
         enemy_spawn_timer = 0
         enemy_spawn_interval = 7
+        pickup_spawn_timer = 0
+        pickup_spawn_interval = 120
         warningcolour = 8
         is_warning_sound_playing = false
         has_music_started = false
@@ -58,6 +60,8 @@ gameplay = {
 
         enemy_spawn_timer += 1 --increment spawn timer
         
+        pickup_spawn_timer += 1 -- increment pickup timer
+        
         gameplay.game_start_timer += 1 -- increment game timer
         
         if hit_sound_cooldown > 0 then
@@ -97,6 +101,15 @@ gameplay = {
                 sprite_id = 4
 			}))
 		end
+        if gameplay.game_start_timer >= 240 and rnd() < 0.001 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
+			pickup_spawn_timer = 0
+            add(gameplay.pickups, pickup:new({
+                x = rnd(120),
+				y = -8,
+                sprite_id = flr(rnd(4)) + 9,
+                }))
+        end
+        
 		-- TODO add second wave
         
         --player movement
@@ -140,6 +153,7 @@ gameplay = {
                 end
             end
         end
+        --TODO fix lazer logic 
         for laser in all(gameplay.laser_beams) do
             for enemy in all(gameplay.enemies) do
                 if gameplay.check_collision(laser, enemy) and enemy.state == "alive" then
@@ -169,7 +183,7 @@ gameplay = {
         for pickup in all(pickups) do
             if player.alive and pickup.state == "alive" and check_collision(player, pickup) then
                 sfx(14, 3)
-                gameplay.pikcup_function(pickup.sprite_id, player)
+                gameplay.pickup_function(pickup.sprite_id, player)
                 pickup.state = "hit"
             end
         end
@@ -200,7 +214,7 @@ gameplay = {
             a.y + a.h > b.y
     end,
     
-    pikcup_function = function(spr, player)
+    pickup_function = function(spr, player)
         if spr == 9 then
             --logic for shield here
             if player.shield == false then
@@ -236,17 +250,19 @@ gameplay = {
         for projectile in all(projectiles) do 
             projectile:draw()
         end
-        for laser in all(gameplay.laser_beams) do
-            laser:draw()
-        end
-
-
-        for enemy in all(gameplay.enemies) do 
-            enemy:draw() --spawn enemies
+        if player.weapon_timer > 0 and player.weapon == "lazer" then
+            for laser in all(gameplay.laser_beams) do
+                laser:draw()
+            end
         end
         for pickup in all(gameplay.pickups) do
             pickup:draw()
         end
+
+        for enemy in all(gameplay.enemies) do 
+            enemy:draw() --spawn enemies
+        end
+        
         
         gameplay.player:draw() --display the player
 
