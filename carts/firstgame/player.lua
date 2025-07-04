@@ -101,14 +101,14 @@ player = {
                     if self.weapon == "blaster" or self.weapon_timer == 0 then
                         self.fire_cooldown = 6
                         self:shoot() -- shoot guns
-                    elseif self.weapon == "lazer" and self.weapon_timer > 0 then
+                    elseif self.weapon == "laser" and self.weapon_timer > 0 then
                         self.fire_cooldown = 2
                         self:shoot()
                     end
                 end 
             end
             -- cancel laser if button is released
-            if btn(5) == false and player.weapon == "lazer" then
+            if btn(5) == false and player.weapon == "laser" then
                 gameplay.laser_beams = {}
             end
             if self.health == 0 then
@@ -136,7 +136,7 @@ player = {
                 x = self.x + 6,
                 y = self.y + 1
             }))
-        elseif self.weapon == "lazer" then
+        elseif self.weapon == "laser" then
             sfx(16,3)
             -- only add lasers if they don't already exist
             if #gameplay.laser_beams == 0 then
@@ -162,6 +162,9 @@ player = {
             for p in all(thruster_particles) do
                 p:draw()
             end 
+            if self.shield == true then 
+                rect(self.x-1, self.y, self.x+8, self.y + 8, 12)
+            end
             local bar_x = 120
             local bar_y = 117
             local bar_h = 4

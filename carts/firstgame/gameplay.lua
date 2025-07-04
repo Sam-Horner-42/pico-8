@@ -101,7 +101,7 @@ gameplay = {
                 sprite_id = 4
 			}))
 		end
-        if gameplay.game_start_timer >= 240 and rnd() < 0.001 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
+        if gameplay.game_start_timer >= 240 and rnd() < 0.01 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
 			pickup_spawn_timer = 0
             add(gameplay.pickups, pickup:new({
                 x = rnd(120),
