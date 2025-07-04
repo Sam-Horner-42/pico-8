@@ -153,7 +153,7 @@ gameplay = {
                 end
             end
         end
-        --TODO fix lazer logic 
+        --TODO fix laser logic 
         for laser in all(gameplay.laser_beams) do
             for enemy in all(gameplay.enemies) do
                 if gameplay.check_collision(laser, enemy) and enemy.state == "alive" then
@@ -223,9 +223,9 @@ gameplay = {
         elseif spr == 10 then
             --logic for missiles
         elseif spr == 11 then
-            --logic for lazer
-            player.weapon = "lazer"
-            player.weapon_timer = 120 -- 3 seconds of lazers
+            --logic for laser
+            player.weapon = "laser"
+            player.weapon_timer = 120 -- 3 seconds of lasers
         elseif spr == 12 then
             --logic for health pickup
             if player.health < 50 then
@@ -250,11 +250,14 @@ gameplay = {
         for projectile in all(projectiles) do 
             projectile:draw()
         end
-        if player.weapon_timer > 0 and player.weapon == "lazer" then
-            for laser in all(gameplay.laser_beams) do
-                laser:draw()
+        if player.weapon == "laser" then
+            if player.weapon_timer > 0 then
+                for laser in all(gameplay.laser_beams) do
+                    laser:draw()
+                end
             end
         end
+        
         for pickup in all(gameplay.pickups) do
             pickup:draw()
         end

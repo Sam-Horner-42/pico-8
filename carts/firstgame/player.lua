@@ -98,15 +98,17 @@ player = {
             -- actions
             if self.fire_cooldown == 0 then
                 if btn(5) then 
-                    if self.weapon == "blaster" or self.weapon_timer == 0 then
+            -- For blaster, only fire if weapon_timer == 0
+             -- For laser, fire as long as laser is equipped and timer > 0
+                    if self.weapon == "blaster" and self.weapon_timer == 0 then
                         self.fire_cooldown = 6
-                        self:shoot() -- shoot guns
+                        self:shoot()
                     elseif self.weapon == "laser" and self.weapon_timer > 0 then
-                        self.fire_cooldown = 2
                         self:shoot()
                     end
-                end 
+                end
             end
+
             -- cancel laser if button is released
             if btn(5) == false and player.weapon == "laser" then
                 gameplay.laser_beams = {}
@@ -137,7 +139,6 @@ player = {
                 y = self.y + 1
             }))
         elseif self.weapon == "laser" then
-            sfx(16,3)
             -- only add lasers if they don't already exist
             if #gameplay.laser_beams == 0 then
                 sfx(16, 3) -- laser hum or zap
@@ -163,7 +164,9 @@ player = {
                 p:draw()
             end 
             if self.shield == true then 
-                rect(self.x-1, self.y, self.x+8, self.y + 8, 12)
+                rect(self.x-3, self.y-2, self.x+10, self.y + 10, 12)
+                rect(self.x-2, self.y-1, self.x+9, self.y + 9, 7)
+
             end
             local bar_x = 120
             local bar_y = 117
