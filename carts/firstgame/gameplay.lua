@@ -251,10 +251,8 @@ gameplay = {
             projectile:draw()
         end
         if player.weapon == "laser" then
-            if player.weapon_timer > 0 then
-                for laser in all(gameplay.laser_beams) do
-                    laser:draw()
-                end
+            for laser in all(gameplay.laser_beams) do
+                laser:draw()
             end
         end
         

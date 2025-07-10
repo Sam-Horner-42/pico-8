@@ -454,3 +454,7 @@
  ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
  ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
  ssssssssssssssssssssssssss
+2025-07-10 21:06:40 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ i....ii
+2025-07-10 21:07:01 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ 
