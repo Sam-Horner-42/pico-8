@@ -87,3 +87,25 @@
 [000759] Current audio driver: wasapi
 [002785] splore_init
 [002786] could not load favourites file: C:/Users/Sam/AppData/Roaming/pico-8/favourites.txt
+[172609] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[189016] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[426414] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[460034] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[486555] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[633424] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
+[795175]   setting filter to nearest (screen_mode 0  back page width: 128)
+  renderer direct3d:
+   flags: 0x0000000E ( |  | )
+   texture formats (3): ARGB8888, YV12, IYUV
+   max texture size: 16384x16384
+[798033] window closed (14)
+[798033] codo_exit
+[798033]   cmusic_stop
+[798033]   codo_main_exit
+[798034]   codo_config_save
+[798045]   codo_sound_exit
+[798045]   codo_video_exit
+[798071]   codo_joystick_exit
+[798071]   codo_system_exit
+[798071]   codo_items_created: 1430
+[798071] ok

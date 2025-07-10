@@ -173,6 +173,7 @@ gameplay = {
                     sfx(2, 3)
                     player.health -= 10
                     player.health_bar_timer = 5
+                    player.weapon_timer = 10
                 elseif player.shield == true then
                     player.invuln_timer = 30 -- half a second of invulnerability
                     sfx(15, 3)
@@ -250,10 +251,9 @@ gameplay = {
         for projectile in all(projectiles) do 
             projectile:draw()
         end
-        if player.weapon == "laser" then
-            for laser in all(gameplay.laser_beams) do
-                laser:draw()
-            end
+        
+        for laser in all(gameplay.laser_beams) do
+            laser:draw()
         end
         
         for pickup in all(gameplay.pickups) do
