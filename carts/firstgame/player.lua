@@ -95,23 +95,13 @@ player = {
             if self.fire_cooldown > 0 then
                 self.fire_cooldown -=1
             end
-            -- actions
-            if self.fire_cooldown == 0 then
-                if btn(5) then 
-            -- For blaster, only fire if weapon_timer == 0
-             -- For laser, fire as long as laser is equipped and timer > 0
-                    if self.weapon == "blaster" and self.weapon_timer == 0 then
-                        self.fire_cooldown = 6
-                        self:shoot()
-                    elseif self.weapon == "laser" and self.weapon_timer > 0 then
-                        self:shoot()
-                    end
+            
+            -- cleanup laser beams if released or time ran out
+            if self.weapon == "laser" then
+                if not btn(5) or self.weapon_timer <= 0 then
+                    gameplay.laser_beams = {}
+                    sfx(16, -2)
                 end
-            end
-
-            -- cancel laser if button is released
-            if btn(5) == false and player.weapon == "laser" then
-                gameplay.laser_beams = {}
             end
             if self.health == 0 then
                 self.alive = false
@@ -119,6 +109,22 @@ player = {
             end
             if btn(🅾️) then 
                 -- special abilities placeholder
+            end
+            if self.weapon_timer <= 0 then
+                self.weapon = "blaster"
+            end
+            -- actions
+            if self.fire_cooldown == 0 then
+                if btn(5) then 
+            -- For blaster, only fire if weapon_timer == 0
+            -- For laser, fire as long as laser is equipped and timer > 0
+                    if self.weapon == "blaster" and self.weapon_timer <= 0 then
+                        self.fire_cooldown = 6
+                        self:shoot()
+                    elseif self.weapon == "laser" and self.weapon_timer > 0 then
+                        self:shoot()
+                    end
+                end
             end 
         end
 	end,
@@ -139,9 +145,11 @@ player = {
                 y = self.y + 1
             }))
         elseif self.weapon == "laser" then
-            -- only add lasers if they don't already exist
-            if #gameplay.laser_beams == 0 then
-                sfx(16, 3) -- laser hum or zap
+            -- only spawn laser if not already spawned
+            if #gameplay.laser_beams == 0 and self.weapon_timer > 0 and btn(5) then
+                sfx(0, 17)
+                sfx(0, 3)
+                sfx(16, 3)
                 add(gameplay.laser_beams, laser_beam:new({ offset_x = 1 }))
                 add(gameplay.laser_beams, laser_beam:new({ offset_x = 6 }))
             end

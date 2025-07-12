@@ -83,9 +83,6 @@ gameplay = {
         if player.weapon_timer > 0 then
             player.weapon_timer -= 1
         end
-        if player.weapon_timer == 0 then
-            player.weapon = "blaster"
-        end
         --wait 1 second before startinng the music
         if gameplay.game_start_timer >= 20 and not has_music_started then 
                 sfx(-1, 2)
