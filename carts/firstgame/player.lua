@@ -22,17 +22,15 @@ player = {
 		setmetatable(tbl, { __index = self })
 		return tbl
 	end,
-
+    
 	update = function(self)
         if self.menu == true then
             add(thruster_particles, thruster_particle:new({
-                    x = self.x + 4,
+                    x = self.x + 3 + rnd(1),
                     y = self.y + 7,
-                    dx = rnd(0.2) - 0.1,
-                    dy = rnd(0.2) + 0.1,
-                    clr = flr(rnd(10 - 8 + 1)) + 8,
-                    size = 0.5,
-                    life = 15
+                    dx = rnd(0.1) - 0.05,
+                    dy = rnd(0.3) + 0.01,
+                    life = 8
                 }))
         else
             if player.health_bar_timer > 0 then 
@@ -46,25 +44,27 @@ player = {
             if btn(0) then self.x -= self.spd end -- left
             if btn(3) then self.y += self.spd end -- down
             if btn(2) then self.y -= self.spd end -- up
-            add(thruster_particles, thruster_particle:new({
-                    x = self.x + 4,
-                    y = self.y + 6,
-                    dx = rnd(1) - 0.5,
-                    dy = rnd() + 1,
-                    clr = flr(rnd(10 - 8 + 1)) + 8,
-                    size = 0.5,
-                    life = 4
-                }))
+            if not btn (3) and not btn(2) then
+                add(thruster_particles, thruster_particle:new({
+                        x = self.x + 3,
+                        y = self.y + 7,
+                        dx = rnd(0.4) - 0.1,
+                        dy = rnd(0.5) + 0.4,
+                        life = 5,
+                        size = 1,
+                        smoke = false
+                    }))
+            end
             -- forward thrust (up)
             if btn(2) then
                 add(thruster_particles, thruster_particle:new({
-                    x = self.x + 4,
-                    y = self.y + 6,
-                    dx = rnd(1) - 0.5,
-                    dy = rnd(1),
-                    clr = flr(rnd(10 - 8 + 1)) + 8,
-                    size = flr(rnd(2 - 1 + 1)),
-                    life = 4
+                    x = self.x + 3,
+                    y = self.y + 8,
+                    dx = rnd(0.4) - 0.1,
+                    dy = rnd(1) + 0.4,
+                    life = 5,
+                    size = 3,
+                    smoke = false
                 }))
             end
             
@@ -72,22 +72,22 @@ player = {
             -- damaged ship
             if self.health <= 40 then
                 add(thruster_particles, thruster_particle:new({
-                    x = self.x + 8,
+                    x = self.x + 7,
                     y = self.y + 3,
                     dx = rnd(2),
                     dy = rnd() + 0.5,
-                    clr = flr(rnd(6 - 5 + 1)) + 5,
                     size = flr(rnd((2))) + 10/self.health,
-                    life = 4
+                    life = 5,
+                    smoke = true
                 }))
                 add(thruster_particles, thruster_particle:new({
                     x = self.x,
                     y = self.y + 3,
                     dx = -rnd(2),
                     dy = rnd() + 0.5,
-                    clr = flr(rnd(6 - 5 + 1)) + 5,
                     size = flr(rnd((2))) + 10/self.health,
-                    life = 4
+                    life = 5,
+                    smoke = true
                 }))    
             end
 
@@ -141,7 +141,7 @@ player = {
 
             -- right gun
             add(projectiles, projectile:new({
-                x = self.x + 6,
+                x = self.x + 5,
                 y = self.y + 1
             }))
         elseif self.weapon == "laser" then
@@ -151,7 +151,7 @@ player = {
                 sfx(0, 3)
                 sfx(16, 3)
                 add(gameplay.laser_beams, laser_beam:new({ offset_x = 1 }))
-                add(gameplay.laser_beams, laser_beam:new({ offset_x = 6 }))
+                add(gameplay.laser_beams, laser_beam:new({ offset_x = 5 }))
             end
         end
         
@@ -159,9 +159,9 @@ player = {
 
 
 	draw = function(self)
-        --display player, split into 4 parts to display damage later
-        
-		spr(0, self.x, self.y)
+        if self.menu == true then 
+		    spr(0, self.x, self.y)
+        end
         if self.shield == true then
             self.health_bar_colour = 13
         else 
@@ -171,10 +171,11 @@ player = {
             for p in all(thruster_particles) do
                 p:draw()
             end 
+            spr(0, self.x, self.y)
             if self.shield == true then 
-                rect(self.x-3, self.y-2, self.x+10, self.y + 10, 12)
-                rect(self.x-2, self.y-1, self.x+9, self.y + 9, 7)
-
+                local r = 9 + sin(time() * 1) * 1
+                circ(self.x + 3, self.y + 4, r, 2) -- purple glow
+                circ(self.x + 3, self.y + 4, r-1, 13) -- purple glow
             end
             local bar_x = 120
             local bar_y = 117

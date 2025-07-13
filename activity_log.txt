@@ -474,3 +474,57 @@
  cccssssssssssssss.sssssssssssss.........rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
  rrrrissssssssssssssrrrrrrrri.........rrrrrrrrrrrii.........rrrrrrrrrrrrrrrrrrrrr
  i.........rrrrrrrrrrrii.........rrrrrrrrrrrrrrrrrrrrri........i
+2025-07-12 21:06:27 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iii
+2025-07-12 21:06:36 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ cs..ssggggggggggggggggggggggggggggggggggggg.........ggggggggggg.gggggggggg......
+ ...gg.........iiii.......ii.........i...r___iii....i.i.i.iii.ggi.r_________iiiii
+ .........irrrrri.....i.irrrrrrrrrrrrrrrrrrrrrrrri.........i.........rrrrrrrrrrrr
+ rrrrrrrrrrrrrrrrrrriiii......iii.........rrri.....rrrrii.........rrrrrrrrrrrii..
+ ..r_rrrrri.........rrrrrrri..rr_rrrrrii...rrrrrii.........rrrrrri..rrrrrrrrrrrii
+ .........r_rrrri.........igg.........gg.....g...g..grrri.....i...iii.ig.....gg..
+ rrrii.ii.........rrri.........i.........rii.........rrrrii....rrrii..irrrii.....
+ .ri.gggggggggggggggggggggggggggggggggggggg.ggggggggggggggggggggggggggggggggggggg
+ ggggg.gggggggggggggggggggggggggggrissssssssrrrrrrigg....r_rrrrrii...rrrrrrii..ir
+ r_rigggggggggggggggggggggggggggggggrrrrrrrrriiiii.........rrrrrrrrrrrrrrrrrri...
+ 
+2025-07-12 23:56:46 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii
+2025-07-12 23:56:52 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ rrrrrrrrrrrrrrrrrrrrrrrrii.........c.........ccciiii.......i.........rii........
+ .ri.........rrrrri....rrrrri.........iiii.........rrrii.........rrrrri.........r
+ rrrrrrrrrri.........rri.r_rri.........cgg....ggggggggggggggggii.ii
+2025-07-13 13:40:33 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ i........i.........iii
+2025-07-13 13:43:00 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ 
+2025-07-13 14:05:21 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ i.iiii.........i
+2025-07-13 14:06:21 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ iiigggggg.........rgggggggggggggggggggggggggggggggggggggrrri.......rriiggggggr__
+ rgrggggrigggggggggggrggggriggggggggrgrgrgggg....ggggggggggggggrrri.........ri.ri
+ ...i.ii.........rii...riri.riirrr_________r_r__rr_r_________rr___r_rri.r_r______
+ ___r___ri.ggri.r__ri.r_r_ri.rr__r__rrrrr_r_r____ri.......r_rr_gr__ggggggr_ri...i
+ rgrrrrrggrrirr__r_r__r_r_r_r_rrrrrr_r___rrrr__r__rii.........rirri....ri....r_i.
+ ...rrii.rri.......rri.rri........ri......ii......rirri.......irri......rrri.....
+ ..ri.ri.ri....riiri.ri.........rri...ri..ri.......ri.....rii...ri........ri.....
+ ...rrirri.........ii....rrrri.riri...r___rrri.ri.rirrirr_rirrr_________rrri.....
+ ...r_iri.rri.........r________r__r__r_rrr_rr_______rrri.r_______rrrr__rrr_rr_rrr
+ rrrr_r_rrr_rr_rr____ri....rri.........r__rrr_r_______r___rrr___rr_r__rrii.......
+ ..ri........ri..rrri........rii..rirririri.....rii.........rriiri.........rri...
+ iri..ri.........rri...ri...irririrrii.....ri.......rri.....rii.r_i...rri.ri.ri..
+ .ri..rrriirr_i...iir_i...rrrrrrrii.........iiiri......ii.........ri.......ri....
+ .ri...rir_ri....ri..ri.ri..ri.........rri...ri......ri..ri..ri.ri.........iiri.i
+ rirrri.rri.....riir_ririrri...rr_i.r_i.......ri...r_ri.r_i....i..rr_i.....rri...
+ ......rrrrrrri.......irr_ri..r__rrriii.........rri...riii......riri...riri...ri.
+ .rririi..rri..ri......rrri.........rrir_i.irrri...rrriri..rrrrii......i..rrrrri.
+ ........rrrriir_rrrri..rrrrri.........rriri..iirri.........ri..ri.rii........ri.
+ ri.ri.........irrrrrrrrrrrri....rri.ri........rri.riiriirrrrrrrrrrrrrri.........
+ rrrii........ri.rrrri..ri..rii.rriri...rrri...rrirrri.....rrrrriri.rrrii.....irr
+ i.....rrrrii....rrrri.........i.ri.......rrrrri..r_r_rri.........rrrrrrri.rrri..
+ .......rrri...iiirri.........rrrrrrrrrri..rrrrrri..rrrri......rrrri......rri...r
+ rrrri....rrrri.........rrrri.........igg.r_rrrrrrrri.........rrrrri.....rri....r
+ iri.....ri.........ri..rirrrirri....ri..ri........ri.......ii.ri.........ri.....
+ ....i.riri.........ri....ririii.........ii.ii.rrrrrrri..iri.........ri.rri..riri
+ ..rrrii....rrrrii.......riiii.iirri......rrri....rirri.........i..ii.ri.ri......
+ rrri.rrg.grirri.rrri.rrii.........ii

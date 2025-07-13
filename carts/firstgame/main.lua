@@ -163,10 +163,11 @@ function _draw()
 	end
 	if game_state == "main_menu" then
 		draw_menu()
-		player:draw()
 		for p in all(thruster_particles) do
 			p:draw()
 		end
+		player:draw()
+		
 	elseif game_state == "play" then
 		
 		gameplay:draw()

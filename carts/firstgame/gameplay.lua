@@ -49,7 +49,11 @@ gameplay = {
         gameplay.enemies = {}
         gameplay.thruster_particles = {}
         gameplay.pickups = {}
+        exps={}
+        exp_clrs={5,9,10,7}
     end,
+    
+    
 
     update = function ()
         local player =  gameplay.player
@@ -98,7 +102,7 @@ gameplay = {
                 sprite_id = 4
 			}))
 		end
-        if gameplay.game_start_timer >= 240 and rnd() < 0.01 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
+        if gameplay.game_start_timer >= 240 and rnd() < 0.1 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
 			pickup_spawn_timer = 0
             add(gameplay.pickups, pickup:new({
                 x = rnd(120),
@@ -131,6 +135,14 @@ gameplay = {
         for laser in all(gameplay.laser_beams) do
             laser:update(player)
         end
+        for p in all (exps) do 
+            p.x += p.spdx
+            p.y += p.spdy 
+            p.scale -= 1
+            p.l-=.1
+            p.c=flr(p.l)
+            if p.l <= 0 then del(exps, p) end 
+        end 
         -- weapon collisions
         for projectile in all(projectiles) do
             for enemy in all(enemies) do
@@ -211,7 +223,7 @@ gameplay = {
             a.y < b.y + b.h and
             a.y + a.h > b.y
     end,
-    
+
     pickup_function = function(spr, player)
         if spr == 9 then
             --logic for shield here
@@ -268,5 +280,5 @@ gameplay = {
         if gameplay.game_start_timer <= 180 and gameplay.game_start_timer >= 60 then
             gameplay.draw_warning()
         end
-    end
+    end,
 }
