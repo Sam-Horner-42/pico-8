@@ -4,7 +4,7 @@ thruster_particle = {
     dx = 0, 
     dy = 0,
     life = 10, -- how long it lives
-    clr = 10,
+    clr = 12,
     size = 2,
     smoke = false,
 
@@ -15,38 +15,31 @@ thruster_particle = {
     end,
 
     update = function(self)
-        if self.menu == true then
-            if self.life >= 4 then
+        if self.smoke == false then
+            if self.life > 2 then
                 self.clr = 12
+            else  
+                self.clr = 7
+                self.size = 1
+            end
+            
+            if btn(1) and not btn(2) then self.life -= 1 end -- right, prevents weird tail
+            if btn(0) and not btn(2) then self.life -= 1 end -- left, prevents weird tail
+        elseif self.smoke == true then
+            if self.life >= 2 then
+                self.clr = 6
             else 
                 self.clr = 7
             end
-        else 
-            if self.smoke == false then
-                if self.life >= 5 then
-                    self.clr = 12
-                else  
-                    self.clr = 7
-                end
-                if (btn(1) or btn(0)) and btn(2) then self.life -= 0.1 end -- diagonal movement
-                if btn(1) and not btn(2) then self.life -= 1 end -- right, prevents weird tail
-                if btn(0) and not btn(2) then self.life -= 1 end -- left, prevents weird tail
-            elseif self.smoke == true then
-                if self.life >= 2 then
-                    self.clr = 6
-                else 
-                    self.clr = 7
-                end
-            end
         end
+        self.life -= 1
         
-        
-        if self.size <= 4 and self.size >= 2 then
+        if self.size <= 4 and self.size >= 3 then
             self.size -= 1
         end
         self.x += self.dx
         self.y += self.dy
-        self.life -= 1
+        
         
         
        

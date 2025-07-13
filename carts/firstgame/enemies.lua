@@ -10,6 +10,7 @@ enemy={
     health = 1,
     sprite_id = 4,
     
+
     new=function(self,tbl)
         tbl=tbl or {}
         tbl.drift = tbl.drift or flr(rnd(2)) -- whether the asteroid drifts (0 or 1)
@@ -21,6 +22,7 @@ enemy={
     
     
     update=function(self)
+        popups = {}
         if self.state == "alive" then
 			self.y += self.spd
             if self.drift == 0 then
@@ -42,16 +44,7 @@ enemy={
                 local current_x = self.x --reference to x location to prevent deletion
                 local current_y = self.y --reference to y location to prevent deletion
 				del(gameplay.enemies, self)
-                for i=0,20 do 
-                    add(exps,{
-                        x=current_x,
-                        y=current_y,
-                        spdx=1-rnd(2),
-                        spdy=1-rnd(2),
-                        scale=2+rnd(5),
-                        l=5
-                    })
-                end
+                
                 -- TODO make pickups random    
 			end
 		end
@@ -65,6 +58,7 @@ enemy={
 			spr(sprite+1, self.x, self.y) -- partially exploded
 		elseif self.state == "exploded" then
 			spr(sprite+2, self.x, self.y) -- fully exploded
+            
 		end
         for p in all(exps) do 
             circfill(p.x, p.y, p.scale, gameplay.exp_clrs)

@@ -8,14 +8,14 @@ player = {
     alive = true,
     w = 8,
     h = 8,
-    menu = true,
-    health_bar_colour = 8,
-    health_bar_timer = 0,
+    menu = false,
     is_thrusting = false,
     shield = false,
     invuln_timer = 0,
     weapon = "blaster",
     weapon_timer = 0,
+    rocket_count = 0,
+    max_rockets = 5,
 
 	new = function(self, tbl)
 		tbl = tbl or {}
@@ -24,21 +24,8 @@ player = {
 	end,
     
 	update = function(self)
-        if self.menu == true then
-            add(thruster_particles, thruster_particle:new({
-                    x = self.x + 3 + rnd(1),
-                    y = self.y + 7,
-                    dx = rnd(0.1) - 0.05,
-                    dy = rnd(0.3) + 0.01,
-                    life = 8
-                }))
-        else
-            if player.health_bar_timer > 0 then 
-                player.health_bar_colour = 5
-				player.health_bar_timer -= 1
-            elseif player.health_bar_timer <= 0 then
-                player.health_bar_colour = 8
-			end
+        if self.menu == false then
+            
             -- movement
             if btn(1) then self.x += self.spd end -- right
             if btn(0) then self.x -= self.spd end -- left
@@ -46,9 +33,9 @@ player = {
             if btn(2) then self.y -= self.spd end -- up
             if not btn (3) and not btn(2) then
                 add(thruster_particles, thruster_particle:new({
-                        x = self.x + 3,
+                        x = self.x + 4,
                         y = self.y + 7,
-                        dx = rnd(0.4) - 0.1,
+                        dx = rnd(0.2) - 0.2,
                         dy = rnd(0.5) + 0.4,
                         life = 5,
                         size = 1,
@@ -58,17 +45,16 @@ player = {
             -- forward thrust (up)
             if btn(2) then
                 add(thruster_particles, thruster_particle:new({
-                    x = self.x + 3,
-                    y = self.y + 8,
-                    dx = rnd(0.4) - 0.1,
-                    dy = rnd(1) + 0.4,
-                    life = 5,
-                    size = 3,
+                    x = self.x + 4,
+                    y = self.y + 9,
+                    dx = rnd(0.2) - 0.2,
+                    dy = rnd(0.5) + 0.4,
+                    life = 3,
+                    size = 2,
                     smoke = false
                 }))
             end
             
-
             -- damaged ship
             if self.health <= 40 then
                 add(thruster_particles, thruster_particle:new({
@@ -76,7 +62,7 @@ player = {
                     y = self.y + 3,
                     dx = rnd(2),
                     dy = rnd() + 0.5,
-                    size = flr(rnd((2))) + 10/self.health,
+                    size = flr(rnd((1))) + 1 + 10/self.health,
                     life = 5,
                     smoke = true
                 }))
@@ -85,7 +71,7 @@ player = {
                     y = self.y + 3,
                     dx = -rnd(2),
                     dy = rnd() + 0.5,
-                    size = flr(rnd((2))) + 10/self.health,
+                    size = flr(rnd((1))) + 1 + 10/self.health,
                     life = 5,
                     smoke = true
                 }))    
@@ -107,13 +93,20 @@ player = {
                 self.alive = false
                 game_state = "game_over"
             end
-            if btn(🅾️) then 
+            --rockets
+            if self.weapon == "blaster" and self.rocket_count > 0 and btn(4) and self.weapon_timer <= 0 and not btn(5) then 
                 -- special abilities placeholder
+                add(gameplay.rockets, rocket:new({
+                    x = self.x+1,
+                    y = self.y+1,
+                }))
+                self.weapon_timer = 20
+                self.rocket_count -= 1
             end
             if self.weapon_timer <= 0 then
                 self.weapon = "blaster"
             end
-            -- actions
+            -- blasters and lasers
             if self.fire_cooldown == 0 then
                 if btn(5) then 
             -- For blaster, only fire if weapon_timer == 0
@@ -162,11 +155,6 @@ player = {
         if self.menu == true then 
 		    spr(0, self.x, self.y)
         end
-        if self.shield == true then
-            self.health_bar_colour = 13
-        else 
-            self.health_bar_colour = 8
-        end
         if self.menu == false then  
             for p in all(thruster_particles) do
                 p:draw()
@@ -182,30 +170,53 @@ player = {
             local bar_h = 4
             local bar_w = -50 -- full width when health is max (50 in your case)
 
-            -- calculate current width based on health (assuming max 50)
-            local current_w = (self.health / 50) * bar_w
+            local hearts_x = 115
+            local hearts_y = 115
+            local heart_spacing = -10
+            local total_hearts = 5
 
-            -- draw the bar
-            rectfill(bar_x + 1, bar_y-1, (bar_x) + bar_w -1, (bar_y) + (bar_h + 1), 7) -- white background
-            rectfill(bar_x, bar_y, bar_x + current_w, bar_y + bar_h, self.health_bar_colour) -- red-orange
+            -- calculate how many full hearts to show
+            local full_hearts = flr(self.health / 10)
+
+            for i = 0, total_hearts - 1 do
+                local x = hearts_x + i * heart_spacing
+                if i < full_hearts then
+                    spr(1, x, hearts_y) -- full heart
+                else
+                    spr(2, x, hearts_y) -- empty heart
+                end
+            end
+
+            local rockets_x = 115
+            local rockets_y = 105
+            local rocket_spacing = -10
+            local total_slots = 5
+
+            -- calculate how many full hearts to show
+            local full_rockets = self.rocket_count
+
+            for i = 0, total_slots - 1 do
+                local x = rockets_x + i * rocket_spacing
+                if i < full_rockets then
+                    spr(14, x, rockets_y) -- empty slot
+                else
+                    spr(15, x, rockets_y) -- slot with rocket
+                end
+            end
+
             -- fixed score box
-            local score_label = "score:"
-            local x = 5      -- fixed bottom-right position
-            local y = 115
-            local box_w = 50    -- fixed width
+            local x = 10      -- fixed bottom-right position
+            local y = 117
+            local box_w = 27   -- fixed width
             local box_h = 8     -- height
 
-            -- background + border
-            rectfill(x, y, x + box_w, y + box_h, 7) -- white background
-            rect(x, y, x + box_w, y + box_h, 8)     -- orange border
-
             -- draw label
-            print(score_label, x + 2, y + 2, 0) -- white
-
+            print("score:", x , y , 8) -- white
+            
             -- draw score right-aligned
             local score_txt = self.score
-            local score_w = #tostr(score_txt) * 4
-            print(score_txt, x + box_w - score_w - 2, y + 2, 0)
+            local score_w = (self.score /1000) + 24 -- moves score when it goes up by a multiple of 10
+            print(score_txt, x + score_w, y, 8)
         end
         
 	end

@@ -5,6 +5,7 @@ gameplay = {
     thruster_particles={},
     enemies={},
     pickups={},
+    rockets={},
     init = function()
         warningcolourtimer = 20
         gameplay.game_start_timer = 0
@@ -16,7 +17,10 @@ gameplay = {
         is_warning_sound_playing = false
         has_music_started = false
         hit_sound_cooldown = 0
-        
+        gameplay.popup_x = 0
+        gameplay.popup_y = 0
+        gameplay.popup_timer = 0
+
         gameplay.player = player:new({
             x = 58,
             y = 83,
@@ -49,8 +53,7 @@ gameplay = {
         gameplay.enemies = {}
         gameplay.thruster_particles = {}
         gameplay.pickups = {}
-        exps={}
-        exp_clrs={5,9,10,7}
+        gameplay.rockets = {}
     end,
     
     
@@ -135,20 +138,18 @@ gameplay = {
         for laser in all(gameplay.laser_beams) do
             laser:update(player)
         end
-        for p in all (exps) do 
-            p.x += p.spdx
-            p.y += p.spdy 
-            p.scale -= 1
-            p.l-=.1
-            p.c=flr(p.l)
-            if p.l <= 0 then del(exps, p) end 
-        end 
+        for r in all(gameplay.rockets) do
+            r:update()
+        end
         -- weapon collisions
         for projectile in all(projectiles) do
             for enemy in all(enemies) do
                 if check_collision(projectile, enemy) and enemy.state == "alive" and enemy.y > 0 then
                     enemy.health -= 1
                     if enemy.health == 0 then
+                        gameplay.popup_x = enemy.x
+                        gameplay.popup_y = enemy.y - 8
+                        
                         if hit_sound_cooldown == 0 then
                             sfx(1, 2)
                             hit_sound_cooldown = 5
@@ -156,6 +157,7 @@ gameplay = {
                         enemy.state="hit"
                         enemy.explosion_timer = 5
                         del(projectiles, projectile)
+                        gameplay.popup_timer = gameplay.game_start_timer
                         player.score+=100
                         break -- break enemy loop after hit
                     end
@@ -169,11 +171,27 @@ gameplay = {
                     enemy.health -= 1
                     if enemy.health <= 0 then
                         enemy.state = "hit"
+                        gameplay.popup_x = enemy.x
+                        gameplay.popup_y = enemy.y - 8
+                        gameplay.popup_timer = gameplay.game_start_timer
+                        player.score+=100
                     end
                 end
             end
         end
-
+        for rocket in all(gameplay.rockets) do
+            for enemy in all(gameplay.enemies) do
+                if check_collision(rocket, enemy) and enemy.state=="alive" then
+                    enemy.health -= 3 -- stronger hit?
+                    if enemy.health <= 0 then
+                        enemy.state = "hit"
+                        enemy.explosion_timer = 5
+                    end
+                    del(gameplay.rockets, rocket)
+                    break
+                end
+            end
+        end
         --player collisions
         for enemy in all(enemies) do
             if player.alive and enemy.state == "alive" and check_collision(player, enemy) and player.invuln_timer == 0 then
@@ -211,7 +229,10 @@ gameplay = {
                 deli(gameplay.pickups, i)
             end
         end
-        
+        if gameplay.popup_timer > 0 and gameplay.popup_x > 0 and gameplay.popup_x > 0 then
+            gameplay.popup_x -= 1
+            gameplay.popup_y -= 1
+        end
        
     end,
 
@@ -232,6 +253,9 @@ gameplay = {
             end
         elseif spr == 10 then
             --logic for missiles
+            if player.rocket_count != player.max_rockets then
+                player.rocket_count += 1
+            end
         elseif spr == 11 then
             --logic for laser
             player.weapon = "laser"
@@ -256,6 +280,7 @@ gameplay = {
          print_centered("! asteroid field incoming !", 60,  warningcolour, -1)
     end,
 
+    
     draw = function()
         for projectile in all(projectiles) do 
             projectile:draw()
@@ -264,11 +289,16 @@ gameplay = {
         for laser in all(gameplay.laser_beams) do
             laser:draw()
         end
-        
+        for r in all(gameplay.rockets) do
+            r:draw()
+        end
         for pickup in all(gameplay.pickups) do
             pickup:draw()
         end
-
+        if gameplay.popup_timer > 0 and gameplay.game_start_timer - gameplay.popup_timer < 15 then
+            print("+100", gameplay.popup_x, gameplay.popup_y, 8)
+            print("+100", gameplay.popup_x - 1, gameplay.popup_y, 7)
+        end
         for enemy in all(gameplay.enemies) do 
             enemy:draw() --spawn enemies
         end

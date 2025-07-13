@@ -16,7 +16,6 @@ projectile = {
     end,
 
     draw = function(self)
-        -- simple small bullet
 	    rectfill(self.x, self.y+6, self.x, self.y, 8) -- red bullet, length 2
     end
 
