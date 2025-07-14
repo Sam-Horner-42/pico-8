@@ -35,25 +35,14 @@ player = {
                 add(thruster_particles, thruster_particle:new({
                         x = self.x + 4,
                         y = self.y + 7,
-                        dx = rnd(0.2) - 0.2,
-                        dy = rnd(0.5) + 0.4,
-                        life = 5,
-                        size = 1,
+                        dx = rnd(0.1) - 0.1,
+                        dy = rnd(0.3) + 0.2,
+                        life = 7,
+                        size = 2,
                         smoke = false
                     }))
             end
-            -- forward thrust (up)
-            if btn(2) then
-                add(thruster_particles, thruster_particle:new({
-                    x = self.x + 4,
-                    y = self.y + 9,
-                    dx = rnd(0.2) - 0.2,
-                    dy = rnd(0.5) + 0.4,
-                    life = 3,
-                    size = 2,
-                    smoke = false
-                }))
-            end
+            
             
             -- damaged ship
             if self.health <= 40 then
@@ -159,7 +148,15 @@ player = {
             for p in all(thruster_particles) do
                 p:draw()
             end 
+            if btn(2) then
+                circfill(self.x + 3, self.y + 9, 2, 12)
+                circfill(self.x + 3, self.y + 7, 2, 7)
+                circfill(self.x + 3, self.y + 9, 1, 7)
+                circfill(self.x + 3, self.y + 12, 1, 12)
+                circfill(self.x + 3, self.y + 10, 1, 7)
+            end
             spr(0, self.x, self.y)
+            
             if self.shield == true then 
                 local r = 9 + sin(time() * 1) * 1
                 circ(self.x + 3, self.y + 4, r, 2) -- purple glow

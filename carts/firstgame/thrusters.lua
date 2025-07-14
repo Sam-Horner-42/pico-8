@@ -16,17 +16,16 @@ thruster_particle = {
 
     update = function(self)
         if self.smoke == false then
-            if self.life > 2 then
+            if self.life >= 6 then
                 self.clr = 12
             else  
                 self.clr = 7
-                self.size = 1
             end
             
             if btn(1) and not btn(2) then self.life -= 1 end -- right, prevents weird tail
             if btn(0) and not btn(2) then self.life -= 1 end -- left, prevents weird tail
         elseif self.smoke == true then
-            if self.life >= 2 then
+            if self.life >= 4 then
                 self.clr = 6
             else 
                 self.clr = 7
@@ -34,7 +33,7 @@ thruster_particle = {
         end
         self.life -= 1
         
-        if self.size <= 4 and self.size >= 3 then
+        if self.size <= 4 and self.size >= 2 then
             self.size -= 1
         end
         self.x += self.dx
