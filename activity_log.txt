@@ -569,3 +569,17 @@
  i..ri..rri....rrrirrrirrrrriirrrriii..irrr_r_r_r_r_r_rri.ri.i.rrr__i......rii..r
  iriririi.rri........ri...rii..rr_i.......rri...rr_r__rririir_i.r_rr__ri....r_i..
  rrrrrrri
+2025-07-15 22:43:42 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iii
+2025-07-15 22:43:51 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ ii.........rrii..ri...rri....rriri.........rriirrrrii..ri.rii......rri..rrri....
+ .....ii.....rri.ri.rriiri.ri..ri.ri.ri.rriirriri.rri.ri..rri.rririiri.rri.......
+ ..i..rri.rrri.ri.riri.rrrrrri...rrii....rrrrrrrrrrrrrrrrrrrrrcgggggggggggggggggg
+ rrrrrrrrii..rrrrrrrrrrrrrrrrrrri.......rrrrrrrrri.........gggggggggrrggggrrggggg
+ ggggggrgrrrrg...rrg.........gg.........iiii.......rrrriii.........rrrrri...ri.rr
+ rrrrrrrri....irrrri.........rr_rri.i........ri...i.i.iri..rr_rrrrr_rri.........r
+ irrii...rrirrrri...ri.r__iri.r_rir_rrrri..rri.i.ri.....rrrri..rrrri.........ri..
+ ....rrrri..gggggrrrri.........rrri..i.........rrrri.........rrrri.........irrri.
+ i........i...rrri..i.........rrrri.....rrrrri.........rrrri.....rrri.........rrr
+ ri........irrri.........rrrri........rrrrri.i..gg...gg.gg..g.ggg..rrrrrrgg.ggggg
+ g.rrrrri.........iiggii

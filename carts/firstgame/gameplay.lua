@@ -84,9 +84,6 @@ gameplay = {
             end
             warningcolourtimer = 20
         end
-        if player.invuln_timer > 0 then
-            player.invuln_timer -= 1
-        end
         if player.weapon_timer > 0 then
             player.weapon_timer -= 1
         end
@@ -201,8 +198,9 @@ gameplay = {
                     player.health -= 10
                     player.health_bar_timer = 5
                     player.weapon_timer = 10
+                    player.invuln_timer = 5
                 elseif player.shield == true then
-                    player.invuln_timer = 30 -- half a second of invulnerability
+                    player.invuln_timer = 5 -- half a second of invulnerability
                     sfx(15, 3)
                     player.shield = false
                 end
@@ -299,6 +297,7 @@ gameplay = {
             print("+100", gameplay.popup_x, gameplay.popup_y, 8)
             print("+100", gameplay.popup_x - 1, gameplay.popup_y, 7)
         end
+        
         for enemy in all(gameplay.enemies) do 
             enemy:draw() --spawn enemies
         end

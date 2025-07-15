@@ -24,6 +24,7 @@ thruster_particle = {
             
             if btn(1) and not btn(2) then self.life -= 1 end -- right, prevents weird tail
             if btn(0) and not btn(2) then self.life -= 1 end -- left, prevents weird tail
+            if btn(3) then self.life -= 1 end
         elseif self.smoke == true then
             if self.life >= 4 then
                 self.clr = 6

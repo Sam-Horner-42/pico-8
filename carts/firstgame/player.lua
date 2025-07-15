@@ -25,7 +25,9 @@ player = {
     
 	update = function(self)
         if self.menu == false then
-            
+            if self.invuln_timer > 0 then
+                self.invuln_timer -= 1
+            end
             -- movement
             if btn(1) then self.x += self.spd end -- right
             if btn(0) then self.x -= self.spd end -- left
@@ -45,7 +47,7 @@ player = {
             
             
             -- damaged ship
-            if self.health <= 40 then
+            if self.health <= 30 then
                 add(thruster_particles, thruster_particle:new({
                     x = self.x + 7,
                     y = self.y + 3,
@@ -145,6 +147,7 @@ player = {
 		    spr(0, self.x, self.y)
         end
         if self.menu == false then  
+           
             for p in all(thruster_particles) do
                 p:draw()
             end 
@@ -155,7 +158,22 @@ player = {
                 circfill(self.x + 3, self.y + 12, 1, 12)
                 circfill(self.x + 3, self.y + 10, 1, 7)
             end
-            spr(0, self.x, self.y)
+            if self.invuln_timer > 0 and not self.shield then
+                pal(6, 8)
+                pal(7, 8)
+                pal(12,8)
+                pal(13, 8)
+                pal(5, 8)
+                pal(9, 8)
+                pal(1, 8)
+                spr(0, self.x, self.y)
+                pal()
+            else
+                spr(0, self.x, self.y)
+            end
+
+            
+            pal(0,129,1)
             
             if self.shield == true then 
                 local r = 9 + sin(time() * 1) * 1
