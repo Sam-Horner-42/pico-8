@@ -599,3 +599,17 @@
  iii
 2025-07-17 13:19:12 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
  cri..i
+2025-07-17 22:19:00 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii
+2025-07-17 22:19:06 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ i.rriirrr______rrrrrrrrrc.........rrrrrrrrrrrrrrri.....rrrrrrrrrrrrrrrrrii...rrr
+ rrrrrrrrrrrrrrrrrrrrrrri...rri.........rriririiiii.........rirri.....rri........
+ .ri.rrrrii...riri..ri.i.riiri...ii........rrrrrrrrrrrrrrrrrrrii.........irrrrrrr
+ rrri.........ii..rrri......ri.......rrrrrii.........rrrrrri.........rrrrrrrrrrri
+ ..rrrrrri.........ii.........i....ii....i........rrrrrrrriiii.irri.rrrriri.rrrrr
+ rrrrrrrri.........ii......i...irrrrrrrrric.........cggg.........ri.rrrrrrg......
+ ...rrrrrrrrrrrrrrig....rrrri.........rrrrrrri.........rrrrrrrrrri....riirrrrrii.
+ rirrrrrrri.........rrrrrri..irrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrri.........rrrrrrrrr
+ iirrrrrrri...rrrrrrrrrrrrrrrrri.........rrrrrrri......rrrrrrrrrrrrrrrrrrrrrrrrrr
+ rrrri.........ri....rrrrrrrrrrrrrrrrri.........rri.rrrrrrrrrrii.........rrrrrrrr
+ rrrrrrrrrii...rrrrri.........rrri.rrrri...rrrri.....g

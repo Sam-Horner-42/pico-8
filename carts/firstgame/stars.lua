@@ -55,7 +55,7 @@ far_star=star:new({
 })
 
 close_star=star:new({
-    clr=13,
+    clr=1,
     spd=2,
     rad=2,
     flicker_chance = 0.01,

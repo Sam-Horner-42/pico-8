@@ -184,7 +184,7 @@ gameplay = {
                         enemy.state = "hit"
                         enemy.explosion_timer = 5
                     end
-                    del(gameplay.rockets, rocket)
+                    --del(gameplay.rockets, rocket)
                     break
                 end
             end
@@ -287,6 +287,9 @@ gameplay = {
         for laser in all(gameplay.laser_beams) do
             laser:draw()
         end
+        for enemy in all(gameplay.enemies) do 
+            enemy:draw() --spawn enemies
+        end
         for r in all(gameplay.rockets) do
             r:draw()
         end
@@ -298,9 +301,7 @@ gameplay = {
             print("+100", gameplay.popup_x - 1, gameplay.popup_y, 7)
         end
         
-        for enemy in all(gameplay.enemies) do 
-            enemy:draw() --spawn enemies
-        end
+        
         
         
         gameplay.player:draw() --display the player
