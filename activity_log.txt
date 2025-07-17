@@ -583,3 +583,19 @@
  i........i...rrri..i.........rrrri.....rrrrri.........rrrri.....rrri.........rrr
  ri........irrri.........rrrri........rrrrri.i..gg...gg.gg..g.ggg..rrrrrrgg.ggggg
  g.rrrrri.........iiggii
+2025-07-17 12:41:03 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ ii
+2025-07-17 12:41:09 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ r_ii.........i..ir_rr__r___rrrr_r___r___rr__r_r__r__r_r_r____r__rr____r__r_r__r_
+ __r___rr_r_r___r__rr__r____r____r_____r_rrr_______rr_rrrir__r__r_r_r_r___r_r____
+ r_r_r_r__rr________rrrrr_r____r_________r_________r__r__rr__rr_rrr_r___rrr______
+ _r______rr______r_____r______r___rr_________rrr_____r___rrr___rr_________rrr____
+ _____r___r____r___rr____i.......r_____rr__r__rrr_r_r_r_r_rr_rr_r_r__r__r__rrrr__
+ _r___rr___r__r_r___r_rr______r____r__rr_r__r____rrr_r___r_rr_____r_r___r_r_rrrr_
+ rrrr_______r__r_____rr______r__r_r_r__rr__r_r__rr_r___r__r_r___rr_r_r_____r_r_rr
+ r_r___r____rr_________r______rrr_rr____rr____ii.........r________r_________rr___
+ r_____rrr___r________r______r____r______r_____r______rr
+2025-07-17 13:19:03 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iii
+2025-07-17 13:19:12 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ cri..i

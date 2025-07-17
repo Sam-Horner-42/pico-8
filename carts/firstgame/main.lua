@@ -24,7 +24,7 @@ function start_menu()
 		add(stars,star_type:new({
 			x=rnd(127),
 			y=rnd(127),
-			spd = 0.05
+			spd = 0.005
 		}))	
 	end
 	for i=1,7 do 
@@ -32,7 +32,7 @@ function start_menu()
 		add(stars,star_type:new({
 			x=rnd(127),
 			y=rnd(127),
-			spd = 0.01
+			spd = 0.1
 		}))	
 	end
 	player = player:new({
@@ -92,12 +92,15 @@ end
 
 function draw_menu()
 
-	print_3d_centered("goober shooter", 50, 7, 2, -1)
+	print_3d_centered("goober shooter", 50, 10, 3, -1)
+	
+	
+	
 	print_3d_centered_parts({
-    {text="press ", col=28},
+    {text="press ", col=10},
     {text="x", col=xcolour},
-    {text=" to start", col=28}
-	}, 60, -1, 1)
+    {text=" to start", col=10}
+	}, 60, -1, 3)
 	if btnp(5) then --Z
 		start_game()
 		game_state = "play"
@@ -122,12 +125,7 @@ end
 function _update() --every frame
 	if game_state == "main_menu" then
 		player:update()
-		for p in all(thruster_particles) do
-			p:update()
-			if p.life <= 0 then
-				del(thruster_particles, p)
-			end
-		end
+		
 
 		if menu_colourtimer > 0 then
 			menu_colourtimer -= 1
@@ -162,6 +160,11 @@ function _draw()
 		star:draw() --spawn stars
 	end
 	if game_state == "main_menu" then
+		rectfill(32,42,94,72, 7)
+		circfill(36,57,15, 7)
+		circfill(90,57,15, 7)
+		rectfill(28,46,98,68, 2)
+		
 		draw_menu()
 		for p in all(thruster_particles) do
 			p:draw()
