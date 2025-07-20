@@ -177,6 +177,7 @@ gameplay = {
         for rocket in all(gameplay.rockets) do
             for enemy in all(gameplay.enemies) do
                 if check_collision(rocket, enemy) and enemy.state=="alive" then
+                    rocket:destroy()
                     enemy.health -= 3 -- stronger hit?
                     if enemy.health <= 0 then
                         enemy.state = "hit"
@@ -253,7 +254,7 @@ gameplay = {
         elseif spr == 11 then
             --logic for laser
             player.weapon = "laser"
-            player.weapon_timer = 120 -- 3 seconds of lasers
+            player.laser_timer = 120 -- 3 seconds of lasers
         elseif spr == 12 then
             --logic for health pickup
             if player.health < 50 then

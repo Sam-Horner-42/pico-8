@@ -627,4 +627,14 @@
  igggrgrgggggrgigg..ri.rri..i.i..iri.irriggiriii......riggrggrriiririri...iri.rir
  _rigggggggggg........gggggggggggggggggggggggggggrig.ririri..ii.r__ririririgggggr
  grgggrrgrgggrri...iii.........iiigiii.......rrrrrrrrrrrrrrrrrrri.........i......
+ ...ii.........rii......i.riirrrri.........rrrrrrrrii......i.i..ri.........ri....
+ .....rrrrri.rrrrrri.........irrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrri.........ri....rr
+ rri.......rrrrrrrrrrrrrrrrrri.......rirrrrrrrrrrrri.........rrrrrrri........rrrr
+ rri.rrrrrrrrrrrrrrri..rrrrrrri...rrrrrri.......rrrrrri.....rrrrrri........rrrrrr
+ i.......rri.rrrrri.........rrrrri....rrrrrrrrrrrrrrrrri........rrrrrrrri........
+ .irrrrrrrrrri.........rrrrrrrrrri........rrrrri....r_ri.rrrrrrrrrri...rrrrrrrri.
+ ........irrrri..rrrrrrrrri.........rrrrrrrrrrri.........rrrrrrrrrrrri.........rr
+ rrrri.........rrrrrrrrri......ri.rrrrrrrrrrrrrri.........rrrri..rrrrrri...rrrrri
+ .........rrrrrrrrrri.....rrrrrri.........rrrrri.........rrrrrrriii....rrrrrrrrrr
+ rrrri.........rrrrrrrri.........rr_r________rrrrrrri....ri.....rrrrrri.........r
  

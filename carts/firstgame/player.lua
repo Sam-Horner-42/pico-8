@@ -19,6 +19,7 @@ player = {
     max_rockets = 5,
     hit_effect_timer = 0,
     rocket_fired = false,
+    laser_timer = 0,
 
 	new = function(self, tbl)
 		tbl = tbl or {}
@@ -33,6 +34,9 @@ player = {
             end
             if self.hit_effect_timer > 0 then
                 self.hit_effect_timer -= 1
+            end
+            if self.laser_timer > 0 then
+                self.laser_timer -= 1
             end
             -- movement
             if btn(1) then self.x += self.spd end -- right
@@ -81,7 +85,7 @@ player = {
             
             -- cleanup laser beams if released or time ran out
             if self.weapon == "laser" then
-                if not btn(5) or self.weapon_timer <= 0 then
+                if not btn(5) or self.laser_timer <= 0 then
                     gameplay.laser_beams = {}
                     sfx(16, -2)
                 end
@@ -103,7 +107,7 @@ player = {
                 self.rocket_timer = 20
                 self.rocket_count -= 1
             end
-            if self.weapon_timer <= 0 then
+            if self.laser_timer <= 0 then
                 self.weapon = "blaster"
             end
             -- blasters and lasers
@@ -114,7 +118,7 @@ player = {
                     if self.weapon == "blaster" and self.weapon_timer <= 0 then
                         self.fire_cooldown = 6
                         self:shoot()
-                    elseif self.weapon == "laser" and self.weapon_timer > 0 then
+                    elseif self.weapon == "laser" and self.laser_timer > 0 then
                         self:shoot()
                     end
                 end
@@ -139,7 +143,7 @@ player = {
             }))
         elseif self.weapon == "laser" then
             -- only spawn laser if not already spawned
-            if #gameplay.laser_beams == 0 and self.weapon_timer > 0 and btn(5) then
+            if #gameplay.laser_beams == 0 and self.laser_timer > 0 and btn(5) then
                 sfx(0, 17)
                 sfx(0, 3)
                 sfx(16, 3)
@@ -236,13 +240,13 @@ player = {
 
             -- convert score to string
             local score_txt = ""..self.score
-            local offset = (#score_txt - 1) * 4  -- push right by 4px per extra digit (starting after first digit)
+            local offset = (#score_txt - 1) + 4  -- push right by 4px per extra digit (starting after first digit)
 
             -- draw label
             print("score:", base_x, y, 8)
 
             -- draw score shifted right as it grows
-            print(score_txt, base_x + 24 + offset, y, 8)
+            print(score_txt, base_x + 22 + offset, y, 8)
         end
         
 	end
