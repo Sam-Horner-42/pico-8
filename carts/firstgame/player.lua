@@ -91,7 +91,7 @@ player = {
                 end
             end
             if self.health == 0 then
-                self.alive = false
+                self.alive = false --TODO add player score the game over screen
                 game_state = "game_over"
             end
             --rockets
@@ -217,13 +217,14 @@ player = {
                     spr(2, x, hearts_y) -- broken shield
                 end
             end
-
+            
+            --TODO move rockets and prompt to the left side after fixing score
             local rockets_x = 115
             local rockets_y = 105
             local rocket_spacing = -10
             local total_slots = 5
 
-            -- calculate how many full hearts to show
+            -- how many rockets the player has
             local full_rockets = self.rocket_count
 
             for i = 0, total_slots - 1 do

@@ -127,7 +127,7 @@ gameplay = {
         for p in all(thruster_particles) do
             p:update()
             if p.life <= 0 then
-                deli(thruster_particles, i)
+                deli(thruster_particles, p)
             end
         end
         for laser in all(gameplay.laser_beams) do

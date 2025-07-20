@@ -115,6 +115,7 @@ function draw_game_over()
     {text="x", col=xcolour},
     {text=" to restart", col=9}
 	}, 60, -1, 1)
+	print_3d_centered("Your Score: " .. player.score, 50, 8, 1, -1)
 	if btnp(5) then --Z
 		start_game()
 	end
