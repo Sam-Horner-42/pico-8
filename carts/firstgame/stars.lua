@@ -26,7 +26,7 @@ star={
         end
 
         if self.flicker_time <= 0 and rnd() < 0.001 then
-            self.flicker_time = 60
+            self.flicker_time = 30
         end
         
         if self.flicker_time > 0 then 
@@ -59,6 +59,5 @@ close_star=star:new({
     spd=2,
     rad=2,
     flicker_chance = 0.01,
-	flicker_time = 8,
     close = true,
 })

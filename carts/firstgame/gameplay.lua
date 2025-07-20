@@ -118,15 +118,13 @@ gameplay = {
             player:update()
         end
 
-        for i=#projectiles,1,-1 do
-            local proj = projectiles[i]
-            proj:update()
-            if proj.y > 128 then
-                deli(projectiles, i)
+        for p in all(projectiles) do
+            p:update()
+            if p.y > 128 then
+                deli(projectiles, p)
             end
         end
-        for i=#thruster_particles,1,-1 do
-            local p = thruster_particles[i]
+        for p in all(thruster_particles) do
             p:update()
             if p.life <= 0 then
                 deli(thruster_particles, i)
@@ -189,21 +187,10 @@ gameplay = {
                 end
             end
         end
-        --player collisions
-        for enemy in all(enemies) do
-            if player.alive and enemy.state == "alive" and check_collision(player, enemy) and player.invuln_timer == 0 then
-                enemy.state = "hit"
-                if player.shield == false then
-                    sfx(2, 3)
-                    player.health -= 10
-                    player.health_bar_timer = 5
-                    player.weapon_timer = 10
-                    player.invuln_timer = 5
-                elseif player.shield == true then
-                    player.invuln_timer = 5 -- half a second of invulnerability
-                    sfx(15, 3)
-                    player.shield = false
-                end
+        for p in all(gameplay.pickups) do
+            p:update()
+            if p.y > 128 then
+                deli(gameplay.pickups, p)
             end
         end
         for pickup in all(pickups) do
@@ -213,20 +200,29 @@ gameplay = {
                 pickup.state = "hit"
             end
         end
-        --spawn enemies
+        --player collisions
         for enemy in all(enemies) do
             enemy:update()
             if enemy.y > 128 then
                 del(enemies, enemy) --delete enemies
             end
-        end
-        for i=#gameplay.pickups,1,-1 do
-            local p = gameplay.pickups[i]
-            p:update()
-            if p.y > 128 then
-                deli(gameplay.pickups, i)
+            if player.alive and enemy.state == "alive" and check_collision(player, enemy) and player.invuln_timer == 0 then
+                enemy.state = "hit"
+                if player.shield == false then
+                    sfx(2, 3)
+                    player.health -= 10
+                    player.health_bar_timer = 5
+                    player.weapon_timer = 10
+                    player.invuln_timer = 10
+                    player.hit_effect_timer = 5
+                elseif player.shield == true then
+                    player.invuln_timer = 10 -- half a second of invulnerability
+                    sfx(15, 3)
+                    player.shield = false
+                end
             end
         end
+        
         if gameplay.popup_timer > 0 and gameplay.popup_x > 0 and gameplay.popup_x > 0 then
             gameplay.popup_x -= 1
             gameplay.popup_y -= 1

@@ -50,8 +50,6 @@ function start_game()
 	music(-1)
 	game_state = "play"
 	gameplay:init()
-
-
 end
 
 

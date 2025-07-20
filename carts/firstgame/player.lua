@@ -16,6 +16,7 @@ player = {
     weapon_timer = 0,
     rocket_count = 0,
     max_rockets = 5,
+    hit_effect_timer = 0,
 
 	new = function(self, tbl)
 		tbl = tbl or {}
@@ -27,6 +28,9 @@ player = {
         if self.menu == false then
             if self.invuln_timer > 0 then
                 self.invuln_timer -= 1
+            end
+            if self.hit_effect_timer > 0 then
+                self.hit_effect_timer -= 1
             end
             -- movement
             if btn(1) then self.x += self.spd end -- right
@@ -144,7 +148,7 @@ player = {
 
 	draw = function(self)
         if self.menu == true then 
-		    spr(0, self.x, self.y)
+            spr(0, self.x, self.y)
         end
         if self.menu == false then  
            
@@ -158,7 +162,7 @@ player = {
                 circfill(self.x + 3, self.y + 12, 1, 12)
                 circfill(self.x + 3, self.y + 10, 1, 7)
             end
-            if self.invuln_timer > 0 and not self.shield then
+            if self.hit_effect_timer > 0 then
                 pal(6, 8)
                 pal(7, 8)
                 pal(12,8)
@@ -171,8 +175,7 @@ player = {
             else
                 spr(0, self.x, self.y)
             end
-
-            
+            -- reset background palette
             pal(0,129,1)
             
             if self.shield == true then 
@@ -196,9 +199,9 @@ player = {
             for i = 0, total_hearts - 1 do
                 local x = hearts_x + i * heart_spacing
                 if i < full_hearts then
-                    spr(1, x, hearts_y) -- full heart
+                    spr(1, x, hearts_y) -- full shield
                 else
-                    spr(2, x, hearts_y) -- empty heart
+                    spr(2, x, hearts_y) -- broken shield
                 end
             end
 

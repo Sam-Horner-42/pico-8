@@ -22,7 +22,6 @@ enemy={
     
     
     update=function(self)
-        popups = {}
         if self.state == "alive" then
 			self.y += self.spd
             if self.drift == 0 then
@@ -40,12 +39,7 @@ enemy={
 		elseif self.state == "exploded" then
 			self.explosion_timer -= 1
 			if self.explosion_timer <= 0 then
-                -- drop a pickup
-                local current_x = self.x --reference to x location to prevent deletion
-                local current_y = self.y --reference to y location to prevent deletion
-				del(gameplay.enemies, self)
-                
-                -- TODO make pickups random    
+				del(gameplay.enemies, self)   
 			end
 		end
     end,
@@ -58,26 +52,8 @@ enemy={
 			spr(sprite+1, self.x, self.y) -- partially exploded
 		elseif self.state == "exploded" then
 			spr(sprite+2, self.x, self.y) -- fully exploded
-            
 		end
-        for p in all(exps) do 
-            circfill(p.x, p.y, p.scale, gameplay.exp_clrs)
-        end
     end,
 }
 
-        
-
--- TODO make a seperate file for enemies and obstacles to add enemy AI logic
-smallspaceship = enemy:new({
-    x=64, --xpos
-    y=-1, --ypos
-    spd=5, --speed
-    state = "alive",
-    w = 8,
-    h = 8,
-    explosion_timer = 5,
-    health = 2,
-    sprite_id = 7,
-})
 
