@@ -25,7 +25,7 @@ star={
             self.y=-self.rad
         end
 
-        if self.flicker_time <= 0 and rnd() < 0.001 then
+        if self.flicker_time <= 0 and rnd() < 0.0001 then
             self.flicker_time = 30
         end
         

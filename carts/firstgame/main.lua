@@ -16,7 +16,7 @@ function start_menu()
 		add(stars,star_type:new({
 			x=rnd(127),
 			y=rnd(127),
-			spd = 0.00001
+			spd = 0.005
 		}))	
 	end
 	for i=1,60 do 
@@ -24,7 +24,7 @@ function start_menu()
 		add(stars,star_type:new({
 			x=rnd(127),
 			y=rnd(127),
-			spd = 0.005
+			spd = 0.0005
 		}))	
 	end
 	for i=1,7 do 

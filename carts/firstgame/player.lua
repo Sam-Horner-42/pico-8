@@ -14,9 +14,11 @@ player = {
     invuln_timer = 0,
     weapon = "blaster",
     weapon_timer = 0,
+    rocket_timer = 0,
     rocket_count = 0,
     max_rockets = 5,
     hit_effect_timer = 0,
+    rocket_fired = false,
 
 	new = function(self, tbl)
 		tbl = tbl or {}
@@ -89,13 +91,16 @@ player = {
                 game_state = "game_over"
             end
             --rockets
-            if self.weapon == "blaster" and self.rocket_count > 0 and btn(4) and self.weapon_timer <= 0 and not btn(5) then 
+            if self.rocket_count > 0 and btn(4) and self.rocket_timer <= 0 then 
+                if self.rocket_fired == false then
+                    self.rocket_fired = true
+                end
                 -- special abilities placeholder
                 add(gameplay.rockets, rocket:new({
                     x = self.x+1,
                     y = self.y+1,
                 }))
-                self.weapon_timer = 20
+                self.rocket_timer = 20
                 self.rocket_count -= 1
             end
             if self.weapon_timer <= 0 then
@@ -151,7 +156,10 @@ player = {
             spr(0, self.x, self.y)
         end
         if self.menu == false then  
-           
+            if self.rocket_count > 0 and not self.rocket_fired then
+                print("press [  ]", 79, 97, 7)
+                spr(3, 107, 95)
+            end
             for p in all(thruster_particles) do
                 p:draw()
             end 
@@ -162,6 +170,7 @@ player = {
                 circfill(self.x + 3, self.y + 12, 1, 12)
                 circfill(self.x + 3, self.y + 10, 1, 7)
             end
+            -- red hit effect 
             if self.hit_effect_timer > 0 then
                 pal(6, 8)
                 pal(7, 8)
@@ -222,19 +231,18 @@ player = {
                 end
             end
 
-            -- fixed score box
-            local x = 10      -- fixed bottom-right position
+            local base_x = 10
             local y = 117
-            local box_w = 27   -- fixed width
-            local box_h = 8     -- height
+
+            -- convert score to string
+            local score_txt = ""..self.score
+            local offset = (#score_txt - 1) * 4  -- push right by 4px per extra digit (starting after first digit)
 
             -- draw label
-            print("score:", x , y , 8) -- white
-            
-            -- draw score right-aligned
-            local score_txt = self.score
-            local score_w = (self.score /1000) + 24 -- moves score when it goes up by a multiple of 10
-            print(score_txt, x + score_w, y, 8)
+            print("score:", base_x, y, 8)
+
+            -- draw score shifted right as it grows
+            print(score_txt, base_x + 24 + offset, y, 8)
         end
         
 	end

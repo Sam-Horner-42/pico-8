@@ -621,4 +621,10 @@
  ri......rrrrrrrri.........rrrri.......rrrri.........ri.........ri.i.........iri.
  ........r___i..rr__ggggggggggggggggggg.....gg.........gg.........ii..r_________r
  rirggig..ggrr_______ri..ri.....ri..ii.....rgg.......ggrrrriii.........gggggggggg
+ ggggggg.........ri.........r__i....r_i.r_________i.....r_i..rr_i.........ri.rrrr
+ ______rrrggggggggrggrrri...g.........ggggggggggggggggggg........gggggggg........
+ .rrrri.ii....ri.i..iiri...i.........ri..i.i.i.i.rri..ggggii...iiriiggriggrrrgggr
+ igggrgrgggggrgigg..ri.rri..i.i..iri.irriggiriii......riggrggrriiririri...iri.rir
+ _rigggggggggg........gggggggggggggggggggggggggggrig.ririri..ii.r__ririririgggggr
+ grgggrrgrgggrri...iii.........iiigiii.......rrrrrrrrrrrrrrrrrrri.........i......
  
