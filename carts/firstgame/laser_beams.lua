@@ -2,7 +2,7 @@ laser_beam = {
     x = 0,
     y = 0,
     w = 2,
-    h = 120, -- long vertical beam
+    h = 200, -- long vertical beam
     offset_x = 0,
 
     new = function(self, tbl)
