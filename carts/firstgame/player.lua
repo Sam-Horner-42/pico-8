@@ -65,20 +65,20 @@ player = {
             -- damaged ship
             if self.health <= 30 then
                 add(thruster_particles, thruster_particle:new({
-                    x = self.x + 7,
-                    y = self.y + 3,
+                    x = self.x + 6,
+                    y = self.y + 4,
                     dx = rnd(2),
                     dy = rnd() + 0.5,
-                    size = flr(rnd((1))) + 2 + 10/self.health,
+                    size = flr(rnd((2))) + 1 + 10/self.health,
                     life = 5,
                     smoke = true
                 }))
                 add(thruster_particles, thruster_particle:new({
                     x = self.x,
-                    y = self.y + 3,
+                    y = self.y + 4,
                     dx = -rnd(2),
                     dy = rnd() + 0.5,
-                    size = flr(rnd((1))) + 2 + 10/self.health,
+                    size = flr(rnd((2))) + 1 + 10/self.health,
                     life = 5,
                     smoke = true
                 }))    
@@ -150,8 +150,6 @@ player = {
         elseif self.weapon == "laser" then
             -- only spawn laser if not already spawned
             if #gameplay.laser_beams == 0 and self.laser_timer > 0 and btn(5) then
-                sfx(0, 17)
-                sfx(0, 3)
                 sfx(16, 3)
                 add(gameplay.laser_beams, laser_beam:new({ offset_x = 1 }))
                 add(gameplay.laser_beams, laser_beam:new({ offset_x = 5 }))

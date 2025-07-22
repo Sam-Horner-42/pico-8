@@ -4,7 +4,7 @@ function _init()
 	game_state = "main_menu"
 	menu_colourtimer = 20
 	xcolour = 14
-	
+	grace_period = 0
 	thruster_particles={}
 	start_menu()
 end
@@ -110,7 +110,7 @@ end
 
 
 function draw_game_over(score)
-	
+	grace_period = 30
 	print_3d_centered("game over!", 50, 8, 1, -1)
 	print_3d_centered("your score:" .. score, 60, 8, 1, -1)
 	print_3d_centered_parts({
@@ -125,6 +125,9 @@ function draw_game_over(score)
 end
 
 function _update() --every frame
+	if grace_period > 0 then
+		grace_period -= 1
+	end
 	if game_state == "main_menu" then
 		player:update()
 		
