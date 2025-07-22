@@ -172,6 +172,8 @@ end
 
 function _draw()
 	cls() -- clear the screen
+	
+    pal(0,129,1)    
 	for star in all(stars) do 
 		star:draw() --spawn stars
 	end

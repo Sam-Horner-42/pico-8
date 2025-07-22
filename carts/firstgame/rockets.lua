@@ -2,8 +2,8 @@ rocket = {
     x = 0,
     y = 0,
     spd = -4,
-    w = 2,
-    h = 4,
+    w = 6,
+    h = 5,
     life = 25,
     state = "alive",
 
@@ -17,14 +17,11 @@ rocket = {
     
     destroy = function(self)
         if self.state == "alive" then
-            self.w = 60
-            self.h = 60
             self.spd = 3.5
             self.state = "hit"
             self.explosion_x = self.x
             self.explosion_y = self.y
             self:spawn_explosion(self.explosion_x, self.explosion_y)
-            
         end
     end,
     
@@ -51,7 +48,18 @@ rocket = {
             p.scale-=.1
             p.l-=.2
             p.c=flr(p.l)
-            if p.l <= 1 then del(self.exps,p) end
+            if p.l <= 1 then del(self.exps, p) end
+            for enemy in all(gameplay.enemies) do
+                if gameplay.check_collision(p, enemy) and enemy.state=="alive" then
+                    enemy.health -= 3 -- stronger hit?
+                    if enemy.health <= 0 then
+                        enemy.state = "hit"
+                        enemy.explosion_timer = 5
+                        gameplay.popup_timer = gameplay.game_start_timer
+                        gameplay.player.score += 100
+                    end
+                end
+            end
         end
         self.y += self.spd
     end,
@@ -59,22 +67,24 @@ rocket = {
         sfx(5, 3)
         for i=0,15 do 
             add(self.exps, {
-                x=x,
-                y=y,
+                x=x-20, -- makes the collision check offset for circle
+                y=y-20,
                 spdx = 1 - rnd(2),
                 spdy= 2 + rnd(2),
-                scale= 15 + rnd(5),
-                l=5
+                scale = 20,
+                l=5,
+                w=40,
+                h=40
             })
         end
+        
     end,
     draw = function(self)
 	    if self.life > 0 and self.state == "alive" then
             spr(13, self.x, self.y)
         end
         for p in all(self.exps) do
-            
-            circfill(p.x, p.y, p.scale, self.expclrs[p.c])
+            circfill(p.x+20, p.y+20, p.scale, self.expclrs[p.c]) -- draw +20 because collision checks from 0,0 but we want to draw at origin of explosion
         end  
     end
 

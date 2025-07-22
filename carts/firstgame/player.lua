@@ -40,6 +40,8 @@ player = {
                 if btn(5) then 
                     self.laser_timer -= 1
                 end
+            else
+                gameplay.laser_beams = {}
             end
             if self.rocket_timer > 0 then
                 self.rocket_timer -= 1
@@ -149,10 +151,12 @@ player = {
             }))
         elseif self.weapon == "laser" then
             -- only spawn laser if not already spawned
-            if #gameplay.laser_beams == 0 and self.laser_timer > 0 and btn(5) then
-                sfx(16, 3)
-                add(gameplay.laser_beams, laser_beam:new({ offset_x = 1 }))
-                add(gameplay.laser_beams, laser_beam:new({ offset_x = 5 }))
+            if self.laser_timer > 0 and btn(5) and self.hit_effect_timer <= 0 and self.invuln_timer <= 0 then
+                if #gameplay.laser_beams == 0 then
+                    sfx(16, 3)
+                    add(gameplay.laser_beams, laser_beam:new({ offset_x = 1 }))
+                    add(gameplay.laser_beams, laser_beam:new({ offset_x = 5 }))
+                end
             end
         end
         
@@ -197,6 +201,7 @@ player = {
             else
                 spr(0, self.x, self.y)
             end
+            
             -- reset background palette
             pal(0,129,1)
             
@@ -251,6 +256,6 @@ player = {
             spr(16, bar_x-2, bar_y-1)
             spr(16, bar_x + bar_max_w-5, bar_y-1,  1, 1, true)
         end
-
+        
 	end
 }

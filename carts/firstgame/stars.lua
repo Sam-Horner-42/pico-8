@@ -1,6 +1,6 @@
 --stars
 -- Dark Blue Background
-pal(0,129,1)
+
 
 star={
     x=64, --xpos

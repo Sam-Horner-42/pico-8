@@ -682,3 +682,21 @@
  .rrrrrrr____rrrrrri.........rrrrrrii.........rrii....rrrrrrrrrrrii......rrrrri..
  rrrrrrrri.......rrrrrrri.rrrrrrrrrrrrrrrr_________rr_____r____rrr_rrrrrrrrri....
  .ss
+2025-07-22 17:39:27 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iii
+2025-07-22 17:39:36 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ r__rrrrrrrrrrrrrrcssssssssssssssssssssrrrrrrrrii.........rrrrrrrrrrrrrrrri.ggggg
+ ..rrrrrrrrrrrrrrrrii.........ggggggri......rrrrrrrrrrrri.........rrrrrrrrrrrrrrr
+ rii.........rrrrrrrrrrrrrrrrrrrrrri.........rrrrii.........rrrrrrrrrrrri.i......
+ ...rrrrii.........rrrrrrrrrrri..rrrrrrrrrrrrrrrrrrrrrrrrii.........rrrrrrrrrrrrr
+ rrrrrri..r_rrrrrrrrrrrrrrri.........rrrrrrrrrrrrii........rrrrrri....rr_rrrrrrrr
+ rrrrii.........rrrrrrrri......rrrrrrrrrrrri.........rrrrrri.........rrrrrrrrrrrr
+ rrrii....rri.........irrrrrrrrrrri.........ri..rrrrrri.i.........rrrrrrrrrri....
+ .rrrrrrrri.........rrriii.........rrrrri.........irrrrrrrri.........rrrrrri..rrr
+ ri..rrrrrri....ri.......iii.rrrrrrrrrr_rrrrrrrririrrrrrrrri.rii......i....i..iii
+ ......g.ri..ri..r_rrrrrri.........ii.........ii....rrrrrri.i.rri..ri.riiirrrrrri
+ .........rrrrrrrrrrrri.........ri.i.iriii.i.........i........iii........ri......
+ ...i.........ii.....i.........ii........iii...rri.........riii.........ri.ri....
+ ....i.......rri........riri.iirirr_rri.........rrrrrrrrrrrrrrrrrrrri.........rrr
+ rii........rrrrrri......rrrrrrii...rrrrii.........i...rrrrrrrrrii.........irriii
+ 

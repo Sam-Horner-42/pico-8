@@ -178,13 +178,6 @@ gameplay = {
             for enemy in all(gameplay.enemies) do
                 if check_collision(rocket, enemy) and enemy.state=="alive" then
                     rocket:destroy()
-                    enemy.health -= 3 -- stronger hit?
-                    if enemy.health <= 0 then
-                        enemy.state = "hit"
-                        enemy.explosion_timer = 5
-                    end
-                    --del(gameplay.rockets, rocket)
-                    break
                 end
             end
         end
@@ -213,7 +206,7 @@ gameplay = {
                     sfx(2, 3)
                     player.health -= 10
                     player.health_bar_timer = 5
-                    player.weapon_timer = 10
+                    player.fire_cooldown = 10
                     player.invuln_timer = 10
                     player.hit_effect_timer = 5
                 elseif player.shield == true then
@@ -296,9 +289,8 @@ gameplay = {
             print("+100", gameplay.popup_x, gameplay.popup_y, 8)
             print("+100", gameplay.popup_x - 1, gameplay.popup_y, 7)
         end
-        
-        
-        
+        print("score "..gameplay.player.score, 75, 108, 15)
+        print("score "..gameplay.player.score, 76, 108, 8)
         
         gameplay.player:draw() --display the player
         for r in all(gameplay.rockets) do
