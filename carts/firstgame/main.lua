@@ -4,6 +4,7 @@ function _init()
 	game_state = "main_menu"
 	menu_colourtimer = 20
 	xcolour = 14
+	
 	thruster_particles={}
 	start_menu()
 end
@@ -108,14 +109,16 @@ end
 
 
 
-function draw_game_over()
+function draw_game_over(score)
+	
 	print_3d_centered("game over!", 50, 8, 1, -1)
+	print_3d_centered("your score:" .. score, 60, 8, 1, -1)
 	print_3d_centered_parts({
     {text="press ", col=9},
     {text="x", col=xcolour},
     {text=" to restart", col=9}
-	}, 60, -1, 1)
-	print_3d_centered("Your Score: " .. player.score, 50, 8, 1, -1)
+	}, 70, -1, 1)
+	
 	if btnp(5) then --Z
 		start_game()
 	end
@@ -175,7 +178,6 @@ function _draw()
 		gameplay:draw()
 		
 	elseif game_state == "game_over" then
-		-- TODO add a better game over screen/ending
-		draw_game_over()
+		draw_game_over(gameplay.player.score)
 	end
 end

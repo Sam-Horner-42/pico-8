@@ -105,7 +105,7 @@ gameplay = {
         if gameplay.game_start_timer >= 240 and rnd() < 0.1 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
 			pickup_spawn_timer = 0
             add(gameplay.pickups, pickup:new({
-                x = rnd(120),
+                x = rnd(118) + 2,
 				y = -8,
                 sprite_id = flr(rnd(4)) + 9,
                 }))
@@ -284,15 +284,14 @@ gameplay = {
         for laser in all(gameplay.laser_beams) do
             laser:draw()
         end
-        for enemy in all(gameplay.enemies) do 
-            enemy:draw() --spawn enemies
-        end
-        for r in all(gameplay.rockets) do
-            r:draw()
-        end
         for pickup in all(gameplay.pickups) do
             pickup:draw()
         end
+        for enemy in all(gameplay.enemies) do 
+            enemy:draw() --spawn enemies
+        end
+        
+        
         if gameplay.popup_timer > 0 and gameplay.game_start_timer - gameplay.popup_timer < 15 then
             print("+100", gameplay.popup_x, gameplay.popup_y, 8)
             print("+100", gameplay.popup_x - 1, gameplay.popup_y, 7)
@@ -302,7 +301,9 @@ gameplay = {
         
         
         gameplay.player:draw() --display the player
-
+        for r in all(gameplay.rockets) do
+            r:draw()
+        end
         
         if gameplay.game_start_timer <= 180 and gameplay.game_start_timer >= 60 then
             gameplay.draw_warning()

@@ -637,4 +637,42 @@
  rrrri.........rrrrrrrrri......ri.rrrrrrrrrrrrrri.........rrrri..rrrrrri...rrrrri
  .........rrrrrrrrrri.....rrrrrri.........rrrrri.........rrrrrrriii....rrrrrrrrrr
  rrrri.........rrrrrrrri.........rr_r________rrrrrrri....ri.....rrrrrri.........r
+ rrrrrrrrrrri.........rrrrrri.........ii.........i
+2025-07-21 13:10:28 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ i
+2025-07-22 00:03:42 C:/Users/Sam/AppData/Roaming/pico-8/carts/untitled_1.p8
+ iiii
+2025-07-22 00:03:54 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ riii.........ri...ri.riirri.rrriri.riii.irrrrrrrrrrrrrrrrrrii.........rrrrrrrrrr
+ rrrri.........rrrrrrrrrrc....rrrrrrrrrrrii..rrrrrii.....rrrrrrrtsssssttsssssssss
+ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssstssssssssss
+ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssstssssss
+ ssssssssssssssssssssstgsssssssssssssss....sii.......rrrrrrs..rrrrrrrrrrrrs.i....
+ .....i..rrrrrrrrrrrrrrrii..ssss.........ssssssssssssssssssssssssssssssssssssssss
+ sssssssssss.........iirrrrrissssrrrrrrrrrrrrii.........rrrris.........ccci......
+ ...iri.........rrrrrrii.........rrrrrri...rrrrrrrrrrrrrrrriii...iicci.........rr
+ rrrrii..iicsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ sssssssssss.........ssssss.........sssssss.sssss..sssssssssssssss..s.sssssssssss
+ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ ssssssssssssssssssssssssssssssssssssssssssssssssssssssssisssssssssssssssssssss.s
+ sssssss.sssssssssss.........srrrrrrrrrri...ss.........rri.rri.ririrriirrrggg..rr
+ ii....riri.ri.ii.ri.irrri...rii..rii..ri..ri.rri.........riri.irri...ri...ii.ri.
+ iri.rrrrrrrrrrrgmssssssssssssssssssssssssssssssssssssrrrrrrri....rrrrrrrrrrri...
+ ......ri.........rrrrrrrri.is.........ii.rrrrrrrrri.........rrrrrrrrrrri........
+ .rrrrri...isttggggggggg.........gg.........rrrrrrii.........irrrrrrrrrrrgsssssss
+ ssssssssssssssssssssrrrrriiii..rr_rrrri...rrrrrrrrrrrrrrii...irri..rrrrrrrrri..r
+ rrrrrrrrrrrri.........rrrrrrrrrriigggggggggi.........irii.irrii.........rrrrrrrr
+ ggg.........rrrrrrrrrrri.........iri.........rrrrrrrri..ri.iii.........ri...i...
+ ...rii.riri.rr_ri.....iig...riigrr_rrrrrrrrrrii.....rrrrri.rrrrrrrrrrrrrrii.....
+ ....ri..riri..r__rri...ir_rrrrrrrrrri.....rrrri.i..rrrri....ri.rrrrii......rrrrr
+ rriii.i..i..rrrrrri.rrrrrrrrrrrrrrrrrrrrrii...ir__ri.ggggggggggggggriggrrgrrrrrr
+ rrrrrri..rrrri...rrrrrrri.rrgggggggggrr_rrrrrrrrriiigggggggggggrrrrrrrrriii..rrr
+ rrrrrrrrrrrrrrii.rririrrrri...ri.rrrrrrrriii........rirrrrrrrrrrri..rrrrrrrrrrrr
+ rrrrrrrrrrrrri.........rrrrrri...rrrri.ii........rrirrrriii......riri...ri.....r
+ rrrri...ggrrrrrrrrrrrrrrrrrrrirrrrrii...rrrrrrrrrrrrrrrrrrrrrrrrrii.ri.....rrrrr
+ rrrrrrrrrriiii.........rri.rrrrri.irrrrirr_rrrrrri.......irrrrrri.irrrrrri..rr_r
+ rri.........rri.........rrrrrrrri.....rrrrrrri..rrrrrrrri......iii.........rrrrr
  

@@ -20,6 +20,7 @@ player = {
     hit_effect_timer = 0,
     rocket_fired = false,
     laser_timer = 0,
+    max_laser_timer = 120,
 
 	new = function(self, tbl)
 		tbl = tbl or {}
@@ -36,13 +37,18 @@ player = {
                 self.hit_effect_timer -= 1
             end
             if self.laser_timer > 0 then
-                self.laser_timer -= 1
+                if btn(5) then 
+                    self.laser_timer -= 1
+                end
+            end
+            if self.rocket_timer > 0 then
+                self.rocket_timer -= 1
             end
             -- movement
-            if btn(1) then self.x += self.spd end -- right
-            if btn(0) then self.x -= self.spd end -- left
-            if btn(3) then self.y += self.spd end -- down
-            if btn(2) then self.y -= self.spd end -- up
+            if btn(1) and self.x < 119 then self.x += self.spd end -- right
+            if btn(0) and self.x > 1 then self.x -= self.spd end -- left
+            if btn(3) and self.y < 119 then self.y += self.spd end -- down
+            if btn(2) and self.y > 2 then self.y -= self.spd end -- up
             if not btn (3) and not btn(2) then
                 add(thruster_particles, thruster_particle:new({
                         x = self.x + 4,
@@ -63,7 +69,7 @@ player = {
                     y = self.y + 3,
                     dx = rnd(2),
                     dy = rnd() + 0.5,
-                    size = flr(rnd((1))) + 1 + 10/self.health,
+                    size = flr(rnd((1))) + 2 + 10/self.health,
                     life = 5,
                     smoke = true
                 }))
@@ -72,7 +78,7 @@ player = {
                     y = self.y + 3,
                     dx = -rnd(2),
                     dy = rnd() + 0.5,
-                    size = flr(rnd((1))) + 1 + 10/self.health,
+                    size = flr(rnd((1))) + 2 + 10/self.health,
                     life = 5,
                     smoke = true
                 }))    
@@ -99,7 +105,7 @@ player = {
                 if self.rocket_fired == false then
                     self.rocket_fired = true
                 end
-                -- special abilities placeholder
+                -- fire rocket
                 add(gameplay.rockets, rocket:new({
                     x = self.x+1,
                     y = self.y+1,
@@ -161,8 +167,13 @@ player = {
         end
         if self.menu == false then  
             if self.rocket_count > 0 and not self.rocket_fired then
-                print("press [  ]", 79, 97, 7)
-                spr(3, 107, 95)
+                print("press [  ]", 9, 97, 7)
+                spr(3, 37, 95)
+            end
+            if self.shield == true then 
+                local r = 9 + sin(time() * 1) * 1
+                circ(self.x + 3, self.y + 4, r, 2) -- purple glow
+                circ(self.x + 3, self.y + 4, r-1, 13) -- purple glow
             end
             for p in all(thruster_particles) do
                 p:draw()
@@ -191,16 +202,8 @@ player = {
             -- reset background palette
             pal(0,129,1)
             
-            if self.shield == true then 
-                local r = 9 + sin(time() * 1) * 1
-                circ(self.x + 3, self.y + 4, r, 2) -- purple glow
-                circ(self.x + 3, self.y + 4, r-1, 13) -- purple glow
-            end
-            local bar_x = 120
-            local bar_y = 117
-            local bar_h = 4
-            local bar_w = -50 -- full width when health is max (50 in your case)
-
+            
+            
             local hearts_x = 115
             local hearts_y = 115
             local heart_spacing = -10
@@ -219,9 +222,9 @@ player = {
             end
             
             --TODO move rockets and prompt to the left side after fixing score
-            local rockets_x = 115
+            local rockets_x = 5
             local rockets_y = 105
-            local rocket_spacing = -10
+            local rocket_spacing = 10
             local total_slots = 5
 
             -- how many rockets the player has
@@ -235,20 +238,21 @@ player = {
                     spr(15, x, rockets_y) -- slot with rocket
                 end
             end
-
-            local base_x = 10
-            local y = 117
-
-            -- convert score to string
-            local score_txt = ""..self.score
-            local offset = (#score_txt - 1) + 4  -- push right by 4px per extra digit (starting after first digit)
-
-            -- draw label
-            print("score:", base_x, y, 8)
-
-            -- draw score shifted right as it grows
-            print(score_txt, base_x + 22 + offset, y, 8)
+                local bar_x = 7
+                local bar_y = 116
+                local bar_max_w = 43
+                local bar_h = 5
+                
+            if self.laser_timer > 0 then
+                -- calculate width based on remaining laser_timer
+                local bar_w = flr((self.laser_timer / self.max_laser_timer) * bar_max_w)
+                -- foreground (red bar showing laser left)
+                rectfill(bar_x, bar_y, bar_x + bar_w, bar_y + bar_h, 8) -- red
+                
+            end
+            spr(16, bar_x-2, bar_y-1)
+            spr(16, bar_x + bar_max_w-5, bar_y-1,  1, 1, true)
         end
-        
+
 	end
 }
