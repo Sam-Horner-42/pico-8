@@ -66,7 +66,7 @@ player = {
             if self.health <= 30 then
                 add(thruster_particles, thruster_particle:new({
                     x = self.x + 6,
-                    y = self.y + 4,
+                    y = self.y + 3,
                     dx = rnd(2),
                     dy = rnd() + 0.5,
                     size = flr(rnd((2))) + 1 + 10/self.health,
@@ -74,8 +74,8 @@ player = {
                     smoke = true
                 }))
                 add(thruster_particles, thruster_particle:new({
-                    x = self.x,
-                    y = self.y + 4,
+                    x = self.x + 1,
+                    y = self.y + 3,
                     dx = -rnd(2),
                     dy = rnd() + 0.5,
                     size = flr(rnd((2))) + 1 + 10/self.health,

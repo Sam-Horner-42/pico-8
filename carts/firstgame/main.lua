@@ -6,6 +6,7 @@ function _init()
 	xcolour = 14
 	grace_period = 0
 	game_over_sound_playing = false
+	grace_period_started = false
 	thruster_particles={}
 	start_menu()
 end
@@ -115,7 +116,7 @@ function draw_game_over(score)
 		sfx(19, 3)
 		game_over_sound_playing = true
 	end
-	grace_period = 30
+	
 	print_3d_centered("game over!", 50, 8, 1, -1)
 	print_3d_centered("your score:" .. score, 60, 8, 1, -1)
 	print_3d_centered_parts({
@@ -123,6 +124,11 @@ function draw_game_over(score)
     {text="x", col=xcolour},
     {text=" to restart", col=9}
 	}, 70, -1, 1)
+	if grace_period_started == true and grace_period <= 0 then
+		for star in all(stars) do
+			star.spd = 0
+		end
+	end
 	
 	if grace_period <= 0 and btnp(5) then --Z
 		start_game()
@@ -187,5 +193,9 @@ function _draw()
 		
 	elseif game_state == "game_over" then
 		draw_game_over(gameplay.player.score)
+		if grace_period_started == false then
+			grace_period = 20
+			grace_period_started = true
+		end
 	end
 end
