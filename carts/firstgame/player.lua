@@ -1,3 +1,20 @@
+function outline_spr(id, x, y, w, h, flip_x, flip_y, col)
+    -- remap all colors to outline color
+    pal()
+    for c = 1, 15 do
+        pal(c, col)
+    end
+    -- draw sprite 4 times around offsets
+    spr(id, x + 1, y, w, h, flip_x, flip_y)
+    spr(id, x - 1, y, w, h, flip_x, flip_y)
+    spr(id, x, y + 1, w, h, flip_x, flip_y)
+    spr(id, x, y - 1, w, h, flip_x, flip_y)
+    pal()  -- reset palette
+    pal(0,129,1)
+    -- draw normal sprite
+    spr(id, x, y, w, h, flip_x, flip_y)
+end
+
 player = {
 	x = 58,
 	y = 83,
@@ -29,6 +46,7 @@ player = {
 	end,
     
 	update = function(self)
+        
         if self.menu == false then
             if self.invuln_timer > 0 then
                 self.invuln_timer -= 1
@@ -46,6 +64,7 @@ player = {
             if self.rocket_timer > 0 then
                 self.rocket_timer -= 1
             end
+            
             -- movement
             if btn(1) and self.x < 119 then self.x += self.spd end -- right
             if btn(0) and self.x > 1 then self.x -= self.spd end -- left
@@ -124,7 +143,7 @@ player = {
             -- For blaster, only fire if weapon_timer == 0
             -- For laser, fire as long as laser is equipped and timer > 0
                     if self.weapon == "blaster" and self.weapon_timer <= 0 then
-                        self.fire_cooldown = 6
+                        self.fire_cooldown = 4
                         self:shoot()
                     elseif self.weapon == "laser" and self.laser_timer > 0 then
                         self:shoot()
@@ -141,13 +160,13 @@ player = {
             -- left gun
             add(projectiles, projectile:new({
                 x = self.x + 1,
-                y = self.y + 1
+                y = self.y - 2
             }))
 
             -- right gun
             add(projectiles, projectile:new({
                 x = self.x + 5,
-                y = self.y + 1
+                y = self.y - 2
             }))
         elseif self.weapon == "laser" then
             -- only spawn laser if not already spawned
@@ -161,13 +180,18 @@ player = {
         end
         
     end,
-
+    
 
 	draw = function(self)
+        
+        
         if self.menu == true then 
-            spr(0, self.x, self.y)
+            spr(18, self.x-8, self.y+1)
+            outline_spr(0, self.x, self.y, 1, 1, false, false, 2)
+            
         end
         if self.menu == false then  
+            
             if self.rocket_count > 0 and not self.rocket_fired then
                 print("press [  ]", 9, 97, 7)
                 spr(3, 37, 95)
@@ -177,9 +201,7 @@ player = {
                 circ(self.x + 3, self.y + 4, r, 2) -- purple glow
                 circ(self.x + 3, self.y + 4, r-1, 13) -- purple glow
             end
-            for p in all(thruster_particles) do
-                p:draw()
-            end 
+            
             if btn(2) then
                 circfill(self.x + 3, self.y + 9, 2, 12)
                 circfill(self.x + 3, self.y + 7, 2, 7)
@@ -196,15 +218,23 @@ player = {
                 pal(5, 8)
                 pal(9, 8)
                 pal(1, 8)
-                spr(0, self.x, self.y)
+                outline_spr(0, self.x, self.y, 1, 1, false, false, 2)
                 pal()
             else
-                spr(0, self.x, self.y)
+                outline_spr(0, self.x, self.y, 1, 1, false, false, 2)
             end
             
             -- reset background palette
             pal(0,129,1)
-            
+
+            for p in all(thruster_particles) do
+                p:draw()
+            end 
+            pset(self.x+3, self.y+6, 5)
+            pset(self.x+1, self.y+1, 5)
+            pset(self.x+5, self.y+1, 5)
+            pset(self.x+1, self.y, 5)
+            pset(self.x+5, self.y, 5)
             
             
             local hearts_x = 115

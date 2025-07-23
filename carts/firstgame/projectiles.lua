@@ -3,7 +3,7 @@ projectile = {
     y = 0,
     spd = -5,
     w = 2,
-    h = 4,
+    h = 6,
 
     new = function(self, tbl)
         tbl = tbl or {}

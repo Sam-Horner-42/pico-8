@@ -1,4 +1,8 @@
-
+function is_within_radius(x1, y1, x2, y2, r)
+    local dx = x2 - x1
+    local dy = y2 - y1
+    return dx*dx + dy*dy <= r*r
+end
 
 gameplay = {
     stars={},
@@ -141,10 +145,10 @@ gameplay = {
             for enemy in all(enemies) do
                 if check_collision(projectile, enemy) and enemy.state == "alive" and enemy.y > 0 then
                     enemy.health -= 1
-                    if enemy.health == 0 then
+                    enemy.hit_effect_timer = 10
+                    if enemy.health <= 0 then
                         gameplay.popup_x = enemy.x
                         gameplay.popup_y = enemy.y - 8
-                        
                         if hit_sound_cooldown == 0 then
                             sfx(1, 2)
                             hit_sound_cooldown = 5
@@ -163,7 +167,7 @@ gameplay = {
         for laser in all(gameplay.laser_beams) do
             for enemy in all(gameplay.enemies) do
                 if gameplay.check_collision(laser, enemy) and enemy.state == "alive" then
-                    enemy.health -= 1
+                    enemy.health -= 5
                     if enemy.health <= 0 then
                         enemy.state = "hit"
                         gameplay.popup_x = enemy.x
@@ -270,13 +274,7 @@ gameplay = {
 
     
     draw = function()
-        for projectile in all(projectiles) do 
-            projectile:draw()
-        end
         
-        for laser in all(gameplay.laser_beams) do
-            laser:draw()
-        end
         for pickup in all(gameplay.pickups) do
             pickup:draw()
         end
@@ -289,10 +287,18 @@ gameplay = {
             print("+100", gameplay.popup_x, gameplay.popup_y, 8)
             print("+100", gameplay.popup_x - 1, gameplay.popup_y, 7)
         end
-        print("score "..gameplay.player.score, 75, 108, 15)
-        print("score "..gameplay.player.score, 76, 108, 8)
         
         gameplay.player:draw() --display the player
+        for projectile in all(projectiles) do 
+            projectile:draw()
+        end
+        
+        for laser in all(gameplay.laser_beams) do
+            laser:draw()
+        end
+        --display player score
+        print("score "..gameplay.player.score, 75, 108, 15)
+        print("score "..gameplay.player.score, 76, 108, 8)
         for r in all(gameplay.rockets) do
             r:draw()
         end

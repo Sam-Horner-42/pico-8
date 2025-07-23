@@ -1,4 +1,6 @@
-
+hit_function = function(type)
+    --TODO fix enemy hit logic so they don't die from a single hit
+end
 enemy={
     x = 64, --xpos
     y = -1, --ypos
@@ -7,8 +9,9 @@ enemy={
     w = 8,
     h = 8,
     explosion_timer = 5,
-    health = 1,
+    health = 3,
     sprite_id = 4,
+    hit_effect_timer=0,
     
 
     new=function(self,tbl)
@@ -42,17 +45,28 @@ enemy={
 				del(gameplay.enemies, self)   
 			end
 		end
+        if self.hit_effect_timer > 0 then
+            self.hit_effect_timer -= 1
+        end
     end,
 
     draw=function(self)
         local sprite = self.sprite_id
-        if self.state == "alive" then
-			spr(sprite, self.x, self.y) -- normal asteroid sprite
-		elseif self.state == "hit" then
-			spr(sprite+1, self.x, self.y) -- partially exploded
-		elseif self.state == "exploded" then
-			spr(sprite+2, self.x, self.y) -- fully exploded
-		end
+        
+        if self.state == "hit" then
+            sprite += 1 -- partially exploded
+        elseif self.state == "exploded" then
+            sprite += 1
+        end
+        spr(sprite, self.x, self.y) -- normal asteroid sprite
+       
+        if is_within_radius(gameplay.player.x, gameplay.player.y, self.x, self.y, 70) and self.state == "alive" then
+            local outline_clr = 8
+            if self.hit_effect_timer < 5 then
+                outline_clr = 7
+            end
+            outline_spr(sprite, self.x, self.y, 1, 1, false, false, 8)
+        end
     end,
 }
 
