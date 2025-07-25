@@ -1,10 +1,10 @@
 rocket = {
     x = 0,
     y = 0,
-    spd = -4,
-    w = 6,
-    h = 5,
-    life = 25,
+    spd = -3,
+    w = 5,
+    h = 4,
+    life = 80,
     state = "alive",
 
     new = function(self, tbl)
@@ -17,7 +17,7 @@ rocket = {
     
     destroy = function(self)
         if self.state == "alive" then
-            self.spd = 3.5
+            self.spd = 3
             self.state = "hit"
             self.explosion_x = self.x
             self.explosion_y = self.y
@@ -37,7 +37,7 @@ rocket = {
                 smoke = false
             }))
             self.life -= 1
-        elseif self.life <= 20 then
+        elseif self.life <= 40 then
             self:destroy()
         elseif self.life <= 0 then -- TODO fix explosion collisions with rockets
             del(rocket, self)

@@ -1,10 +1,8 @@
-hit_function = function(type)
-    --TODO fix enemy hit logic so they don't die from a single hit
-end
+
 enemy={
     x = 64, --xpos
     y = -1, --ypos
-    spd = 3 + flr(rnd(1)), --speed
+    spd = 1, --speed
     state = "alive",
     w = 8,
     h = 8,
@@ -60,12 +58,12 @@ enemy={
         end
         spr(sprite, self.x, self.y) -- normal asteroid sprite
        
-        if is_within_radius(gameplay.player.x, gameplay.player.y, self.x, self.y, 70) and self.state == "alive" then
+        if is_within_radius(gameplay.player.x, gameplay.player.y, self.x, self.y, 40) and self.state == "alive" then
             local outline_clr = 8
-            if self.hit_effect_timer < 5 then
+            if self.hit_effect_timer > 0 then
                 outline_clr = 7
             end
-            outline_spr(sprite, self.x, self.y, 1, 1, false, false, 8)
+            outline_spr(sprite, self.x, self.y, 1, 1, false, false, outline_clr)
         end
     end,
 }

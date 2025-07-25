@@ -11,7 +11,7 @@ gameplay = {
     pickups={},
     rockets={},
     init = function()
-        warningcolourtimer = 20
+        warningcolourtimer = 60
         gameplay.game_start_timer = 0
         enemy_spawn_timer = 0
         enemy_spawn_interval = 7
@@ -29,7 +29,7 @@ gameplay = {
             x = 58,
             y = 83,
             alive = true,
-            health = 50,
+            health = 100,
             score = 0,
             menu = false,
             health_bar_timer = 0,
@@ -86,7 +86,7 @@ gameplay = {
             elseif warningcolour == 8 then 
                 warningcolour = 7
             end
-            warningcolourtimer = 20
+            warningcolourtimer = 60
         end
         if player.weapon_timer > 0 then
             player.weapon_timer -= 1
@@ -98,15 +98,16 @@ gameplay = {
                 music(0,1200,7)
                 has_music_started = true
         end
-        if gameplay.game_start_timer >= 240 and enemy_spawn_timer >= enemy_spawn_interval then -- it has been long enough between enemy spawns
+        if gameplay.game_start_timer >= 480 and enemy_spawn_timer >= enemy_spawn_interval then -- it has been long enough between enemy spawns
 			enemy_spawn_timer=0
             add(enemies, enemy:new({
 				x = rnd(120),
 				y = -8,
-                sprite_id = 4
+                sprite_id = 4,
+                spd = flr(rnd(2)) + 1
 			}))
 		end
-        if gameplay.game_start_timer >= 240 and rnd() < 0.1 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
+        if gameplay.game_start_timer >= 480 and rnd() < 0.1 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
 			pickup_spawn_timer = 0
             add(gameplay.pickups, pickup:new({
                 x = rnd(118) + 2,
@@ -145,7 +146,7 @@ gameplay = {
             for enemy in all(enemies) do
                 if check_collision(projectile, enemy) and enemy.state == "alive" and enemy.y > 0 then
                     enemy.health -= 1
-                    enemy.hit_effect_timer = 10
+                    enemy.hit_effect_timer = 30
                     if enemy.health <= 0 then
                         gameplay.popup_x = enemy.x
                         gameplay.popup_y = enemy.y - 8
@@ -212,7 +213,7 @@ gameplay = {
                     player.health_bar_timer = 5
                     player.fire_cooldown = 10
                     player.invuln_timer = 10
-                    player.hit_effect_timer = 5
+                    player.hit_effect_timer = 60
                 elseif player.shield == true then
                     player.invuln_timer = 10 -- half a second of invulnerability
                     sfx(15, 3)
@@ -222,8 +223,8 @@ gameplay = {
         end
         
         if gameplay.popup_timer > 0 and gameplay.popup_x > 0 and gameplay.popup_x > 0 then
-            gameplay.popup_x -= 1
-            gameplay.popup_y -= 1
+            gameplay.popup_x -= 0.5
+            gameplay.popup_y -= 0.5
         end
        
     end,
@@ -283,27 +284,27 @@ gameplay = {
         end
         
         
-        if gameplay.popup_timer > 0 and gameplay.game_start_timer - gameplay.popup_timer < 15 then
+        if gameplay.popup_timer > 0 and gameplay.game_start_timer - gameplay.popup_timer < 120 then
             print("+100", gameplay.popup_x, gameplay.popup_y, 8)
             print("+100", gameplay.popup_x - 1, gameplay.popup_y, 7)
         end
-        
-        gameplay.player:draw() --display the player
         for projectile in all(projectiles) do 
             projectile:draw()
         end
+        gameplay.player:draw() --display the player
+        
         
         for laser in all(gameplay.laser_beams) do
             laser:draw()
         end
         --display player score
-        print("score "..gameplay.player.score, 75, 108, 15)
-        print("score "..gameplay.player.score, 76, 108, 8)
+        print("score "..gameplay.player.score, 5, 5, 15)
+        print("score "..gameplay.player.score, 6, 5, 8)
         for r in all(gameplay.rockets) do
             r:draw()
         end
         
-        if gameplay.game_start_timer <= 180 and gameplay.game_start_timer >= 60 then
+        if gameplay.game_start_timer <= 360 and gameplay.game_start_timer >= 120 then
             gameplay.draw_warning()
         end
     end,

@@ -1,9 +1,9 @@
 projectile = {
     x = 0,
     y = 0,
-    spd = -5,
-    w = 2,
-    h = 6,
+    spd = -3,
+    w = 8,
+    h = 8,
 
     new = function(self, tbl)
         tbl = tbl or {}
@@ -16,7 +16,8 @@ projectile = {
     end,
 
     draw = function(self)
-	    rectfill(self.x, self.y+6, self.x, self.y, 8) -- red bullet, length 2
+	    --rectfill(self.x, self.y+6, self.x, self.y, 8) -- red bullet, length 2
+        spr(20, self.x, self.y)
     end
 
 }

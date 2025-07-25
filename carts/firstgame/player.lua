@@ -18,10 +18,12 @@ end
 player = {
 	x = 58,
 	y = 83,
-	spd = 3,
+	spdx = 0,
+    spdy = 0,
+    sprite = 0,
     fire_cooldown = 0,
     score = 0,
-    health = 50,
+    health = 100,
     alive = true,
     w = 8,
     h = 8,
@@ -46,7 +48,7 @@ player = {
 	end,
     
 	update = function(self)
-        
+        self.sprite = 0
         if self.menu == false then
             if self.invuln_timer > 0 then
                 self.invuln_timer -= 1
@@ -64,12 +66,29 @@ player = {
             if self.rocket_timer > 0 then
                 self.rocket_timer -= 1
             end
-            
+            self.spdx =0 
+            self.spdy = 0
             -- movement
-            if btn(1) and self.x < 119 then self.x += self.spd end -- right
-            if btn(0) and self.x > 1 then self.x -= self.spd end -- left
-            if btn(3) and self.y < 119 then self.y += self.spd end -- down
-            if btn(2) and self.y > 2 then self.y -= self.spd end -- up
+            if btn(1) then -- right
+                self.spdx = 2 
+                self.sprite = 19
+            end 
+            if btn(0) then -- left
+                self.spdx = -2 
+                self.sprite = 18
+            end 
+            if btn(3) then self.spdy = 2 end -- down
+            if btn(2) then self.spdy = -2 end -- up
+
+            if self.x > 127 then
+                self.x = -5
+            end
+            if self.x < -5 then
+                self.x = 127
+            end
+
+            self.x=self.x+self.spdx
+            self.y=self.y+self.spdy
             if not btn (3) and not btn(2) then
                 add(thruster_particles, thruster_particle:new({
                         x = self.x + 4,
@@ -84,23 +103,23 @@ player = {
             
             
             -- damaged ship
-            if self.health <= 30 then
+            if self.health <= 90 then
                 add(thruster_particles, thruster_particle:new({
                     x = self.x + 6,
-                    y = self.y + 3,
-                    dx = rnd(2),
-                    dy = rnd() + 0.5,
-                    size = flr(rnd((2))) + 1 + 10/self.health,
-                    life = 5,
+                    y = self.y + 2,
+                    dx = rnd(1),
+                    dy = rnd(1) + 1,
+                    size = flr(rnd((1))) + 10/self.health,
+                    life = 7,
                     smoke = true
                 }))
                 add(thruster_particles, thruster_particle:new({
-                    x = self.x + 1,
-                    y = self.y + 3,
-                    dx = -rnd(2),
-                    dy = rnd() + 0.5,
-                    size = flr(rnd((2))) + 1 + 10/self.health,
-                    life = 5,
+                    x = self.x+1,
+                    y = self.y + 2,
+                    dx = -rnd(1),
+                    dy = rnd(1) + 1,
+                    size = flr(rnd((1))) + 10/self.health,
+                    life = 7,
                     smoke = true
                 }))    
             end
@@ -143,7 +162,7 @@ player = {
             -- For blaster, only fire if weapon_timer == 0
             -- For laser, fire as long as laser is equipped and timer > 0
                     if self.weapon == "blaster" and self.weapon_timer <= 0 then
-                        self.fire_cooldown = 4
+                        self.fire_cooldown = 12
                         self:shoot()
                     elseif self.weapon == "laser" and self.laser_timer > 0 then
                         self:shoot()
@@ -159,14 +178,14 @@ player = {
             sfx(0, 3)
             -- left gun
             add(projectiles, projectile:new({
-                x = self.x + 1,
-                y = self.y - 2
+                x = self.x-5,
+                y = self.y+1 
             }))
 
             -- right gun
             add(projectiles, projectile:new({
                 x = self.x + 5,
-                y = self.y - 2
+                y = self.y+1 
             }))
         elseif self.weapon == "laser" then
             -- only spawn laser if not already spawned
@@ -186,9 +205,7 @@ player = {
         
         
         if self.menu == true then 
-            spr(18, self.x-8, self.y+1)
             outline_spr(0, self.x, self.y, 1, 1, false, false, 2)
-            
         end
         if self.menu == false then  
             
@@ -197,9 +214,9 @@ player = {
                 spr(3, 37, 95)
             end
             if self.shield == true then 
-                local r = 9 + sin(time() * 1) * 1
-                circ(self.x + 3, self.y + 4, r, 2) -- purple glow
-                circ(self.x + 3, self.y + 4, r-1, 13) -- purple glow
+                local r = 9 + sin(time() * 1)
+                circ(self.x + 3, self.y + 5, r, 2) -- purple glow
+                circ(self.x + 3, self.y + 5, r-1, 13) -- purple glow
             end
             
             if btn(2) then
@@ -209,38 +226,33 @@ player = {
                 circfill(self.x + 3, self.y + 12, 1, 12)
                 circfill(self.x + 3, self.y + 10, 1, 7)
             end
+            for p in all(thruster_particles) do
+                p:draw()
+            end 
             -- red hit effect 
             if self.hit_effect_timer > 0 then
                 pal(6, 8)
                 pal(7, 8)
                 pal(12,8)
                 pal(13, 8)
-                pal(5, 8)
                 pal(9, 8)
                 pal(1, 8)
-                outline_spr(0, self.x, self.y, 1, 1, false, false, 2)
+                outline_spr(self.sprite, self.x, self.y, 1, 1, false, false, 2)
                 pal()
             else
-                outline_spr(0, self.x, self.y, 1, 1, false, false, 2)
+                outline_spr(self.sprite, self.x, self.y, 1, 1, false, false, 2)
+                end
             end
             
             -- reset background palette
             pal(0,129,1)
 
-            for p in all(thruster_particles) do
-                p:draw()
-            end 
-            pset(self.x+3, self.y+6, 5)
-            pset(self.x+1, self.y+1, 5)
-            pset(self.x+5, self.y+1, 5)
-            pset(self.x+1, self.y, 5)
-            pset(self.x+5, self.y, 5)
             
             
-            local hearts_x = 115
-            local hearts_y = 115
-            local heart_spacing = -10
-            local total_hearts = 5
+            local hearts_x = 120
+            local hearts_y = 120
+            local heart_spacing = -7
+            local total_hearts = 10
 
             -- calculate how many full hearts to show
             local full_hearts = flr(self.health / 10)
@@ -256,36 +268,29 @@ player = {
             
             --TODO move rockets and prompt to the left side after fixing score
             local rockets_x = 5
-            local rockets_y = 105
-            local rocket_spacing = 10
-            local total_slots = 5
+            local rockets_y = 110
 
             -- how many rockets the player has
             local full_rockets = self.rocket_count
 
-            for i = 0, total_slots - 1 do
-                local x = rockets_x + i * rocket_spacing
-                if i < full_rockets then
-                    spr(14, x, rockets_y) -- empty slot
-                else
-                    spr(15, x, rockets_y) -- slot with rocket
-                end
-            end
-                local bar_x = 7
-                local bar_y = 116
-                local bar_max_w = 43
-                local bar_h = 5
+            spr(14, rockets_x, rockets_y) -- slot with rocket
+            print("x", rockets_x + 9, rockets_y + 2, 7)
+            print(self.rocket_count, rockets_x + 13, rockets_y + 2, 7)
+
+
+            local bar_x = 7
+            local bar_y = 120
+            local bar_max_w = 43
+            local bar_h = 5
                 
             if self.laser_timer > 0 then
                 -- calculate width based on remaining laser_timer
                 local bar_w = flr((self.laser_timer / self.max_laser_timer) * bar_max_w)
                 -- foreground (red bar showing laser left)
                 rectfill(bar_x, bar_y, bar_x + bar_w, bar_y + bar_h, 8) -- red
-                
             end
             spr(16, bar_x-2, bar_y-1)
             spr(16, bar_x + bar_max_w-5, bar_y-1,  1, 1, true)
         end
         
-	end
 }

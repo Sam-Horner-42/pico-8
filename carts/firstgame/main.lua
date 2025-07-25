@@ -42,7 +42,7 @@ function start_menu()
 		x = 58,
 		y = 83,
 		alive = true,
-		health = 50,
+		health = 100,
 		score = 0,
 		menu = true,
 	})
@@ -135,7 +135,8 @@ function draw_game_over(score)
 	end
 end
 
-function _update() --every frame
+function _update60() --every frame
+	cls()
 	if grace_period > 0 then
 		grace_period -= 1
 	end
@@ -196,7 +197,7 @@ function _draw()
 	elseif game_state == "game_over" then
 		draw_game_over(gameplay.player.score)
 		if grace_period_started == false then
-			grace_period = 20
+			grace_period = 60
 			grace_period_started = true
 		end
 	end
