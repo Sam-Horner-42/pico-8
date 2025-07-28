@@ -5,7 +5,7 @@ thruster_particle = {
     dy = 0,
     life = 10, -- how long it lives
     clr = 12,
-    size = 2,
+    size = 3,
     smoke = false,
 
     new = function(self, tbl)
@@ -19,21 +19,13 @@ thruster_particle = {
             if self.size <= 4 and self.size >= 2 then
                 self.size -= 1
             end
-            if self.life >= 6 then
-                self.clr = 12
-            else  
-                self.clr = 7
-            end
-            
             if btn(1) and not btn(2) then -- right, prevents weird tail
                 self.life -= 2
                 self.dy += .4
-                self.dx = 0.5
             end 
             if btn(0) and not btn(2) then -- left, prevents weird tail
                 self.life -= 2 
                 self.dy += .4
-                self.dx = -0.5
             end 
             if btn(3) then self.life -= 1 end
         elseif self.smoke == true then
@@ -46,15 +38,15 @@ thruster_particle = {
                 self.clr = 7
             end
         end
+        if self.life <= 0 then
+            del(thruster_particles, self)
+        end
         self.life -= 1
         
-        
         self.x += self.dx
-        self.y += self.dy
-        
-        
-        
-       
+        if rnd(1) > 0.03 then
+            self.y += self.dy
+        end
     end,
 
     draw = function(self)

@@ -13,10 +13,10 @@ projectile = {
 
     update = function(self)
         self.y += self.spd
+        
     end,
 
     draw = function(self)
-	    --rectfill(self.x, self.y+6, self.x, self.y, 8) -- red bullet, length 2
         spr(20, self.x, self.y)
     end
 

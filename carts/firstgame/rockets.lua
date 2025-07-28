@@ -4,7 +4,7 @@ rocket = {
     spd = -3,
     w = 5,
     h = 4,
-    life = 80,
+    life = 30,
     state = "alive",
 
     new = function(self, tbl)
@@ -27,17 +27,8 @@ rocket = {
     
     update = function(self)
         if self.life > 0 and self.state == "alive" then
-            add(thruster_particles, thruster_particle:new({
-                x = self.x + 4,
-                y = self.y + 7,
-                dx = rnd(0.2) - 0.2,
-                dy = rnd(0.5) + 0.4,
-                life = 4,
-                size = 2,
-                smoke = false
-            }))
             self.life -= 1
-        elseif self.life <= 40 then
+        elseif self.life <= 15 then
             self:destroy()
         elseif self.life <= 0 then -- TODO fix explosion collisions with rockets
             del(rocket, self)
@@ -46,17 +37,17 @@ rocket = {
             p.x+=p.spdx
             p.y+=p.spdy
             p.scale-=.1
-            p.l-=.2
+            p.l-=.1
             p.c=flr(p.l)
             if p.l <= 1 then del(self.exps, p) end
-            for enemy in all(gameplay.enemies) do
-                if gameplay.check_collision(p, enemy) and enemy.state=="alive" then
-                    enemy.health -= 3 -- stronger hit?
+            for enemy in all(enemies) do
+                if check_collision(p, enemy) and enemy.state=="alive" then
+                    enemy_hit(enemy, explosion, 10)
                     if enemy.health <= 0 then
                         enemy.state = "hit"
                         enemy.explosion_timer = 5
-                        gameplay.popup_timer = gameplay.game_start_timer
-                        gameplay.player.score += 100
+                        popup_timer = game_start_timer
+                        player.score += 100
                     end
                 end
             end
@@ -70,7 +61,7 @@ rocket = {
                 x=x-20, -- makes the collision check offset for circle
                 y=y-20,
                 spdx = 1 - rnd(2),
-                spdy= 2 + rnd(2),
+                spdy= 3,
                 scale = 20,
                 l=5,
                 w=40,
@@ -81,7 +72,7 @@ rocket = {
     end,
     draw = function(self)
 	    if self.life > 0 and self.state == "alive" then
-            spr(13, self.x, self.y)
+            spr(10, self.x, self.y)
         end
         for p in all(self.exps) do
             circfill(p.x+20, p.y+20, p.scale, self.expclrs[p.c]) -- draw +20 because collision checks from 0,0 but we want to draw at origin of explosion
