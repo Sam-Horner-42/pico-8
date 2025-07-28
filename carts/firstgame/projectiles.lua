@@ -1,7 +1,7 @@
 projectile = {
     x = 0,
     y = 0,
-    spd = -3,
+    spd = -4,
     w = 8,
     h = 8,
 

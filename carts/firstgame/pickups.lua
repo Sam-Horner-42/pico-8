@@ -6,6 +6,9 @@ pickup={
     w = 8,
     h = 8,
     sprite_id = 9,
+    bx = 0,
+    by = 0,
+    count = 0, 
 
     new=function(self,tbl)
         tbl=tbl or {}
@@ -34,6 +37,15 @@ pickup={
                 if dist > 0 then 
                     self.x += ((dx / dist) * self.spd) * 1.2
                     self.y += ((dy / dist) * self.spd) * 1.2
+                    -- draw beam effect (sprite 31 used as example)
+                    local steps = flr(dist) / 10
+                    self.count = dist
+                    for i = 1, steps do
+                        self.bx = self.x + dx / i / 2
+                        self.by = self.y + dy / i / 2
+                        
+                    end
+                    
                 end
                 --TODO create link between player and items
             end
@@ -45,6 +57,9 @@ pickup={
     end,
 
     draw = function(self)
-		outline_spr(self.sprite_id, self.x, self.y, 1, 1, false, false, 12)
+        local clr = 10
+        if self.sprite_id >= 13 then clr = 12 end
+		outline_spr(self.sprite_id, self.x, self.y, 1, 1, false, false, clr)
+        spr(31, self.bx, self.by, 5)
     end,
 }

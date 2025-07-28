@@ -27,6 +27,8 @@ player = {
     flame = 22,
     radius = 0,
     gun = 29,
+    shield_rad = 0,
+    sfx_is_playing = false,
 
 	new = function(self, tbl)
 		tbl = tbl or {}
@@ -80,6 +82,10 @@ player = {
 
         self.x=self.x+self.spdx
         self.y=self.y+self.spdy
+
+        if self.shield == true then 
+            self.shield_rad = 11 + sin(time() * 1)
+        end
         if self.radius > 0 then
             self.radius -= 1
         else self.radius = 4   
@@ -151,36 +157,45 @@ player = {
         if self.laser_timer <= 0 then
             self.weapon = "blaster"
         end
+        if not btn(5) then 
+            sfx(0, -2)
+            self.sfx_is_playing = false 
+        end
         -- blasters and lasers
         if self.fire_cooldown == 0 then
             if btn(5) then 
         -- For blaster, only fire if weapon_timer == 0
         -- For laser, fire as long as laser is equipped and timer > 0
                 if self.weapon == "blaster" and self.weapon_timer <= 0 then
-                    self.fire_cooldown = 12
+                    self.fire_cooldown = 4
                     self:shoot()
                 elseif self.weapon == "laser" and self.laser_timer > 0 then
                     self:shoot()
                 end
+            
             end
         end 
 	end,
     
     -- draw bullets
     shoot = function(self)
+        
         if self.weapon == "blaster" then
-            sfx(0, 3)
+            if not self.sfx_is_playing then
+                sfx(0, 3)
+                self.sfx_is_playing = true
+            end
             
             -- left gun
             add(projectiles, projectile:new({
-                x = self.x-5,
-                y = self.y+1 
+                x = self.x-9,
+                y = self.y-1
             }))
 
             -- right gun
             add(projectiles, projectile:new({
-                x = self.x + 5,
-                y = self.y+1 
+                x = self.x + 7,
+                y = self.y-1 
             }))
             
             
@@ -197,10 +212,6 @@ player = {
     end,
     
 	draw = function(self)
-        
-        
-        
-        
         -- red hit effect 
         if self.hit_effect_timer > 0 then
             self.outline = 8
@@ -208,17 +219,16 @@ player = {
             self.outline = 2
         end
         if btn(5) and self.fire_cooldown > 8 then
-            circfill(self.x-2, self.y-1, self.radius, 7)
-            circfill(self.x+7, self.y-1, self.radius, 7)
+            circfill(self.x-6, self.y-1, self.radius, 7)
+            circfill(self.x+11, self.y-1, self.radius, 7)
         end
         spr(self.flame, self.x, self.y+6)
 
-        spr(self.gun, self.x+8, self.y)
+        spr(self.gun, self.x+7, self.y, 1, 1 , true)
         spr(self.gun, self.x-9, self.y)
         if self.shield == true then 
-            local r = 9 + sin(time() * 1)
-            circ(self.x + 3, self.y + 5, r, 3) -- purple glow
-            circ(self.x + 3, self.y + 5, r-1, 7) -- purple glow
+            circ(self.x + 3, self.y + 5, self.shield_rad, 9) -- purple glow
+            circ(self.x + 3, self.y + 5, self.shield_rad-2, 7) -- purple glow
         end
         outline_spr(self.sprite, self.x, self.y, 1, 1, false, false, self.outline)
         -- reset background palette
@@ -232,19 +242,17 @@ player = {
         end
         
         local hearts_x = 120
-        local hearts_y = 120
-        local heart_spacing = -7
 
         -- calculate how many full hearts to show
         local full_hearts = flr(self.health / 10)
 
         --display player health
         for i = 0, 9 do
-            local x = hearts_x + i * heart_spacing
+            local x = hearts_x + i * -7
             if i < full_hearts then
-                spr(1, x, hearts_y) -- full shield
+                spr(1, x, 120) -- full shield
             else
-                spr(2, x, hearts_y) -- broken shield
+                spr(2, x, 120) -- broken shield
             end
         end
         

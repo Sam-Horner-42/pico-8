@@ -34,6 +34,11 @@ function outline_spr(id, x, y, w, h, flip_x, flip_y, col)
 end
 -- handles pickups
 function pickup_function(spr, player)
+    if spr < 13 then
+        sfx(1, 3)
+    else
+        sfx(14,3)
+    end
     if spr == 9 then
         --logic for shields
         if player.shield == false then
@@ -114,7 +119,7 @@ function start_game()
 	enemy_spawn_timer = 0
 	enemy_spawn_interval = 7
 	pickup_spawn_timer = 0
-	pickup_spawn_interval = 120
+	pickup_spawn_interval = 240
 	warningcolour = 8
 	is_warning_sound_playing = false
 	has_music_started = false
@@ -292,7 +297,10 @@ function _update60() --every frame
             if player.alive and enemy.state == "alive" and check_collision(player, enemy) and player.invuln_timer == 0 then
                 enemy_hit(enemy, player, 10)
                 if player.shield == false then
-                    sfx(2, 3)
+                    if hit_sound_cooldown <= 0 then
+                        hit_sound_cooldown = 30
+                        sfx(2, 3)
+                    end
                     player.health -= 10
                     player.fire_cooldown = 10
                     player.invuln_timer = 10
@@ -328,7 +336,7 @@ function _update60() --every frame
             end
             
 			if player.alive and p.state == "alive" and check_collision(player, p) then
-                sfx(14, 3)
+                
                 pickup_function(p.sprite_id, player)
                 p.state = "hit"
             end
@@ -366,7 +374,7 @@ function _update60() --every frame
                 spd = flr(rnd(2)) + 1
 			}))
 		end
-        if game_start_timer >= 480 and rnd() < 0.1 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
+        if game_start_timer >= 480 and rnd() < 0.01 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
 			pickup_spawn_timer = 0
             add(pickups, pickup:new({
                 x = rnd(118) + 2,

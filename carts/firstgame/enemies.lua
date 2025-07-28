@@ -7,12 +7,16 @@ enemy={
     w = 7,
     h = 7,
     explosion_timer = 0,
-    health = 2,
+    health = 4,
     sprite = 4,
     hit_effect_timer = 0,
     is_hit = false,
     clr = 8,
     pickup_chance = 0,
+    trailx = 0, 
+    traily = 0,
+    trail_rad = 4,
+    trail_clr = 6,
     
 
     new=function(self,tbl)
@@ -27,10 +31,17 @@ enemy={
     
     update=function(self)
         self.y += self.spd -- only move if alive
+        
         if self.drift == 0 then
             self.x += self.drift_amount
         elseif self.drift == 1 then
             self.x -= self.drift_amount
+        end
+        
+        if self.clr > 6 then
+            self.clr -= 1
+        else 
+            self.clr = 8 
         end
         if self.state == "alive" then
             
@@ -50,12 +61,11 @@ enemy={
                 self.hit_effect_timer = 20
                 self.state = "alive"
             end
-            if hit_sound_cooldown == 0 then
-                sfx(1, 2)
-                hit_sound_cooldown = 5
-            end
+            
 		elseif self.state == "exploded" then
-            self.pickup_chance = flr(rnd(200))
+            if self.explosion_timer > 2 then
+                self.pickup_chance = flr(rnd(1000))
+            end
             self.spite = 6
                 if self.pickup_chance == 1 then
                     add(pickups, pickup:new({
@@ -92,8 +102,11 @@ enemy={
         else
             self.is_hit = false
         end
-        if self.hit_effect_timer > 0 and self.hit_effect_timer < 7 then
+        
+        if self.hit_effect_timer > 0 and self.hit_effect_timer < 4 then
             self.clr = 7
+        else 
+            self.clr = 8 
         end
         
     end,
