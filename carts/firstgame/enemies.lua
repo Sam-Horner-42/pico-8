@@ -58,14 +58,14 @@ enemy={
                 self.sprite = 5
                 self.state = "exploded"
             elseif self.hit_effect_timer == 0 then
-                self.hit_effect_timer = 20
+                self.hit_effect_timer = 15
                 self.state = "alive"
             end
             
 		elseif self.state == "exploded" then
-            if self.explosion_timer > 2 then
+            if self.explosion_timer == 0 then
                 self.pickup_chance = flr(rnd(1000))
-            end
+            
             self.spite = 6
                 if self.pickup_chance == 1 then
                     add(pickups, pickup:new({
@@ -86,8 +86,6 @@ enemy={
                         sprite_id = 15,
                         }))
                 end
-			if self.explosion_timer == 0 then
-                
 				del(enemies, self)   
 			end
 		end
@@ -103,7 +101,7 @@ enemy={
             self.is_hit = false
         end
         
-        if self.hit_effect_timer > 0 and self.hit_effect_timer < 4 then
+        if self.hit_effect_timer > 0 and self.hit_effect_timer < 8 then
             self.clr = 7
         else 
             self.clr = 8 
@@ -112,9 +110,10 @@ enemy={
     end,
 
     draw=function(self)
-        spr(self.sprite, self.x, self.y) -- normal asteroid sprite
-        if self.state == "hit" then
-            outline_spr(self.sprite, self.x, self.y, 1, 1, false, false, self.clr)
+        if self.hit_effect_timer > 0 then
+            circfill(self.x+3, self.y+3, 4, self.clr)
+        else 
+            spr(self.sprite, self.x, self.y) -- normal asteroid sprite
         end
     end,
 }

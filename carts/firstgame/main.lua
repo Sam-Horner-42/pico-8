@@ -37,7 +37,7 @@ function pickup_function(spr, player)
     if spr < 13 then
         sfx(1, 3)
     else
-        sfx(14,3)
+        sfx(14, 3)
     end
     if spr == 9 then
         --logic for shields
@@ -53,8 +53,8 @@ function pickup_function(spr, player)
         player.laser_timer = 120 -- 3 seconds of lasers
     elseif spr == 12 then
         --logic for health pickup
-        if player.health < 100 then
-            player.health += 10  
+        if player.health < 10 then
+            player.health += 1  
         end 
     elseif spr ==  13 then
         player.score += 500
@@ -105,14 +105,13 @@ function start_game()
 	game_state = "play"
 	-- rebuild the tables for the main gameplay
 	stars={}
-    thruster_particles={}
     enemies={}
     pickups={}
     rockets={}
 	projectiles = {}
 	laser_beams = {}
-	thruster_particles = {}
-
+    player.health = 10
+    player.score = 0
 	-- define variables for use in gameplay
 	warningcolourtimer = 60
 	game_start_timer = 0
@@ -229,7 +228,6 @@ function enemy_hit(enemy, type, dmg)
 	enemy.state = "hit"
     if enemy.health <= 0 and type != player then
         player.score+=100
-
     end
 	enemy.is_hit = true
 end
@@ -241,7 +239,6 @@ function _init()
 	grace_period = 0
 	game_over_sound_playing = false
 	grace_period_started = false
-	thruster_particles={}
 	start_menu()
 end
 
@@ -278,13 +275,8 @@ function _update60() --every frame
         
         for p in all(projectiles) do
             p:update()
-            if p.y > 128 then
-                deli(projectiles, p)
-            end
         end
-        for p in all(thruster_particles) do
-            p:update()
-        end
+        
         for laser in all(laser_beams) do
             laser:update(player)
         end
@@ -301,7 +293,7 @@ function _update60() --every frame
                         hit_sound_cooldown = 30
                         sfx(2, 3)
                     end
-                    player.health -= 10
+                    player.health -= 1
                     player.fire_cooldown = 10
                     player.invuln_timer = 10
                     player.hit_effect_timer = 20
@@ -312,7 +304,7 @@ function _update60() --every frame
                 end
             end
 			for projectile in all(projectiles) do
-				if check_collision(projectile, enemy) and enemy.state == "alive" and enemy.y > 0 then
+				if check_collision(projectile, enemy) and enemy.y > 0 then
 					enemy_hit(enemy, projectile, 1)
 					del(projectiles, projectile)
 				end
@@ -430,9 +422,7 @@ function _draw()
         for projectile in all(projectiles) do 
             projectile:draw()
         end
-		for p in all(thruster_particles) do
-			p:draw()
-		end 
+		
         player:draw() --display the player
         
         for laser in all(laser_beams) do

@@ -8,10 +8,10 @@ player = {
     sprite = 0,
     fire_cooldown = 0,
     score = 0,
-    health = 100,
+    health = 10,
     alive = true,
-    w = 7,
-    h = 7,
+    w = 8,
+    h = 8,
     is_thrusting = false,
     shield = false,
     invuln_timer = 0,
@@ -70,8 +70,12 @@ player = {
             self.spdx = -2 
             self.sprite = 18
         end 
-        if btn(3) then self.spdy = 2 end -- down
-        if btn(2) then self.spdy = -2 end -- up
+        if btn(3) and self.y < 120 then
+            self.spdy = 2 
+        end -- down
+        if btn(2) and self.y > 10 then 
+            self.spdy = -2 
+        end -- up
 
         if self.x > 127 then
             self.x = -5
@@ -88,30 +92,14 @@ player = {
         end
         if self.radius > 0 then
             self.radius -= 1
-        else self.radius = 4   
+        else 
+            self.radius = 4   
         end
         -- damaged ship
-        if self.health <= 50 then
-            add(thruster_particles, thruster_particle:new({
-                x = self.x + 6,
-                y = self.y + 2,
-                dx = rnd(1),
-                dy = rnd(1),
-                size = flr(rnd((1))) + 1 +  10/self.health,
-                life = 7,
-                smoke = true
-            }))
-            add(thruster_particles, thruster_particle:new({
-                x = self.x+1,
-                y = self.y + 2,
-                dx = -rnd(1),
-                dy = rnd(1),
-                size = flr(rnd((1))) + 1 + 10/self.health,
-                life = 7,
-                smoke = true
-            }))    
+        if self.health <= 5 then
+            -- TODO recreate smoke effects  
         end
-        if self.health <= 30 and not btn(1) and not btn(0) then
+        if self.health <= 3 and not btn(1) and not btn(0) then
             self.sprite = 21
         end
         self.gun = 28
@@ -164,15 +152,7 @@ player = {
         -- blasters and lasers
         if self.fire_cooldown == 0 then
             if btn(5) then 
-        -- For blaster, only fire if weapon_timer == 0
-        -- For laser, fire as long as laser is equipped and timer > 0
-                if self.weapon == "blaster" and self.weapon_timer <= 0 then
-                    self.fire_cooldown = 4
-                    self:shoot()
-                elseif self.weapon == "laser" and self.laser_timer > 0 then
-                    self:shoot()
-                end
-            
+                self:shoot()
             end
         end 
 	end,
@@ -180,11 +160,8 @@ player = {
     -- draw bullets
     shoot = function(self)
         
-        if self.weapon == "blaster" then
-            if not self.sfx_is_playing then
-                sfx(0, 3)
-                self.sfx_is_playing = true
-            end
+        if self.weapon == "blaster" and self.weapon_timer <= 0 then
+            sfx(0, 3)
             
             -- left gun
             add(projectiles, projectile:new({
@@ -198,8 +175,8 @@ player = {
                 y = self.y-1 
             }))
             
-            
-        elseif self.weapon == "laser" then
+            self.weapon_timer = 6
+        elseif self.weapon == "laser" and self.laser_timer > 0 then
             -- only spawn laser if not already spawned
             if self.laser_timer > 0 and btn(5) and self.hit_effect_timer <= 0 and self.invuln_timer <= 0 then
                 if #laser_beams == 0 then
@@ -218,14 +195,15 @@ player = {
         else
             self.outline = 2
         end
-        if btn(5) and self.fire_cooldown > 8 then
-            circfill(self.x-6, self.y-1, self.radius, 7)
-            circfill(self.x+11, self.y-1, self.radius, 7)
-        end
+        
         spr(self.flame, self.x, self.y+6)
 
-        spr(self.gun, self.x+7, self.y, 1, 1 , true)
+        spr(self.gun, self.x+8, self.y, 1, 1 , true)
         spr(self.gun, self.x-9, self.y)
+        if btn(5) and self.fire_cooldown > 0 then
+            circfill(self.x-6, self.y-2, self.radius, 7)
+            circfill(self.x+11, self.y-2, self.radius, 7)
+        end
         if self.shield == true then 
             circ(self.x + 3, self.y + 5, self.shield_rad, 9) -- purple glow
             circ(self.x + 3, self.y + 5, self.shield_rad-2, 7) -- purple glow
@@ -240,20 +218,14 @@ player = {
             circfill(self.x + 3, self.y + 12, 1, 12)
             circfill(self.x + 3, self.y + 10, 1, 7)
         end
-        
-        local hearts_x = 120
-
-        -- calculate how many full hearts to show
-        local full_hearts = flr(self.health / 10)
 
         --display player health
-        for i = 0, 9 do
-            local x = hearts_x + i * -7
-            if i < full_hearts then
-                spr(1, x, 120) -- full shield
-            else
-                spr(2, x, 120) -- broken shield
+        for i = 1, player.health do
+            local health_spr = 1 -- full shield
+            if i > player.health then
+                health_spr = 2 -- broken shield
             end
+            spr(health_spr, (125 + i * -8), 2) -- full shield
         end
         
         local rockets_x = 6
