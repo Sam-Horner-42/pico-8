@@ -110,13 +110,14 @@ function start_game()
     rockets={}
 	projectiles = {}
 	laser_beams = {}
-    player.health = 10
+    player.health = 3
     player.score = 0
+    player.alive=true
 	-- define variables for use in gameplay
 	warningcolourtimer = 60
 	game_start_timer = 0
 	enemy_spawn_timer = 0
-	enemy_spawn_interval = 7
+	enemy_spawn_interval = 10
 	pickup_spawn_timer = 0
 	pickup_spawn_interval = 240
 	warningcolour = 8
@@ -156,10 +157,10 @@ end
 function print_3d_centered(str, y, shadow_col, text_col, zoffset)
     local text_width = #str * 4
     local x = 64 - (text_width / 2)
+    -- shadow
+    print(str, x, y+1, shadow_col)
     -- foreground
 	print(str, x, y, text_col)
-    -- shadow
-    print(str, x + 1, y, shadow_col)
 end
 
 function print_3d_centered_parts(parts, y, shadow_offset, shadow_col)
@@ -174,7 +175,7 @@ function print_3d_centered_parts(parts, y, shadow_offset, shadow_col)
     -- draw each part
     for part in all(parts) do
         -- shadow
-        print(part.text, x + shadow_offset, y, shadow_col)
+        print(part.text, x, y+1, shadow_col)
         -- foreground
         print(part.text, x, y, part.col)
         x += #part.text * 4
@@ -182,17 +183,17 @@ function print_3d_centered_parts(parts, y, shadow_offset, shadow_col)
 end
 
 function draw_menu()
-	rectfill(32,42,94,72, 7)
-	circfill(36,57,15, 7)
-	circfill(90,57,15, 7)
+	circfill(33,57,15, 8)
+	circfill(92,57,15, 8)
+    rectfill(31,42,94,72, 8)
 	rectfill(28,46,98,68, 2)
-	print_3d_centered("goober shooter", 50, 10, 3, -1)
+	print_3d_centered("[blasteroids]", 50, 12, 7, -1)
 	
 	print_3d_centered_parts({
-    {text="press ", col=10},
+    {text="PRESS ", col=7},
     {text="x", col=xcolour},
-    {text=" to start", col=10}
-	}, 60, -1, 3)
+    {text=" TO START", col=7}
+	}, 60, -1, 12)
 	if btnp(5) then --Z
 		start_game()
 		game_state = "play"
@@ -205,8 +206,8 @@ function draw_game_over(score)
 		game_over_sound_playing = true
 	end
 	
-	print_3d_centered("game over!", 50, 8, 1, -1)
-	print_3d_centered("your score:" .. score, 60, 8, 1, -1)
+	print_3d_centered("game over!", 50, 8, 7, -1)
+	print_3d_centered("YOUR SCORE:" .. score, 60, 8, 7, -1)
 	print_3d_centered_parts({
     {text="press ", col=9},
     {text="x", col=xcolour},
@@ -228,6 +229,9 @@ function enemy_hit(enemy, type, dmg)
 	enemy.state = "hit"
     if enemy.health <= 0 and type != player then
         player.score+=100
+        popup_timer = 30
+        popup_x=enemy.x
+        popup_y=enemy.y
     end
 	enemy.is_hit = true
 end
@@ -286,7 +290,7 @@ function _update60() --every frame
         -- weapon collisions
 		for enemy in all(enemies) do
 			enemy:update()
-            if player.alive and enemy.state == "alive" and check_collision(player, enemy) and player.invuln_timer == 0 then
+            if player.alive and enemy.state != "exploded" and check_collision(player, enemy) and player.invuln_timer == 0 then
                 enemy_hit(enemy, player, 10)
                 if player.shield == false then
                     if hit_sound_cooldown <= 0 then
@@ -311,7 +315,7 @@ function _update60() --every frame
 			end
 			for laser in all(laser_beams) do
 				if check_collision(laser, enemy) and enemy.state == "alive" then
-					enemy_hit(enemy, laser, 5)
+					enemy_hit(enemy, laser, 10)
 				end
 			end
 			for rocket in all(rockets) do
@@ -376,9 +380,8 @@ function _update60() --every frame
         end
         
 		-- TODO add second wave
-        if popup_timer > 0 and popup_x > 0 and popup_x > 0 then
-            popup_x -= 0.5
-            popup_y -= 0.5
+        if popup_timer > 0 then
+            popup_timer -= 1
         end
 
 		enemy_spawn_timer += 1 --increment spawn timer
@@ -402,8 +405,10 @@ function _draw()
 	if game_state == "main_menu" then
 		
 		draw_menu()
-        spr(22, 58, 88)
+        
 		outline_spr(0, 58, 82, 1, 1, false, false, 2)
+        spr(28, 58+8, 82, 1, 1 , true)
+        spr(28, 58-9, 82)
         
 		
 	elseif game_state == "play" then
@@ -415,22 +420,25 @@ function _draw()
             enemy:draw() --spawn enemies
         end
         
-        if popup_timer > 0 and game_start_timer - popup_timer < 120 then
+        if popup_timer > 0 then
             print("+100", popup_x, popup_y, 8)
             print("+100", popup_x - 1, popup_y, 7)
         end
-        for projectile in all(projectiles) do 
-            projectile:draw()
-        end
+        
 		
         player:draw() --display the player
         
+        for projectile in all(projectiles) do 
+            projectile:draw()
+        end
+
         for laser in all(laser_beams) do
             laser:draw()
         end
         --display player score
-        print("score "..player.score, 5, 5, 15)
-        print("score "..player.score, 6, 5, 8)
+        
+        print("score "..player.score, 5, 5, 8)
+        
         for r in all(rockets) do
             r:draw()
         end

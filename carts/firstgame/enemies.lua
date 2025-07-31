@@ -34,8 +34,17 @@ enemy={
         
         if self.drift == 0 then
             self.x += self.drift_amount
+            if self.x > 128 then
+                del(enemies, self) --delete enemies
+            end
         elseif self.drift == 1 then
             self.x -= self.drift_amount
+            if self.x < 0 then
+                del(enemies, self) --delete enemies
+            end
+        end
+        if self.y > 128 then
+            del(enemies, self) --delete enemies
         end
         
         if self.clr > 6 then
@@ -50,9 +59,7 @@ enemy={
                 if self.explosion_timer == 0 then
                     self.explosion_timer = 15 
                 end
-                popup_x = enemy.x
-                popup_y = enemy.y - 8
-                popup_timer = game_start_timer
+                
                 self.spd = -0.5
                 self.drift = 3
                 self.sprite = 5
@@ -89,9 +96,8 @@ enemy={
 				del(enemies, self)   
 			end
 		end
-        if self.y > 128 then
-            del(enemies, self) --delete enemies
-        end
+        
+        
         if self.explosion_timer > 0 then
             self.explosion_timer -= 1
         end

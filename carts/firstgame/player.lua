@@ -8,7 +8,7 @@ player = {
     sprite = 0,
     fire_cooldown = 0,
     score = 0,
-    health = 10,
+    health = 3,
     alive = true,
     w = 8,
     h = 8,
@@ -29,6 +29,7 @@ player = {
     gun = 29,
     shield_rad = 0,
     sfx_is_playing = false,
+    muzzleclr = 12,
 
 	new = function(self, tbl)
 		tbl = tbl or {}
@@ -91,15 +92,20 @@ player = {
             self.shield_rad = 11 + sin(time() * 1)
         end
         if self.radius > 0 then
-            self.radius -= 1
+            self.radius -= 0.3
+            if self.radius > 3 then
+                self.muzzleclr = 7
+            else
+                self.muzzleclr = 12
+            end
         else 
-            self.radius = 4   
+            self.radius = 4
         end
         -- damaged ship
         if self.health <= 5 then
             -- TODO recreate smoke effects  
         end
-        if self.health <= 3 and not btn(1) and not btn(0) then
+        if self.health < 2 and not btn(1) and not btn(0) then
             self.sprite = 21
         end
         self.gun = 28
@@ -198,16 +204,21 @@ player = {
         
         spr(self.flame, self.x, self.y+6)
 
+        
+
         spr(self.gun, self.x+8, self.y, 1, 1 , true)
         spr(self.gun, self.x-9, self.y)
-        if btn(5) and self.fire_cooldown > 0 then
-            circfill(self.x-6, self.y-2, self.radius, 7)
-            circfill(self.x+11, self.y-2, self.radius, 7)
+
+        if btn(5) then
+            circfill(self.x-5, self.y+1, self.radius, self.muzzleclr)
+            circfill(self.x+11, self.y+1, self.radius, self.muzzleclr)
         end
+
         if self.shield == true then 
             circ(self.x + 3, self.y + 5, self.shield_rad, 9) -- purple glow
             circ(self.x + 3, self.y + 5, self.shield_rad-2, 7) -- purple glow
         end
+
         outline_spr(self.sprite, self.x, self.y, 1, 1, false, false, self.outline)
         -- reset background palette
         pal(0,129,1)
@@ -219,13 +230,13 @@ player = {
             circfill(self.x + 3, self.y + 10, 1, 7)
         end
 
-        --display player health
-        for i = 1, player.health do
-            local health_spr = 1 -- full shield
-            if i > player.health then
-                health_spr = 2 -- broken shield
+        -- display player health
+        for i = 1, 3 do -- player max health
+            local health_spr = 2 -- broken heart by default
+            if i <= self.health then
+                health_spr = 1 -- full heart
             end
-            spr(health_spr, (125 + i * -8), 2) -- full shield
+            spr(health_spr, 125 - (i * 8), 4)
         end
         
         local rockets_x = 6
