@@ -39,7 +39,7 @@ enemy={
             end
         elseif self.drift == 1 then
             self.x -= self.drift_amount
-            if self.x < 0 then
+            if self.x < 8 then
                 del(enemies, self) --delete enemies
             end
         end
