@@ -210,7 +210,7 @@ function draw_game_over(score)
 	print_3d_centered("YOUR SCORE:" .. score, 60, 8, 7, -1)
 	print_3d_centered_parts({
     {text="press ", col=9},
-    {text="x", col=xcolour},
+    {text="z", col=xcolour},
     {text=" to restart", col=9}
 	}, 70, -1, 1)
 	if grace_period_started == true and grace_period <= 0 then
@@ -219,7 +219,7 @@ function draw_game_over(score)
 		end
 	end
 	
-	if grace_period <= 0 and btnp(5) then --Z
+	if grace_period <= 0 and btnp(4) then --Z
 		start_game()
 	end
 end
@@ -251,6 +251,8 @@ function _update60() --every frame
     -- TODO add asteroid tails
     -- TODO add weapon/ability swapping
     cls()
+    game_start_timer = flr(time()) -- increment game timer
+
 	for star in all(stars) do
 		star:update() 
 	end
@@ -284,6 +286,7 @@ function _update60() --every frame
         for laser in all(laser_beams) do
             laser:update(player)
         end
+
         for r in all(rockets) do
             r:update()
         end
@@ -327,7 +330,7 @@ function _update60() --every frame
         
         for p in all(pickups) do
             p:update()
-            if p.y > 128 then
+            if p.y > 128 or p.x < 4 or p.x > 128 then
                 deli(pickups, p)
             end
             
@@ -355,14 +358,14 @@ function _update60() --every frame
             player.weapon_timer -= 1
         end
         --wait 1 second before startinng the music
-        if game_start_timer >= 20 and not has_music_started then 
+        if game_start_timer >= 1 and not has_music_started then 
             sfx(-1, 2)
             music(-1)
             music(0,1200,7)
             has_music_started = true
         end
-        if game_start_timer >= 480 and enemy_spawn_timer >= enemy_spawn_interval then -- it has been long enough between enemy spawns
-			enemy_spawn_timer=0
+        if game_start_timer >= 6 and enemy_spawn_timer >= enemy_spawn_interval then -- it has been long enough between enemy spawns
+			enemy_spawn_timer = 0
             add(enemies, enemy:new({
 				x = rnd(120),
 				y = -8,
@@ -370,7 +373,7 @@ function _update60() --every frame
                 spd = flr(rnd(2)) + 1
 			}))
 		end
-        if game_start_timer >= 480 and rnd() < 0.01 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
+        if game_start_timer >= 6 and rnd() < 0.01 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
 			pickup_spawn_timer = 0
             add(pickups, pickup:new({
                 x = rnd(118) + 2,
@@ -388,7 +391,7 @@ function _update60() --every frame
         
         pickup_spawn_timer += 1 -- increment pickup timer
         
-        game_start_timer += 1 -- increment game timer
+        
         
 	elseif game_state == "game_over" then
 		music(-1)
@@ -443,7 +446,7 @@ function _draw()
             r:draw()
         end
         
-        if game_start_timer <= 360 and game_start_timer >= 120 then
+        if game_start_timer <= 5 and game_start_timer >= 2 then
             draw_warning()
         end
 		
