@@ -1,24 +1,19 @@
 
 enemy={
-    x = 64, --xpos
-    y = -1, --ypos
+    x = 64, y = -1, -- position
     spd = 1, --speed
-    state = "alive",
-    w = 7,
-    h = 7,
+    
+    w = 7, h = 7,
+
+    -- state and visuals
+    state = "alive", -- "alive" | "hit" | "exploded"
     explosion_timer = 0,
     health = 4,
     sprite = 4,
     hit_effect_timer = 0,
-    is_hit = false,
     clr = 8,
     pickup_chance = 0,
-    trailx = 0, 
-    traily = 0,
-    trail_rad = 4,
-    trail_clr = 6,
     
-
     new=function(self,tbl)
         tbl=tbl or {}
         tbl.drift = tbl.drift or flr(rnd(2)) -- whether the asteroid drifts (0 or 1)
@@ -34,24 +29,20 @@ enemy={
         
         if self.drift == 0 then
             self.x += self.drift_amount
-            if self.x > 128 then
-                del(enemies, self) --delete enemies
-            end
+            if self.x > 128 then del(enemies, self) end --delete enemies
         elseif self.drift == 1 then
             self.x -= self.drift_amount
-            if self.x < 8 then
-                del(enemies, self) --delete enemies
-            end
+            if self.x < 8 then del(enemies, self) end --delete enemies
         end
-        if self.y > 128 then
-            del(enemies, self) --delete enemies
-        end
+        if self.y > 128 then del(enemies, self) end --delete enemies
         
         if self.clr > 6 then
             self.clr -= 1
         else 
             self.clr = 8 
         end
+
+        -- state machine
         if self.state == "alive" then
             
 		elseif self.state == "hit" then
@@ -71,46 +62,28 @@ enemy={
             
 		elseif self.state == "exploded" then
             if self.explosion_timer == 0 then
-                self.pickup_chance = flr(rnd(1000))
-            
-            self.spite = 6
-                if self.pickup_chance == 1 then
-                    add(pickups, pickup:new({
-                        x = self.x,
-                        y = self.y,
-                        sprite_id = 13,
-                        }))
-                elseif self.pickup_chance <= 4 then
-                    add(pickups, pickup:new({
-                        x = self.x,
-                        y = self.y,
-                        sprite_id = 14,
-                        }))
-                elseif self.pickup_chance <= 10 then
-                    add(pickups, pickup:new({
-                        x = self.x,
-                        y = self.y,
-                        sprite_id = 15,
-                        }))
+                -- final frame: maybe drop a pickup and remove self
+                local r = flr(rnd(100))
+                self.sprite = 6
+                if     r == 1  then add(pickups, pickup:new({x=self.x, y=self.y, sprite_id=13}))
+                elseif r <= 4  then add(pickups, pickup:new({x=self.x, y=self.y, sprite_id=14}))
+                elseif r <= 10 then add(pickups, pickup:new({x=self.x, y=self.y, sprite_id=15}))
                 end
-				del(enemies, self)   
+                del(enemies, self)
+                return  
 			end
 		end
         
-        
-        if self.explosion_timer > 0 then
-            self.explosion_timer -= 1
-        end
-        if self.hit_effect_timer > 0 then
-            self.hit_effect_timer -= 1
-        else
+        self.explosion_timer = decrement_timer(self.explosion_timer)
+        self.hit_effect_timer = decrement_timer(self.hit_effect_timer)
+        if self.hit_effect_timer <= 0 then
             self.is_hit = false
-        end
-        
-        if self.hit_effect_timer > 0 and self.hit_effect_timer < 8 then
-            self.clr = 7
-        else 
-            self.clr = 8 
+        else
+            if self.hit_effect_timer < 8 then
+                self.clr = 7
+            else 
+                self.clr = 8 
+            end
         end
         
     end,

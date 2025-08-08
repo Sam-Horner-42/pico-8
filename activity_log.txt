@@ -767,4 +767,8 @@
  rri..i.....ii.....rrrrii.ii..i.rrrrrri......rrrii.irrrr_ri........irrrii.g.rr_ii
  irr____r_________rririiri.........rii....rrr_i.........rrii......rr_rr_riig.gii........ii
 2025-08-08 17:52:33 C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8
+ rrrrrrrrcssstrri.........ri.........tccccccccc.........rri..ii........rr_rrrrrrr
+ icgsmsssss.........rrr_r___rrrri.........rr_________ii......i.........ii......ri
+ .........ri.........rr_________iccccccc..ccccccccc.........ri.........rrrrriirrr
+ rrri.........irrrrrri.........r_irrr_________r__r_r____rri.rrrgssssrssssttsissrs
  

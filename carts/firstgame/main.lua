@@ -1,27 +1,55 @@
+-- helper functions ------------------------
 function is_within_radius(x1, y1, x2, y2, r)
     local dx = x2 - x1
     local dy = y2 - y1
     return dx*dx + dy*dy <= r*r
 end
-function print_centered(str, y, text_col, zoffset)
-    local text_width = #str * 4
-    local x = 64 - (text_width / 2)
-    -- foreground
+
+function decrement_timer(x)
+  if x > 0 then return x - 1 end
+  return 0
+end
+
+function print_centered(str, y, text_col)
+    local x = 64 - (#str * 4 / 2)
     print(str, x, y, text_col)
+end
+
+function print_3d_centered(str, y, shadow_col, text_col)
+    local x = 64 - (#str * 4 / 2)
+    -- shadow
+    print(str, x, y+1, shadow_col)
+    -- foreground
+	print(str, x, y, text_col)
+end
+
+function print_3d_centered_parts(parts, y, shadow_col)
+    -- calculate total width
+    local total_chars = 0
+    for part in all(parts) do total_chars += #part.text end
+    local x = 64 - (total_chars * 4 / 2)
+
+    -- draw each part
+    for part in all(parts) do
+        -- shadow
+        print(part.text, x, y+1, shadow_col)
+        -- foreground
+        print(part.text, x, y, part.col)
+        x += #part.text * 4
+    end
 end
 
 -- warn the player about asteroids
 function draw_warning()
-    print_centered("! warning !", 50,  warningcolour, -1)
-    print_centered("! asteroid field incoming !", 60,  warningcolour, -1)
+    print_centered("! warning !", 50,  warningcolour)
+    print_centered("! asteroid field incoming !", 60,  warningcolour)
 end
+
 --outline sprites
 function outline_spr(id, x, y, w, h, flip_x, flip_y, col)
     -- remap all colors to outline color
     pal()
-    for c = 1, 15 do
-        pal(c, col)
-    end
+    for c = 1, 15 do pal(c, col) end
     -- draw sprite 4 times around offsets
     spr(id, x + 1, y, w, h, flip_x, flip_y)
     spr(id, x - 1, y, w, h, flip_x, flip_y)
@@ -32,18 +60,13 @@ function outline_spr(id, x, y, w, h, flip_x, flip_y, col)
     -- draw normal sprite
     spr(id, x, y, w, h, flip_x, flip_y)
 end
--- handles pickups
+
+-- pickups --------------------------------------
 function pickup_function(spr, player)
-    if spr < 13 then
-        sfx(1, 3)
-    else
-        sfx(14, 3)
-    end
+    if spr < 13 then sfx(1, 3) else sfx(14, 3) end
     if spr == 9 then
         --logic for shields
-        if player.shield == false then
-            player.shield = true
-        end
+        if not player.shield then player.shield = true end
     elseif spr == 10 then
         --logic for missiles
         player.rocket_count += 1
@@ -53,21 +76,19 @@ function pickup_function(spr, player)
         player.laser_timer = 120 -- 3 seconds of lasers
     elseif spr == 12 then
         --logic for health pickup
-        if player.health < 10 then
-            player.health += 1  
-        end 
-    elseif spr ==  13 then
-        player.score += 500
-    end
+        if player.health < 3 then player.health += 1 end 
+    elseif spr ==  13 then player.score += 500 end -- coins
 end
 
---checks if two objects, a and b are colliding, need to change the constants to variables for future enemies
+-- collisions -------------------
 function check_collision(a,b)
 	return a.x < b.x + b.w and
 		a.x + a.w > b.x and
 		a.y < b.y + b.h and
 		a.y + a.h > b.y
 end
+
+-- UI ---------------------------
 
 -- displays the main menu
 function start_menu()
@@ -100,9 +121,9 @@ function start_menu()
 end
 
 function start_game()
-	sfx(-1)
-	music(-1)
+	sfx(-1) music(-1)
 	game_state = "play"
+
 	-- rebuild the tables for the main gameplay
 	stars={}
     enemies={}
@@ -110,9 +131,11 @@ function start_game()
     rockets={}
 	projectiles = {}
 	laser_beams = {}
+
     player.health = 3
     player.score = 0
     player.alive=true
+
 	-- define variables for use in gameplay
 	warningcolourtimer = 60
 	game_start_timer = 0
@@ -127,7 +150,6 @@ function start_game()
 	popup_x = 0
 	popup_y = 0
 	popup_timer = 0
-	-- put the player on the screen
 	
 	for i=1,60 do 
 		local star_type=rnd({star})
@@ -147,53 +169,18 @@ function start_game()
 end
 
 
-function print_centered(str, y, text_col, zoffset)
-    local text_width = #str * 4
-    local x = 64 - (text_width / 2)
-    -- foreground
-	print(str, x, y, text_col)
-end
-
-function print_3d_centered(str, y, shadow_col, text_col, zoffset)
-    local text_width = #str * 4
-    local x = 64 - (text_width / 2)
-    -- shadow
-    print(str, x, y+1, shadow_col)
-    -- foreground
-	print(str, x, y, text_col)
-end
-
-function print_3d_centered_parts(parts, y, shadow_offset, shadow_col)
-    -- calculate total width
-    local total_chars = 0
-    for part in all(parts) do
-        total_chars += #part.text
-    end
-    local total_width = total_chars * 4
-    local x = 64 - (total_width / 2)
-
-    -- draw each part
-    for part in all(parts) do
-        -- shadow
-        print(part.text, x, y+1, shadow_col)
-        -- foreground
-        print(part.text, x, y, part.col)
-        x += #part.text * 4
-    end
-end
-
 function draw_menu()
 	circfill(33,57,15, 8)
 	circfill(92,57,15, 8)
     rectfill(31,42,94,72, 8)
 	rectfill(28,46,98,68, 2)
-	print_3d_centered("[blasteroids]", 50, 12, 7, -1)
+	print_3d_centered("[blasteroids]", 50, 12, 7)
 	
 	print_3d_centered_parts({
     {text="PRESS ", col=7},
     {text="x", col=xcolour},
     {text=" TO START", col=7}
-	}, 60, -1, 12)
+	}, 60, 1)
 	if btnp(5) then --Z
 		start_game()
 		game_state = "play"
@@ -206,8 +193,8 @@ function draw_game_over(score)
 		game_over_sound_playing = true
 	end
 	
-	print_3d_centered("game over!", 50, 8, 7, -1)
-	print_3d_centered("YOUR SCORE:" .. score, 60, 8, 7, -1)
+	print_3d_centered("game over!", 50, 8, 7)
+	print_3d_centered("YOUR SCORE:" .. score, 60, 8, 7)
 	print_3d_centered_parts({
     {text="press ", col=9},
     {text="z", col=xcolour},
@@ -224,21 +211,25 @@ function draw_game_over(score)
 	end
 end
 
-function enemy_hit(enemy, type, dmg)
+function enemy_hit(enemy, src, dmg)
 	enemy.health -= dmg
 	enemy.state = "hit"
-    if enemy.health <= 0 and type != player then
+    if enemy.health <= 0 and src ~= player then
         player.score+=100
         popup_timer = 30
         popup_x=enemy.x
         popup_y=enemy.y
     end
-	enemy.is_hit = true
 end
+
+
+
 function _init() 
     cls()
 	game_state = "main_menu"
 	menu_colourtimer = 20
+    warningcolourtimer = 0
+    warningcolour = 8
 	xcolour = 14
 	grace_period = 0
 	game_over_sound_playing = false
@@ -253,21 +244,22 @@ function _update60() --every frame
     cls()
     game_start_timer = flr(time()) -- increment game timer
 
-	for star in all(stars) do
-		star:update() 
-	end
-	if grace_period > 0 then
-		grace_period -= 1
-	end
+	for star in all(stars) do star:update() end
+	
+    
+    if warningcolourtimer <= 0 then
+        if warningcolour < 8 then
+            warningcolour += 1
+        elseif warningcolour == 8 then 
+            warningcolour = 7
+        end
+        warningcolourtimer = 60
+    end
+    
 	if game_state == "main_menu" then
-		if menu_colourtimer > 0 then
-			menu_colourtimer -= 1
-		elseif menu_colourtimer <= 0 then
-			if xcolour < 15 then
-				xcolour += 1
-			elseif xcolour >= 15 then
-				xcolour = 14
-			end 
+		menu_colourtimer = decrement_timer(menu_colourtimer)
+		if menu_colourtimer <= 0 then
+			if xcolour < 15 then xcolour += 1 elseif xcolour >= 15 then xcolour = 14 end 
 			menu_colourtimer = 20
 		end
 	end
@@ -275,27 +267,20 @@ function _update60() --every frame
 	if game_state == "play" then
 		
 		--player movement
-        if player.alive then
-            player:update()
-        end
+        if player.alive then player:update() end
         
-        for p in all(projectiles) do
-            p:update()
-        end
+        for p in all(projectiles) do p:update() end
         
-        for laser in all(laser_beams) do
-            laser:update(player)
-        end
+        for laser in all(laser_beams) do laser:update(player) end
 
-        for r in all(rockets) do
-            r:update()
-        end
+        for r in all(rockets) do r:update() end
         -- weapon collisions
 		for enemy in all(enemies) do
 			enemy:update()
-            if player.alive and enemy.state != "exploded" and check_collision(player, enemy) and player.invuln_timer == 0 then
+
+            if player.alive and enemy.state ~= "exploded" and check_collision(player, enemy) and player.invuln_timer == 0 then
                 enemy_hit(enemy, player, 10)
-                if player.shield == false then
+                if not player.shield then
                     if hit_sound_cooldown <= 0 then
                         hit_sound_cooldown = 30
                         sfx(2, 3)
@@ -341,22 +326,7 @@ function _update60() --every frame
             end
         end
         
-        if hit_sound_cooldown > 0 then
-            hit_sound_cooldown -= 1
-        end
-        if warningcolourtimer > 0 then
-            warningcolourtimer -= 1
-        elseif warningcolourtimer <= 0 then
-            if warningcolour < 8 then
-                warningcolour += 1
-            elseif warningcolour == 8 then 
-                warningcolour = 7
-            end
-            warningcolourtimer = 60
-        end
-        if player.weapon_timer > 0 then
-            player.weapon_timer -= 1
-        end
+        
         --wait 1 second before startinng the music
         if game_start_timer >= 1 and not has_music_started then 
             sfx(-1, 2)
@@ -369,7 +339,7 @@ function _update60() --every frame
             add(enemies, enemy:new({
 				x = rnd(120),
 				y = -8,
-                sprite_id = 4,
+                sprite = 4,
                 spd = flr(rnd(2)) + 1
 			}))
 		end
@@ -383,18 +353,20 @@ function _update60() --every frame
         end
         
 		-- TODO add second wave
-        if popup_timer > 0 then
-            popup_timer -= 1
-        end
+        
 
 		enemy_spawn_timer += 1 --increment spawn timer
         
         pickup_spawn_timer += 1 -- increment pickup timer
-        
-        
+
+        popup_timer = decrement_timer(popup_timer)
+        hit_sound_cooldown = decrement_timer(hit_sound_cooldown)
+        warningcolourtimer = decrement_timer(warningcolourtimer)
+        player.weapon_timer = decrement_timer(player.weapon_timer)
         
 	elseif game_state == "game_over" then
 		music(-1)
+        decrement_timer(grace_period)
 	end
 end
 
@@ -402,52 +374,33 @@ function _draw()
 	cls() -- clear the screen
 	
     pal(0,129,1)     
-	for star in all(stars) do 
-		star:draw() --spawn stars
-	end
+	for star in all(stars) do star:draw() end --spawn stars
 	if game_state == "main_menu" then
-		
 		draw_menu()
-        
 		outline_spr(0, 58, 82, 1, 1, false, false, 2)
-        spr(28, 58+8, 82, 1, 1 , true)
-        spr(28, 58-9, 82)
-        
-		
+        spr(28, 66, 82, 1, 1 , true)
+        spr(28, 49, 82)
 	elseif game_state == "play" then
-		
-		for pickup in all(pickups) do
-            pickup:draw()
-        end
-        for enemy in all(enemies) do 
-            enemy:draw() --spawn enemies
-        end
+		for pickup in all(pickups) do pickup:draw() end
+        for enemy in all(enemies) do enemy:draw() end -- draw enemies
         
         if popup_timer > 0 then
             print("+100", popup_x, popup_y, 8)
             print("+100", popup_x - 1, popup_y, 7)
         end
         
-		
         player:draw() --display the player
         
-        for projectile in all(projectiles) do 
-            projectile:draw()
-        end
+        -- draw projectiles
+        for projectile in all(projectiles) do projectile:draw() end
+        for laser in all(laser_beams) do laser:draw() end
+        for r in all(rockets) do r:draw() end
 
-        for laser in all(laser_beams) do
-            laser:draw()
-        end
         --display player score
-        
         print("score "..player.score, 5, 5, 8)
         
-        for r in all(rockets) do
-            r:draw()
-        end
-        
-        if game_start_timer <= 5 and game_start_timer >= 2 then
-            draw_warning()
+        if game_start_timer <= 5 and game_start_timer >= 2 then 
+            draw_warning() 
         end
 		
 	elseif game_state == "game_over" then
