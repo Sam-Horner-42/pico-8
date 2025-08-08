@@ -13,7 +13,7 @@ projectile = {
 
     update = function(self)
         self.y += self.spd
-        if self.y > 128 then
+        if self.y < 0 then
             deli(projectiles, self)
         end
     end,

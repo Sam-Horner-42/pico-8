@@ -242,11 +242,10 @@ function _update60() --every frame
     -- TODO add asteroid tails
     -- TODO add weapon/ability swapping
     cls()
-    game_start_timer = flr(time()) -- increment game timer
+    
 
 	for star in all(stars) do star:update() end
 	
-    
     if warningcolourtimer <= 0 then
         if warningcolour < 8 then
             warningcolour += 1
@@ -273,68 +272,106 @@ function _update60() --every frame
         
         for laser in all(laser_beams) do laser:update(player) end
 
-        for r in all(rockets) do r:update() end
-        -- weapon collisions
-		for enemy in all(enemies) do
-			enemy:update()
+        for i=#rockets,1,-1 do
+            rockets[i]:update(i)
+        end
 
-            if player.alive and enemy.state ~= "exploded" and check_collision(player, enemy) and player.invuln_timer == 0 then
-                enemy_hit(enemy, player, 10)
+        
+                -- 1) UPDATE ENEMIES + PLAYER COLLISION (no inner loops)
+        for j=#enemies,1,-1 do
+            local e = enemies[j]
+            -- if you can: change enemy:update(i) and let it use deli(enemies,i) internally
+            -- otherwise keep e:update() and avoid value-based delete here
+            e:update(j)
+
+            -- player vs enemy (single check per enemy)
+            if player.alive and e.state ~= "exploded" and player.invuln_timer == 0 and check_collision(player, e) then
+                enemy_hit(e, player, 10)
                 if not player.shield then
                     if hit_sound_cooldown <= 0 then
-                        hit_sound_cooldown = 30
-                        sfx(2, 3)
+                        hit_sound_cooldown = 30 sfx(2,3)
                     end
                     player.health -= 1
                     player.fire_cooldown = 10
                     player.invuln_timer = 10
                     player.hit_effect_timer = 20
-                elseif player.shield == true then
-                    player.invuln_timer = 10 -- half a second of invulnerability
-                    sfx(15, 3)
+                else
+                    player.invuln_timer = 10
+                    sfx(15,3)
                     player.shield = false
                 end
             end
-			for projectile in all(projectiles) do
-				if check_collision(projectile, enemy) and enemy.y > 0 then
-					enemy_hit(enemy, projectile, 1)
-					del(projectiles, projectile)
-				end
-			end
-			for laser in all(laser_beams) do
-				if check_collision(laser, enemy) and enemy.state == "alive" then
-					enemy_hit(enemy, laser, 10)
-				end
-			end
-			for rocket in all(rockets) do
-				if check_collision(rocket, enemy) and enemy.state=="alive" then
-					rocket:destroy()
-				end
-			end
         end
         
-        for p in all(pickups) do
-            p:update()
-            if p.y > 128 or p.x < 4 or p.x > 128 then
-                deli(pickups, p)
+        for i=#projectiles,1,-1 do
+            local p = projectiles[i]
+            local hit = false
+            for j=#enemies,1,-1 do
+                local e = enemies[j]
+                if e.state == "alive" and e.y > 0 then
+                    -- cheap gate before full AABB (saves lots of checks)
+                    if abs(p.y - e.y) < 10 and abs(p.x - e.x) < 12 and check_collision(p, e) then
+                        enemy_hit(e, p, 1)
+                        deli(projectiles, i)
+                        hit = true
+                        break
+                    end
+                end
             end
-            
-			if player.alive and p.state == "alive" and check_collision(player, p) then
-                
-                pickup_function(p.sprite_id, player)
-                p.state = "hit"
+        -- if not hit, projectile stays; it’ll be updated/drawn elsewhere
+        end
+                -- 3) LASERS -> ENEMIES (few lasers, so enemies outer loop is fine)
+        if #laser_beams > 0 then
+        for j=#enemies,1,-1 do
+            local e = enemies[j]
+            if e.state == "alive" then
+            for k=1,#laser_beams do
+                local l = laser_beams[k]
+                if check_collision(l, e) then
+                enemy_hit(e, l, 10)
+                break -- one laser hit is enough per enemy per frame
+                end
+            end
             end
         end
-        
+        end
+                -- 4) ROCKETS -> ENEMIES (mark dead; remove by index)
+        for i=#rockets,1,-1 do
+        local r = rockets[i]
+        local exploded = false
+        for j=#enemies,1,-1 do
+            local e = enemies[j]
+            if e.state == "alive" and check_collision(r, e) then
+            -- if your rocket has an AOE, call a helper here
+            -- minimal: just mark it and break
+            exploded = true
+            break
+            end
+        end
+        if exploded then
+            deli(rockets, i) -- instead of r:destroy() that does value-based del()
+        end
+        end
+        -- 5) PICKUPS (update + bounds + collect; remove by index)
+        for i=#pickups,1,-1 do
+        local p = pickups[i]
+        p:update()
+        if p.y > 128 or p.x < 4 or p.x > 128 then
+            deli(pickups, i)
+        elseif player.alive and p.state == "alive" and check_collision(player, p) then
+            pickup_function(p.sprite_id, player)
+            p.state = "hit"
+        end
+        end
         
         --wait 1 second before startinng the music
-        if game_start_timer >= 1 and not has_music_started then 
+        if game_start_timer >= 60 and not has_music_started then 
             sfx(-1, 2)
             music(-1)
             music(0,1200,7)
             has_music_started = true
         end
-        if game_start_timer >= 6 and enemy_spawn_timer >= enemy_spawn_interval then -- it has been long enough between enemy spawns
+        if game_start_timer >= 360 and enemy_spawn_timer >= enemy_spawn_interval then -- it has been long enough between enemy spawns
 			enemy_spawn_timer = 0
             add(enemies, enemy:new({
 				x = rnd(120),
@@ -343,7 +380,7 @@ function _update60() --every frame
                 spd = flr(rnd(2)) + 1
 			}))
 		end
-        if game_start_timer >= 6 and rnd() < 0.01 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
+        if game_start_timer >= 360 and rnd() < 0.01 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
 			pickup_spawn_timer = 0
             add(pickups, pickup:new({
                 x = rnd(118) + 2,
@@ -353,10 +390,9 @@ function _update60() --every frame
         end
         
 		-- TODO add second wave
-        
 
+        game_start_timer += 1 -- increment game timer
 		enemy_spawn_timer += 1 --increment spawn timer
-        
         pickup_spawn_timer += 1 -- increment pickup timer
 
         popup_timer = decrement_timer(popup_timer)
@@ -366,8 +402,13 @@ function _update60() --every frame
         
 	elseif game_state == "game_over" then
 		music(-1)
-        decrement_timer(grace_period)
-	end
+        if grace_period_started == false then
+			grace_period = 60
+			grace_period_started = true
+		else
+            grace_period = decrement_timer(grace_period)
+	    end
+    end
 end
 
 function _draw()
@@ -399,15 +440,12 @@ function _draw()
         --display player score
         print("score "..player.score, 5, 5, 8)
         
-        if game_start_timer <= 5 and game_start_timer >= 2 then 
+        if game_start_timer <= 300 and game_start_timer >= 120 then 
             draw_warning() 
         end
 		
 	elseif game_state == "game_over" then
 		draw_game_over(player.score)
-		if grace_period_started == false then
-			grace_period = 60
-			grace_period_started = true
-		end
+		
 	end
 end

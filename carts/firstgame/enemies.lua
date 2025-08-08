@@ -17,7 +17,7 @@ enemy={
     new=function(self,tbl)
         tbl=tbl or {}
         tbl.drift = tbl.drift or flr(rnd(2)) -- whether the asteroid drifts (0 or 1)
-        tbl.drift_amount = tbl.drift_amount or flr(rnd(2)) -- how much the asteroids drift
+        tbl.drift_amount = tbl.drift_amount or flr(rnd(1)) -- how much the asteroids drift
         tbl.sprite = tbl.sprite or self.sprite
         setmetatable(tbl, {__index=self})
         return tbl
@@ -25,14 +25,14 @@ enemy={
     
     
     update=function(self)
-        self.y += self.spd -- only move if alive
+        self.y += self.spd 
         
         if self.drift == 0 then
             self.x += self.drift_amount
             if self.x > 128 then del(enemies, self) end --delete enemies
         elseif self.drift == 1 then
             self.x -= self.drift_amount
-            if self.x < 8 then del(enemies, self) end --delete enemies
+            if self.x < 20 then del(enemies, self) end --delete enemies
         end
         if self.y > 128 then del(enemies, self) end --delete enemies
         
@@ -56,7 +56,7 @@ enemy={
                 self.sprite = 5
                 self.state = "exploded"
             elseif self.hit_effect_timer == 0 then
-                self.hit_effect_timer = 15
+                self.hit_effect_timer = 10
                 self.state = "alive"
             end
             
@@ -79,7 +79,7 @@ enemy={
         if self.hit_effect_timer <= 0 then
             self.is_hit = false
         else
-            if self.hit_effect_timer < 8 then
+            if self.hit_effect_timer < 3 then
                 self.clr = 7
             else 
                 self.clr = 8 
