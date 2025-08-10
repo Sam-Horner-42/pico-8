@@ -1,7 +1,5 @@
 --stars
 -- Dark Blue Background
-
-
 star={
     x=64, --xpos
     y=-1, --ypos

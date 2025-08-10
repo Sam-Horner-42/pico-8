@@ -325,13 +325,13 @@ function _update60() --every frame
         for j=#enemies,1,-1 do
             local e = enemies[j]
             if e.state == "alive" then
-            for k=1,#laser_beams do
-                local l = laser_beams[k]
-                if check_collision(l, e) then
-                enemy_hit(e, l, 10)
-                break -- one laser hit is enough per enemy per frame
+                for k=1,#laser_beams do
+                    local l = laser_beams[k]
+                    if check_collision(l, e) then
+                    enemy_hit(e, l, 10)
+                    break -- one laser hit is enough per enemy per frame
+                    end
                 end
-            end
             end
         end
         end
@@ -354,14 +354,14 @@ function _update60() --every frame
         end
         -- 5) PICKUPS (update + bounds + collect; remove by index)
         for i=#pickups,1,-1 do
-        local p = pickups[i]
-        p:update()
-        if p.y > 128 or p.x < 4 or p.x > 128 then
-            deli(pickups, i)
-        elseif player.alive and p.state == "alive" and check_collision(player, p) then
-            pickup_function(p.sprite_id, player)
-            p.state = "hit"
-        end
+            local p = pickups[i]
+            p:update()
+            if p.y > 128 or p.x < 4 or p.x > 128 then
+                deli(pickups, i)
+            elseif player.alive and p.state == "alive" and check_collision(player, p) then
+                pickup_function(p.sprite_id, player)
+                p.state = "hit"
+            end
         end
         
         --wait 1 second before startinng the music
