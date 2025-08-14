@@ -1,89 +1,53 @@
 [000000] codo_init
 [000000]   platform: Windows
-[000010]   Found config.txt
-[000010]   
-[000010]     01 window_size 0 0 // window width, height
-[000010]     02 screen_size 0 0 // screen width, height (stretched to window) 
-[000010]     03 show_fps 0 // Draw frames per second in the corner
-[000010]     04 windowed 0 // 1 to start up in windowed mode
-[000010]     05 window_position -1 -1 // x and y position of window (-1, -1 to let the window manager decide)
-[000010]     new window position: -1, -1
-[000010]     06 frameless 0 // 1 to use a window with no frame
-[000010]     07 fullscreen_method 1 // 0 maximized window (linux)  1 borderless desktop-sized window  2 hardware fullscreen (warning: erratic behaviour under some drivers)
-[000010]     08 blit_method 0  // 0 auto  1 software (slower but sometimes more reliable)  2 hardware (can do filtered scaling) 
-[000010]     09 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
-[000010]     10 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
-[000010]     11 sessions 47 // number of times program has been run
-[000010]     12 rmb_key 0 // 0 for none  226 for LALT
-[000010]     13 desktop_path 
-[000010]     14 read_controllers_in_background 0
-[000010]     15 sound_volume 256 // 0..256
-[000010]     16 music_volume 256 // 0..256
-[000010]     17 mix_buffer_size 1024
-[000010]     18 map_scancodes 
-[000010]     19 use_wget 0 // (Linux) 1 to use wget for downloads instead of libcurl (must be installed)
-[000010]     20 version 0.2.6b
-[000010]     21 volume 256
-[000010]     22 root_path C:/Users/Sam/AppData/Roaming/pico-8/carts/
-[000010]     23 cdata_path C:/Users/Sam/AppData/Roaming/pico-8/cdata/
-[000010]     24 joystick_index 0
-[000010]     25 merge_joysticks 0
-[000010]     26 button_keys 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-[000010]     27 live_notes 0
-[000010]     28 cursor_snap 0
-[000010]     29 gui_theme 0
-[000010]     30 screenshot_scale 3
-[000010]     31 gif_scale 3
-[000010]     32 gif_len 16
-[000010]     33 gif_reset_mode 0
-[000010]     34 host_framerate_control 1
-[000010]     35 splore_filter 0
-[000010]     36 tab_width 1
-[000010]     37 draw_tabs 0
-[000010]     38 record_activity_log 1
-[000010]     39 allow_function_keys 1
-[000010]     40 check_for_cart_updates 1
-[000010]     41 auto_hide_mouse_cursor 5
-[000010]     42 aggressive_backups 0
-[000010]     43 periodic_backups 20
-[000010]     44 transform_screen 0
-[000010]     45 gfx_grid_lines 0
-[000010]     46 capture_timestamps 0
-[000010]   
-[000010]   codo_system_init
-[000338]   Compiled against SDL version: 2.0.2
-[000338]   Linked against SDL version:   2.0.9
-[000338]   Current video driver: windows
-[000338]   codo_reset_timer
-[000338]   codo_gui_init
-[000338]   codo_keys_init
-[000338]   codo_text_init
-[000338]   codo_video_init
-[000338]   codo_mouse_init
-[000338]   codo_joystick_init
-[000346]   Reading controller mappings: C:/Users/Sam/AppData/Roaming/pico-8/sdl_controllers.txt
-[000346]   searching for joysticks
-[000346]     found 0 joysticks
-[000346]   ok
-[000346] ok
-[000361] codo_load_pod: D:/Program Files/PICO-8/pico8.dat ok 
-[000364] codo_set_screen 128 128 8 100
-[000364]  window size: 640 540
-[000364] setting fullscreen window size to 2560 1440
-[000632]   setting filter to nearest (screen_mode 1  back page width: 128)
-  renderer direct3d:
-   flags: 0x0000000E ( |  | )
-   texture formats (3): ARGB8888, YV12, IYUV
-   max texture size: 16384x16384
-[000634]  desktop size: 2560 1440
-[000634] ok
-[000646] codo_sound_init mix_buffer_size: 1024
-[000646] codo_sound_init
-[000646] SDL_INIT_AUDIO ok
-[000686] SDL_OpenAudio ok
-[000686]  freq:22050
- channels:1
-[000686] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
-[000686] Current audio driver: wasapi
-[002704] splore_init
-[002704] could not load favourites file: C:/Users/Sam/AppData/Roaming/pico-8/favourites.txt
+[000000]   Found config.txt
+[000000]   
+[000000]     01 window_size 0 0 // window width, height
+[000000]     02 screen_size 0 0 // screen width, height (stretched to window) 
+[000000]     03 show_fps 0 // Draw frames per second in the corner
+[000000]     04 windowed 0 // 1 to start up in windowed mode
+[000000]     05 window_position -1 -1 // x and y position of window (-1, -1 to let the window manager decide)
+[000000]     new window position: -1, -1
+[000000]     06 frameless 0 // 1 to use a window with no frame
+[000000]     07 fullscreen_method 1 // 0 maximized window (linux)  1 borderless desktop-sized window  2 hardware fullscreen (warning: erratic behaviour under some drivers)
+[000000]     08 blit_method 0  // 0 auto  1 software (slower but sometimes more reliable)  2 hardware (can do filtered scaling) 
+[000000]     09 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
+[000000]     10 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
+[000000]     11 sessions 48 // number of times program has been run
+[000000]     12 rmb_key 0 // 0 for none  226 for LALT
+[000000]     13 desktop_path 
+[000000]     14 read_controllers_in_background 0
+[000000]     15 sound_volume 256 // 0..256
+[000000]     16 music_volume 256 // 0..256
+[000000]     17 mix_buffer_size 1024
+[000000]     18 map_scancodes 
+[000000]     19 use_wget 0 // (Linux) 1 to use wget for downloads instead of libcurl (must be installed)
+[000000]     20 version 0.2.6b
+[000000]     21 volume 256
+[000000]     22 root_path C:/Users/Sam/AppData/Roaming/pico-8/carts/
+[000000]     23 cdata_path C:/Users/Sam/AppData/Roaming/pico-8/cdata/
+[000000]     24 joystick_index 0
+[000000]     25 merge_joysticks 0
+[000000]     26 button_keys 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+[000000]     27 live_notes 0
+[000000]     28 cursor_snap 0
+[000000]     29 gui_theme 0
+[000000]     30 screenshot_scale 3
+[000000]     31 gif_scale 3
+[000000]     32 gif_len 16
+[000000]     33 gif_reset_mode 0
+[000000]     34 host_framerate_control 1
+[000000]     35 splore_filter 0
+[000000]     36 tab_width 1
+[000001]     37 draw_tabs 0
+[000001]     38 record_activity_log 1
+[000001]     39 allow_function_keys 1
+[000001]     40 check_for_cart_updates 1
+[000001]     41 auto_hide_mouse_cursor 5
+[000001]     42 aggressive_backups 0
+[000001]     43 periodic_backups 20
+[000001]     44 transform_screen 0
+[000001]     45 gfx_grid_lines 0
+[000001]     46 capture_timestamps 0
+[000001]   
+[000001]   codo_system_init

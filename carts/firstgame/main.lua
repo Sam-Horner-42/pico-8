@@ -377,7 +377,7 @@ function _update60() --every frame
 				x = rnd(120),
 				y = -8,
                 sprite = 4,
-                spd = flr(rnd(2)) + 1
+                spd = flr(rnd(1)) + 2
 			}))
 		end
         if game_start_timer >= 360 and rnd() < 0.01 and pickup_spawn_timer >= pickup_spawn_interval then -- it has been long enough between enemy spawns
