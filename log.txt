@@ -13,7 +13,7 @@
 [000010]     08 blit_method 0  // 0 auto  1 software (slower but sometimes more reliable)  2 hardware (can do filtered scaling) 
 [000010]     09 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
 [000010]     10 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
-[000010]     11 sessions 46 // number of times program has been run
+[000010]     11 sessions 47 // number of times program has been run
 [000010]     12 rmb_key 0 // 0 for none  226 for LALT
 [000010]     13 desktop_path 
 [000010]     14 read_controllers_in_background 0
@@ -46,79 +46,44 @@
 [000010]     41 auto_hide_mouse_cursor 5
 [000010]     42 aggressive_backups 0
 [000010]     43 periodic_backups 20
-[000011]     44 transform_screen 0
-[000011]     45 gfx_grid_lines 0
-[000011]     46 capture_timestamps 0
-[000011]   
-[000011]   codo_system_init
-[000372]   Compiled against SDL version: 2.0.2
-[000372]   Linked against SDL version:   2.0.9
-[000372]   Current video driver: windows
-[000372]   codo_reset_timer
-[000372]   codo_gui_init
-[000372]   codo_keys_init
-[000372]   codo_text_init
-[000372]   codo_video_init
-[000372]   codo_mouse_init
-[000372]   codo_joystick_init
-[000381]   Reading controller mappings: C:/Users/Sam/AppData/Roaming/pico-8/sdl_controllers.txt
-[000381]   searching for joysticks
-[000381]     found 0 joysticks
-[000381]   ok
-[000381] ok
-[000395] codo_load_pod: D:/Program Files/PICO-8/pico8.dat ok 
-[000398] codo_set_screen 128 128 8 100
-[000398]  window size: 640 540
-[000398] setting fullscreen window size to 2560 1440
-[000668]   setting filter to nearest (screen_mode 1  back page width: 128)
+[000010]     44 transform_screen 0
+[000010]     45 gfx_grid_lines 0
+[000010]     46 capture_timestamps 0
+[000010]   
+[000010]   codo_system_init
+[000338]   Compiled against SDL version: 2.0.2
+[000338]   Linked against SDL version:   2.0.9
+[000338]   Current video driver: windows
+[000338]   codo_reset_timer
+[000338]   codo_gui_init
+[000338]   codo_keys_init
+[000338]   codo_text_init
+[000338]   codo_video_init
+[000338]   codo_mouse_init
+[000338]   codo_joystick_init
+[000346]   Reading controller mappings: C:/Users/Sam/AppData/Roaming/pico-8/sdl_controllers.txt
+[000346]   searching for joysticks
+[000346]     found 0 joysticks
+[000346]   ok
+[000346] ok
+[000361] codo_load_pod: D:/Program Files/PICO-8/pico8.dat ok 
+[000364] codo_set_screen 128 128 8 100
+[000364]  window size: 640 540
+[000364] setting fullscreen window size to 2560 1440
+[000632]   setting filter to nearest (screen_mode 1  back page width: 128)
   renderer direct3d:
    flags: 0x0000000E ( |  | )
    texture formats (3): ARGB8888, YV12, IYUV
    max texture size: 16384x16384
-[000671]  desktop size: 2560 1440
-[000671] ok
-[000685] codo_sound_init mix_buffer_size: 1024
-[000685] codo_sound_init
-[000685] SDL_INIT_AUDIO ok
-[000730] SDL_OpenAudio ok
-[000730]  freq:22050
+[000634]  desktop size: 2560 1440
+[000634] ok
+[000646] codo_sound_init mix_buffer_size: 1024
+[000646] codo_sound_init
+[000646] SDL_INIT_AUDIO ok
+[000686] SDL_OpenAudio ok
+[000686]  freq:22050
  channels:1
-[000730] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
-[000730] Current audio driver: wasapi
-[002742] splore_init
-[002742] could not load favourites file: C:/Users/Sam/AppData/Roaming/pico-8/favourites.txt
-[016863] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[076313] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[193460] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[216365] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[347341] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[500430] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[567660] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[685702] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[694307] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[727391] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[763272] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[1790635] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[1823967] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[1892599] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[1905462] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[1937143] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[2010889] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[2055460] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[2063518] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[2084538] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[2108555] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[2190095] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[2623709] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[2722267] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[2773599] window closed (14)
-[2773599] codo_exit
-[2773599]   cmusic_stop
-[2773599]   codo_main_exit
-[2773600]   codo_config_save
-[2773601]   codo_sound_exit
-[2773601]   codo_video_exit
-[2773638]   codo_joystick_exit
-[2773638]   codo_system_exit
-[2773638]   codo_items_created: 1873
-[2773638] ok
+[000686] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
+[000686] Current audio driver: wasapi
+[002704] splore_init
+[002704] could not load favourites file: C:/Users/Sam/AppData/Roaming/pico-8/favourites.txt
