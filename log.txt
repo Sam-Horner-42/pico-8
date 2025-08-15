@@ -1,102 +1,106 @@
 [000000] codo_init
 [000000]   platform: Windows
-[000000]   Found config.txt
-[000000]   
-[000000]     01 window_size 0 0 // window width, height
-[000000]     02 screen_size 0 0 // screen width, height (stretched to window) 
-[000000]     03 show_fps 0 // Draw frames per second in the corner
-[000000]     04 windowed 0 // 1 to start up in windowed mode
-[000000]     05 window_position -1 -1 // x and y position of window (-1, -1 to let the window manager decide)
-[000000]     new window position: -1, -1
-[000000]     06 frameless 0 // 1 to use a window with no frame
-[000000]     07 fullscreen_method 1 // 0 maximized window (linux)  1 borderless desktop-sized window  2 hardware fullscreen (warning: erratic behaviour under some drivers)
-[000000]     08 blit_method 0  // 0 auto  1 software (slower but sometimes more reliable)  2 hardware (can do filtered scaling) 
-[000000]     09 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
-[000000]     10 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
-[000000]     11 sessions 48 // number of times program has been run
-[000000]     12 rmb_key 0 // 0 for none  226 for LALT
-[000000]     13 desktop_path 
-[000000]     14 read_controllers_in_background 0
-[000000]     15 sound_volume 256 // 0..256
-[000000]     16 music_volume 256 // 0..256
-[000000]     17 mix_buffer_size 1024
-[000000]     18 map_scancodes 
-[000000]     19 use_wget 0 // (Linux) 1 to use wget for downloads instead of libcurl (must be installed)
-[000000]     20 version 0.2.6b
-[000000]     21 volume 256
-[000000]     22 root_path C:/Users/Sam/AppData/Roaming/pico-8/carts/
-[000000]     23 cdata_path C:/Users/Sam/AppData/Roaming/pico-8/cdata/
-[000000]     24 joystick_index 0
-[000000]     25 merge_joysticks 0
-[000000]     26 button_keys 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-[000000]     27 live_notes 0
-[000000]     28 cursor_snap 0
-[000000]     29 gui_theme 0
-[000000]     30 screenshot_scale 3
-[000000]     31 gif_scale 3
-[000000]     32 gif_len 16
-[000000]     33 gif_reset_mode 0
-[000000]     34 host_framerate_control 1
-[000000]     35 splore_filter 0
-[000000]     36 tab_width 1
-[000001]     37 draw_tabs 0
-[000001]     38 record_activity_log 1
-[000001]     39 allow_function_keys 1
-[000001]     40 check_for_cart_updates 1
-[000001]     41 auto_hide_mouse_cursor 5
-[000001]     42 aggressive_backups 0
-[000001]     43 periodic_backups 20
-[000001]     44 transform_screen 0
-[000001]     45 gfx_grid_lines 0
-[000001]     46 capture_timestamps 0
-[000001]   
-[000001]   codo_system_init
-[000301]   Compiled against SDL version: 2.0.2
-[000301]   Linked against SDL version:   2.0.9
-[000301]   Current video driver: windows
-[000301]   codo_reset_timer
-[000301]   codo_gui_init
-[000301]   codo_keys_init
-[000301]   codo_text_init
-[000301]   codo_video_init
-[000301]   codo_mouse_init
-[000301]   codo_joystick_init
-[000303]   Reading controller mappings: C:/Users/Sam/AppData/Roaming/pico-8/sdl_controllers.txt
-[000303]   searching for joysticks
-[000303]     found 0 joysticks
-[000303]   ok
-[000303] ok
-[000317] codo_load_pod: D:/Program Files/PICO-8/pico8.dat ok 
-[000320] codo_set_screen 128 128 8 100
-[000320]  window size: 640 540
-[000320] setting fullscreen window size to 2560 1440
-[000608]   setting filter to nearest (screen_mode 1  back page width: 128)
+[000018]   Found config.txt
+[000018]   
+[000018]     01 window_size 0 0 // window width, height
+[000018]     02 screen_size 0 0 // screen width, height (stretched to window) 
+[000018]     03 show_fps 0 // Draw frames per second in the corner
+[000018]     04 windowed 0 // 1 to start up in windowed mode
+[000018]     05 window_position -1 -1 // x and y position of window (-1, -1 to let the window manager decide)
+[000018]     new window position: -1, -1
+[000018]     06 frameless 0 // 1 to use a window with no frame
+[000018]     07 fullscreen_method 1 // 0 maximized window (linux)  1 borderless desktop-sized window  2 hardware fullscreen (warning: erratic behaviour under some drivers)
+[000018]     08 blit_method 0  // 0 auto  1 software (slower but sometimes more reliable)  2 hardware (can do filtered scaling) 
+[000018]     09 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
+[000018]     10 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
+[000018]     11 sessions 49 // number of times program has been run
+[000018]     12 rmb_key 0 // 0 for none  226 for LALT
+[000018]     13 desktop_path 
+[000018]     14 read_controllers_in_background 0
+[000018]     15 sound_volume 256 // 0..256
+[000018]     16 music_volume 256 // 0..256
+[000018]     17 mix_buffer_size 1024
+[000018]     18 map_scancodes 
+[000018]     19 use_wget 0 // (Linux) 1 to use wget for downloads instead of libcurl (must be installed)
+[000018]     20 version 0.2.6b
+[000018]     21 volume 256
+[000018]     22 root_path C:/Users/Sam/AppData/Roaming/pico-8/carts/
+[000018]     23 cdata_path C:/Users/Sam/AppData/Roaming/pico-8/cdata/
+[000018]     24 joystick_index 0
+[000018]     25 merge_joysticks 0
+[000018]     26 button_keys 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+[000018]     27 live_notes 0
+[000018]     28 cursor_snap 0
+[000018]     29 gui_theme 0
+[000018]     30 screenshot_scale 3
+[000018]     31 gif_scale 3
+[000018]     32 gif_len 16
+[000018]     33 gif_reset_mode 0
+[000018]     34 host_framerate_control 1
+[000018]     35 splore_filter 0
+[000018]     36 tab_width 1
+[000018]     37 draw_tabs 0
+[000018]     38 record_activity_log 1
+[000018]     39 allow_function_keys 1
+[000018]     40 check_for_cart_updates 1
+[000018]     41 auto_hide_mouse_cursor 5
+[000018]     42 aggressive_backups 0
+[000018]     43 periodic_backups 20
+[000018]     44 transform_screen 0
+[000018]     45 gfx_grid_lines 0
+[000018]     46 capture_timestamps 0
+[000018]   
+[000018]   codo_system_init
+[000382]   Compiled against SDL version: 2.0.2
+[000382]   Linked against SDL version:   2.0.9
+[000382]   Current video driver: windows
+[000382]   codo_reset_timer
+[000382]   codo_gui_init
+[000382]   codo_keys_init
+[000382]   codo_text_init
+[000383]   codo_video_init
+[000383]   codo_mouse_init
+[000383]   codo_joystick_init
+[000393]   Reading controller mappings: C:/Users/Sam/AppData/Roaming/pico-8/sdl_controllers.txt
+[000394]   searching for joysticks
+[000394]     found 1 joysticks
+[000394]     connecting joystick 0
+[000402]     Controller 0: PS5 Controller
+[000402]      Number of Axes: 6
+[000402]      Number of Buttons: 15
+[000402]      Number of Balls: 0
+[000402]      Mapping: 030000004c050000e60c000000000000,PS5 Controller,a:b1,b:b2,back:b8,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b4,leftstick:b10,lefttrigger:a3,leftx:a0,lefty:a1,misc1:b13,rightshoulder:b5,rightstick:b11,righttrigger:a4,rightx:a2,righty:a5,start:b9,x:b0,y:b3,platform:Windows
+[000402]   ok
+[000402] ok
+[000423] codo_load_pod: D:/Program Files/PICO-8/pico8.dat ok 
+[000427] codo_set_screen 128 128 8 100
+[000427]  window size: 640 540
+[000427] setting fullscreen window size to 2560 1440
+[000750]   setting filter to nearest (screen_mode 1  back page width: 128)
   renderer direct3d:
    flags: 0x0000000E ( |  | )
    texture formats (3): ARGB8888, YV12, IYUV
    max texture size: 16384x16384
-[000611]  desktop size: 2560 1440
-[000611] ok
-[000624] codo_sound_init mix_buffer_size: 1024
-[000624] codo_sound_init
-[000624] SDL_INIT_AUDIO ok
-[000663] SDL_OpenAudio ok
-[000663]  freq:22050
+[000754]  desktop size: 2560 1440
+[000754] ok
+[000769] codo_sound_init mix_buffer_size: 1024
+[000769] codo_sound_init
+[000769] SDL_INIT_AUDIO ok
+[000790] SDL_OpenAudio ok
+[000790]  freq:22050
  channels:1
-[000663] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
-[000664] Current audio driver: wasapi
-[002678] splore_init
-[002678] could not load favourites file: C:/Users/Sam/AppData/Roaming/pico-8/favourites.txt
-[009389] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[039078] run_cart current_filename: C:/Users/Sam/AppData/Roaming/pico-8/carts/firstgame/firstgame.p8 running_filename: firstgame/firstgame.p8 running_cart_lid: 
-[076722] window closed (14)
-[076722] codo_exit
-[076722]   cmusic_stop
-[076722]   codo_main_exit
-[076723]   codo_config_save
-[076724]   codo_sound_exit
-[076724]   codo_video_exit
-[076755]   codo_joystick_exit
-[076755]   codo_system_exit
-[076755]   codo_items_created: 1338
-[076755] ok
+[000790] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
+[000790] Current audio driver: wasapi
+[002811] splore_init
+[002812] could not load favourites file: C:/Users/Sam/AppData/Roaming[5977860] window closed (14)
+[5977860] codo_exit
+[5977860]   cmusic_stop
+[5977860]   codo_main_exit
+[5977862]   codo_config_save
+[5977879]   codo_sound_exit
+[5977879]   codo_video_exit
+[5977895]   codo_joystick_exit
+[5977896]   codo_system_exit
+[5977896]   codo_items_created: 1318
+[5977896] ok
+[008968] ok
