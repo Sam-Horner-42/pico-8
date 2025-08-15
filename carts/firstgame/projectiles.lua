@@ -1,7 +1,7 @@
 projectile = {
     x = 0,
     y = 0,
-    spd = -4,
+    spd = 4,
     w = 8,
     h = 8,
 
@@ -12,9 +12,9 @@ projectile = {
     end,
 
     update = function(self)
-        self.y += self.spd
-        if self.y < 0 then
-            deli(projectiles, self)
+        self.y -= self.spd
+        if self.y < -10 then
+            del(projectiles, self)
         end
     end,
 

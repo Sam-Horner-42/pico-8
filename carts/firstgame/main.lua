@@ -1,3 +1,4 @@
+explosions = {}
 -- helper functions ------------------------
 function is_within_radius(x1, y1, x2, y2, r)
     local dx = x2 - x1
@@ -88,6 +89,25 @@ function check_collision(a,b)
 		a.y + a.h > b.y
 end
 
+function enemy_hit(enemy, src, dmg)
+	enemy.health -= dmg
+	enemy.state = "hit"
+    if enemy.health <= 0 and src ~= player then
+        player.score+=100
+        popup_timer = 30
+        popup_x=enemy.x
+        popup_y=enemy.y
+    end
+end
+
+function explode(expx,expy)
+    local myex={}
+    myex.x=expx-4
+    myex.y=expy-4
+    myex.age=1
+    add(explosions, myex)
+end
+
 -- UI ---------------------------
 
 -- displays the main menu
@@ -131,6 +151,7 @@ function start_game()
     rockets={}
 	projectiles = {}
 	laser_beams = {}
+    
 
     player.health = 3
     player.score = 0
@@ -211,16 +232,7 @@ function draw_game_over(score)
 	end
 end
 
-function enemy_hit(enemy, src, dmg)
-	enemy.health -= dmg
-	enemy.state = "hit"
-    if enemy.health <= 0 and src ~= player then
-        player.score+=100
-        popup_timer = 30
-        popup_x=enemy.x
-        popup_y=enemy.y
-    end
-end
+
 
 
 
@@ -272,8 +284,8 @@ function _update60() --every frame
         
         for laser in all(laser_beams) do laser:update(player) end
 
-        for i=#rockets,1,-1 do
-            rockets[i]:update(i)
+        for r in all(rockets) do
+            r:update()
         end
 
         
@@ -337,20 +349,20 @@ function _update60() --every frame
         end
                 -- 4) ROCKETS -> ENEMIES (mark dead; remove by index)
         for i=#rockets,1,-1 do
-        local r = rockets[i]
-        local exploded = false
-        for j=#enemies,1,-1 do
-            local e = enemies[j]
-            if e.state == "alive" and check_collision(r, e) then
-            -- if your rocket has an AOE, call a helper here
-            -- minimal: just mark it and break
-            exploded = true
-            break
+            local r = rockets[i]
+            local exploded = false
+            for j=#enemies,1,-1 do
+                local e = enemies[j]
+                if e.state == "alive" and check_collision(r, e) then
+                -- if your rocket has an AOE, call a helper here
+                -- minimal: just mark it and break
+                exploded = true
+                break
+                end
             end
-        end
-        if exploded then
-            deli(rockets, i) -- instead of r:destroy() that does value-based del()
-        end
+            if exploded then
+                deli(rockets, i) -- instead of r:destroy() that does value-based del()
+            end
         end
         -- 5) PICKUPS (update + bounds + collect; remove by index)
         for i=#pickups,1,-1 do
@@ -422,7 +434,16 @@ function _draw()
         spr(28, 66, 82, 1, 1 , true)
         spr(28, 49, 82)
 	elseif game_state == "play" then
-		for pickup in all(pickups) do pickup:draw() end
+        local exframes={64,64,64,66,66,66,68,68,68,70,70,70,72,72,72}
+		for myex in all(explosions) do 
+            local exp_spr = 64
+            spr(exframes[myex.age],myex.x,myex.y,2,2)
+            myex.age+=1
+            if myex.age > 15 then
+                del(explosions, myex)
+            end
+        end
+        for pickup in all(pickups) do pickup:draw() end
         for enemy in all(enemies) do enemy:draw() end -- draw enemies
         
         if popup_timer > 0 then

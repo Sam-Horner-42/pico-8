@@ -17,7 +17,7 @@ enemy={
     new=function(self,tbl)
         tbl=tbl or {}
         tbl.drift = tbl.drift or flr(rnd(2)) -- whether the asteroid drifts (0 or 1)
-        tbl.drift_amount = tbl.drift_amount or flr(rnd(1)) -- how much the asteroids drift
+        tbl.drift_amount = tbl.drift_amount or flr(rnd(2)) -- how much the asteroids drift
         tbl.sprite = tbl.sprite or self.sprite
         setmetatable(tbl, {__index=self})
         return tbl
@@ -29,10 +29,10 @@ enemy={
         
         if self.drift == 0 then
             self.x += self.drift_amount
-            if self.x > 128 then del(enemies, self) end --delete enemies
+            if self.x > 140 then del(enemies, self) end --delete enemies
         elseif self.drift == 1 then
             self.x -= self.drift_amount
-            if self.x < 20 then del(enemies, self) end --delete enemies
+            if self.x < -10 then del(enemies, self) end --delete enemies
         end
         if self.y > 128 then del(enemies, self) end --delete enemies
         
