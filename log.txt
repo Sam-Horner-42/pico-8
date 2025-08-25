@@ -87,3 +87,14 @@
 [000883] Current audio driver: wasapi
 [002897] splore_init
 [002897] could not load favourites file: C:/Users/Sam/AppData/Roaming/pico-8/favourites.txt
+[2731925] window closed (14)
+[2731925] codo_exit
+[2731925]   cmusic_stop
+[2731925]   codo_main_exit
+[2731928]   codo_config_save
+[2731928]   codo_sound_exit
+[2731928]   codo_video_exit
+[2731950]   codo_joystick_exit
+[2731950]   codo_system_exit
+[2731950]   codo_items_created: 1303
+[2731950] ok
