@@ -1,3 +1,5 @@
+--Blasteroids
+--By Samuel Horner
 explosions = {}
 -- helper functions ------------------------
 function is_within_radius(x1, y1, x2, y2, r)
@@ -152,7 +154,7 @@ function start_game()
 	projectiles = {}
 	laser_beams = {}
     
-
+    player.rocket_count = 0
     player.health = 3
     player.score = 0
     player.alive=true
@@ -204,7 +206,7 @@ function draw_menu()
 	}, 60, 1)
 	if btnp(5) then --Z
 		start_game()
-		game_state = "play"
+		--game_state = "play"
 	end
 end
 
